@@ -1,3 +1,9 @@
 https://code-basics.com/ru/languages/typescript
 https://learn.javascript.ru/
 https://www.typescriptlang.org/docs/
+node.js + azure
+
+typescript - windows - консоль
+(azure)
+
+npm install typescript

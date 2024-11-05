@@ -26,5 +26,8 @@
     "plugins": [
       "@typescript-eslint"
     ]
+  },
+  "dependencies": {
+    "readline": "^1.3.0"
   }
 }
