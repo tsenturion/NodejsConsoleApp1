@@ -1,0 +1,3 @@
+https://code-basics.com/ru/languages/typescript
+https://learn.javascript.ru/
+https://www.typescriptlang.org/docs/
