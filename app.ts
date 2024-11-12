@@ -96,4 +96,19 @@
 let arr: number[] = [1, 2, 3, 4, 5, 6, 7];
 let emptyArry: number[] = new Array<number>(1, 2, 3, 4, 5);
 
+function greet(): void {
+    for (let i: number = 0; i < 10; i++) {
+        let ternar: string = i % 2 === 0 ? '0' : '1';
+        if (i % 2 === 0) {
+            ternar = '0'
+        } else {
+            ternar = '1'
+        }
+        console.log(ternar);
+    }
+}
+let someString: string = '0' + '1';
+console.log(someString);
+
+greet();
 process.stdin.resume();
