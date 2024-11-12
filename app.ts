@@ -91,7 +91,7 @@
 ////    console.log(obj[key]);
 ////}
 
-
+// npm install -g typescript
 //tsc --watch
 let arr: number[] = [1, 2, 3, 4, 5, 6, 7];
 let emptyArry: number[] = new Array<number>(1, 2, 3, 4, 5);
@@ -107,4 +107,6 @@ function chessBoard(size: number): void {
 }
 
 chessBoard(100);
+let poww: number = Math.PI * Math.pow(2, 2);
+
 process.stdin.resume();
