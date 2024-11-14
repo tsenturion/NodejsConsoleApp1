@@ -16,14 +16,22 @@ function inputNumberArray(): number[] {
 }
 
 let numbers3: number[] = inputNumberArray();
-let len = numbers3.length;
-if (numbers3.length >= 4) {
-    let slice1: number[] = numbers3.slice(0, 2);
-    let slice2: number[] = numbers3.slice(len - 2, len);
-    console.log(slice1.concat(slice2));
-} else {
-    console.log(numbers3.slice(0, 2));
+for (let index in numbers3) {
+    console.log(index);
+    let key: string = 'key' + index.toString();
+    console.log(key);
+
 }
+//let len = numbers3.length;
+//if (numbers3.length >= 4) {
+//    let slice1: number[] = numbers3.slice(0, 2);
+//    let slice2: number[] = numbers3.slice(len - 2, len);
+//    console.log(slice1.concat(slice2));
+//} else {
+//    let slice1: number[] = numbers3.slice(0, 1);
+//    let slice2: number[] = numbers3.slice(len - 1, len);
+//    console.log(slice1.concat(slice2));
+//}
 //console.log("Элементы массива:", numbers);
 //console.log(numbers.length); //длина массива
 //numbers.push(99, 99) //добавляет один или несколько элементов в конец
