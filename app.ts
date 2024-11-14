@@ -109,46 +109,72 @@
 //let poww: number = Math.PI * Math.pow(2, 2);
 
 //----------------массивы-------------------------------
-let numbers: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+//let numbers: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-console.log("Ёлементы массива:", numbers);
-console.log(numbers.length); //длина массива
-numbers.push(99, 99) //добавл€ет один или несколько элементов в конец
-console.log("Ёлементы массива:", numbers);
-let lastElem: number | undefined = numbers.pop(); // удал€ет последний элемент и возвращает его
-console.log(lastElem);
-let firstElem: number | undefined = numbers.shift(); // удал€ет первый элемент и возвращает его
-console.log(firstElem);
-console.log("Ёлементы массива:", numbers);
-numbers.unshift(99, 99); // добавл€ет один или несколько элементов в начало
-console.log("Ёлементы массива:", numbers);
-const numbers2: number[] = [55, 55, 55];
-const combined: number[] = numbers.concat(numbers2); // объедин€ет два и более масиивов и возвращает новый
-console.log("Ёлементы массива:", combined);
-const joined: string = numbers.join('-'); // все элементы в строку с раздедлителем
-console.log(joined);
-const slice: number[] = numbers.slice(1, 4); // срез элементов (начало, конец), возвращает новый массив
-console.log(slice);
-console.log("Ёлементы массива:", numbers);
-numbers.splice(2, 1, 6); // удал€ет или добавл€ет элементы. (Ќачало, количество, элементы)
-console.log("Ёлементы массива:", numbers);
-console.log(numbers.indexOf(99)); // находит первое вхождение
-console.log();
-console.log();
+//console.log("Ёлементы массива:", numbers);
+//console.log(numbers.length); //длина массива
+//numbers.push(99, 99) //добавл€ет один или несколько элементов в конец
+//console.log("Ёлементы массива:", numbers);
+//let lastElem: number | undefined = numbers.pop(); // удал€ет последний элемент и возвращает его
+//console.log(lastElem);
+//let firstElem: number | undefined = numbers.shift(); // удал€ет первый элемент и возвращает его
+//console.log(firstElem);
+//console.log("Ёлементы массива:", numbers);
+//numbers.unshift(99, 99); // добавл€ет один или несколько элементов в начало
+//console.log("Ёлементы массива:", numbers);
+//const numbers2: number[] = [55, 55, 55];
+//const combined: number[] = numbers.concat(numbers2); // объедин€ет два и более масиивов и возвращает новый
+//console.log("Ёлементы массива:", combined);
+//const joined: string = numbers.join('-'); // все элементы в строку с раздедлителем
+//console.log(joined);
+//const slice: number[] = numbers.slice(1, 4); // срез элементов (начало, конец), возвращает новый массив
+//console.log(slice);
+//console.log("Ёлементы массива:", numbers);
+//numbers.splice(2, 1, 6); // удал€ет или добавл€ет элементы. (Ќачало, количество, элементы)
+//console.log("Ёлементы массива:", numbers);
+//console.log(numbers.indexOf(99)); // находит первое вхождение
+//console.log();
+//console.log();
 
 //---------------------объекты---------------------
-const person = {
+let numbers: number[] = inputNumberArray();
+
+const person: { [key: string]: any } = {
     name: 'иван',
     lastName: 'иванов',
     age: 25,
     isStudent: false
 };
 
-const values = {
+const values: { [key: string]: number } = {
     key1: 5,
     key2: 7,
     key3: 10
 }
+let copy = { ...values }; //копирование
+console.log(copy); 
+let merged = { ...person, ...copy }; //соединение
+console.log(merged);
+let stringKeys = Object.keys(values);
+let intKeys: number[] = [];
+for (let q: number = 0, q < stringKeys.length, q++) {
+    intKeys = key[3];
+}
+//values["key4"] = 8;
+//values["key4"] = 10;
+//console.log(values["key4"]);
+//console.log(values["key3"]);
+
+//console.log('key3' in values);
+
+//delete values.key3;
+//console.log('key3' in values);
+//for (let key in person) {
+//    console.log(key);
+//}
+//for (let value of values) {
+//    console.log(value);
+//}
 
 /*
 использовать функцию дл€ ввода, создать массив
