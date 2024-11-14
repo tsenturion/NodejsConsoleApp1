@@ -93,20 +93,68 @@
 
 // npm install -g typescript
 //tsc --watch
-let arr: number[] = [1, 2, 3, 4, 5, 6, 7];
-let emptyArry: number[] = new Array<number>(1, 2, 3, 4, 5);
+//let emptyArry: number[] = new Array<number>(1, 2, 3, 4, 5);
 
-function chessBoard(size: number): void {
-    for (let i: number = 0; i < size; i++) {
-        let row: string = '';
-        for (let j: number = 0; j < size; j++) {
-            row += (i + j) % 2 === 0 ? '0' : '1';
-        }
-        console.log(row);
-    }
+//function chessBoard(size: number): void {
+//    for (let i: number = 0; i < size; i++) {
+//        let row: string = '';
+//        for (let j: number = 0; j < size; j++) {
+//            row += (i + j) % 2 === 0 ? '0' : '1';
+//        }
+//        console.log(row);
+//    }
+//}
+
+//chessBoard(100);
+//let poww: number = Math.PI * Math.pow(2, 2);
+
+//----------------массивы-------------------------------
+let numbers: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+console.log("Ёлементы массива:", numbers);
+console.log(numbers.length); //длина массива
+numbers.push(99, 99) //добавл€ет один или несколько элементов в конец
+console.log("Ёлементы массива:", numbers);
+let lastElem: number | undefined = numbers.pop(); // удал€ет последний элемент и возвращает его
+console.log(lastElem);
+let firstElem: number | undefined = numbers.shift(); // удал€ет первый элемент и возвращает его
+console.log(firstElem);
+console.log("Ёлементы массива:", numbers);
+numbers.unshift(99, 99); // добавл€ет один или несколько элементов в начало
+console.log("Ёлементы массива:", numbers);
+const numbers2: number[] = [55, 55, 55];
+const combined: number[] = numbers.concat(numbers2); // объедин€ет два и более масиивов и возвращает новый
+console.log("Ёлементы массива:", combined);
+const joined: string = numbers.join('-'); // все элементы в строку с раздедлителем
+console.log(joined);
+const slice: number[] = numbers.slice(1, 4); // срез элементов (начало, конец), возвращает новый массив
+console.log(slice);
+console.log("Ёлементы массива:", numbers);
+numbers.splice(2, 1, 6); // удал€ет или добавл€ет элементы. (Ќачало, количество, элементы)
+console.log("Ёлементы массива:", numbers);
+console.log(numbers.indexOf(99)); // находит первое вхождение
+console.log();
+console.log();
+
+//---------------------объекты---------------------
+const person = {
+    name: 'иван',
+    lastName: 'иванов',
+    age: 25,
+    isStudent: false
+};
+
+const values = {
+    key1: 5,
+    key2: 7,
+    key3: 10
 }
 
-chessBoard(100);
-let poww: number = Math.PI * Math.pow(2, 2);
-
+/*
+использовать функцию дл€ ввода, создать массив
+если в нем меньше 4 элементов, создать массив из 
+первого и последнего элемента и вывести его
+если в нем больше 4 элементов, создать массив из 
+первых двух и последних двух элементов и вывести его
+*/
 process.stdin.resume();
