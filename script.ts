@@ -16,8 +16,11 @@ function inputNumberArray(): number[] {
 }
 
 let numbers3: number[] = inputNumberArray();
+let len = numbers3.length;
 if (numbers3.length >= 4) {
-    console.log(numbers3.slice(0, 2).concat(numbers3.slice(numbers3.length - 2, numbers3.length)));
+    let slice1: number[] = numbers3.slice(0, 2);
+    let slice2: number[] = numbers3.slice(len - 2, len);
+    console.log(slice1.concat(slice2));
 } else {
     console.log(numbers3.slice(0, 2));
 }
