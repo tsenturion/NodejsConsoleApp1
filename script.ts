@@ -14,14 +14,21 @@ function inputNumberArray(): number[] {
 
     return numbers;
 }
-
 let numbers3: number[] = inputNumberArray();
-for (let index in numbers3) {
-    console.log(index);
-    let key: string = 'key' + index.toString();
-    console.log(key);
+console.log(numbers3)
+const KeyNumber: { [key: string]: number } = {};
 
+for (let i = 0; i < numbers3.length; i++) {
+    KeyNumber["key" + i.toString()] = numbers3[i]
 }
+console.log(KeyNumber)
+//let numbers3: number[] = inputNumberArray();
+//for (let index in numbers3) {
+//    console.log(index);
+//    let key: string = 'key' + index.toString();
+//    console.log(key);
+
+//}
 //let len = numbers3.length;
 //if (numbers3.length >= 4) {
 //    let slice1: number[] = numbers3.slice(0, 2);

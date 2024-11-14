@@ -137,7 +137,6 @@
 //console.log();
 
 //---------------------объекты---------------------
-let numbers: number[] = inputNumberArray();
 
 const person: { [key: string]: any } = {
     name: 'иван',
@@ -155,11 +154,18 @@ let copy = { ...values }; //копирование
 console.log(copy); 
 let merged = { ...person, ...copy }; //соединение
 console.log(merged);
-let stringKeys = Object.keys(values);
+let stringKeys = Object.keys(values); // получение ключей - строка
+let anyValues = Object.values(values); // получение значений
+let enries = Object.entries(values);
+
+
+
+
 let intKeys: number[] = [];
-for (let q: number = 0, q < stringKeys.length, q++) {
-    intKeys = key[3];
+for (let q: number = 0; q < stringKeys.length; q++) {
+    intKeys[q] = parseInt(stringKeys[q][3]);
 }
+console.log(intKeys);
 //values["key4"] = 8;
 //values["key4"] = 10;
 //console.log(values["key4"]);
