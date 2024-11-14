@@ -17,9 +17,9 @@ function inputNumberArray(): number[] {
 
 let numbers3: number[] = inputNumberArray();
 if (numbers3.length >= 4) {
-
+    console.log(numbers3.slice(0, 2).concat(numbers3.slice(numbers3.length - 2, numbers3.length)));
 } else {
-
+    console.log(numbers3.slice(0, 2));
 }
 //console.log("Элементы массива:", numbers);
 //console.log(numbers.length); //длина массива
