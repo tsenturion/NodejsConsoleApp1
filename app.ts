@@ -138,34 +138,44 @@
 
 //---------------------объекты---------------------
 
-const person: { [key: string]: any } = {
-    name: 'иван',
-    lastName: 'иванов',
-    age: 25,
-    isStudent: false
-};
+//const person: { [key: string]: any } = {
+//    name: 'иван',
+//    lastName: 'иванов',
+//    age: 25,
+//    isStudent: false
+//};
 
-const values: { [key: string]: number } = {
-    key1: 5,
-    key2: 7,
-    key3: 10
-}
-let copy = { ...values }; //копирование
-console.log(copy); 
-let merged = { ...person, ...copy }; //соединение
-console.log(merged);
-let stringKeys = Object.keys(values); // получение ключей - строка
-let anyValues = Object.values(values); // получение значений
-let enries = Object.entries(values);
-
-
+//const values: { [key: string]: number } = {
+//    key1: 5,
+//    key2: 7,
+//    key3: 10
+//}
+//let copy = { ...values }; //копирование
+//console.log(copy);
+//let merged = { ...person, ...copy }; //соединение
+//console.log(merged);
+//let stringKeys = Object.keys(values); // получение ключей - строка
+//let anyValues = Object.values(values); // получение значений
+//let enries = Object.entries(values);
 
 
-let intKeys: number[] = [];
-for (let q: number = 0; q < stringKeys.length; q++) {
-    intKeys[q] = parseInt(stringKeys[q][3]);
-}
-console.log(intKeys);
+
+
+//let intKeys: number[] = [];
+//for (let q: number = 0; q < stringKeys.length; q++) {
+//    intKeys[q] = parseInt(stringKeys[q][3]);
+//}
+//console.log(intKeys);
+
+//const numbers = [1, 3, 8, 9, 100, 23, 55, 34];
+
+//// BEGIN (write your solution here)
+//const getEvenNumbers = (numbers2: number[]): number[] => numbers2.filter(i => i % 2 === 0);
+//let num2: number[] = getEvenNumbers(numbers);
+//console.log(num2);
+
+
+
 //values["key4"] = 8;
 //values["key4"] = 10;
 //console.log(values["key4"]);
@@ -189,4 +199,90 @@ console.log(intKeys);
 если в нем больше 4 элементов, создать массив из 
 первых двух и последних двух элементов и вывести его
 */
+//---------------------классы---------------------
+//class Person {
+//    name: string;
+//    age: number;
+//    constructor(name: string, age: number) {
+//        this.name = name;
+//        this.age = age;
+//    }
+
+//    greet(): void {
+//        console.log(`age: ${this.age}`);
+//    }
+//}
+//---------------------ќќѕ---------------------
+//---------------------наследование---------------------
+//class Employee extends Person {
+//    position: string;
+//    constructor(name: string, age: number, position: string) {
+//        super(name, age);
+//        this.position = position;
+//    }
+
+//    work(): void {
+//        console.log(`position: ${this.position}`);
+//    }
+//}
+//---------------------инкапул€ци€---------------------
+// public - по умолчанию, доступно везде
+// private - только внутри класса
+// protected - внутри класса и подклассов
+class Person {
+    name: string;
+    age: number;
+    constructor(name: string, age: number) {
+        this.name = name;
+        this.age = age;
+    }
+
+    protected greet(): void {
+        console.log(`age: ${this.age}`);
+    }
+}
+class Employee extends Person {
+    position: string;
+    constructor(name: string, age: number, position: string) {
+        super(name, age);
+        this.position = position;
+    }
+
+    work(): void {
+        console.log(`position: ${this.position}`);
+        this.greet()
+    }
+}
+//---------------------абстрактные классы---------------------
+abstract class Animal {
+    name: string;
+    constructor(name: string) {
+        this.name = name;
+    }
+    abstract makeSound(): void;
+}
+
+class Dog extends Animal {
+    makeSound(): void {
+        console.log('1');
+    }
+}
+//---------------------статические члены класса---------------------
+class MathUtils {
+    static PI: number = Math.PI;
+    //static PI: number = 3.14;
+    static square(x: number): number {
+        return x * x;
+    }
+}
+
+const person = new Person('12', 12);
+const employee = new Employee('12', 12, 'smm');
+employee.age = 13;
+employee.work();
+
+console.log(MathUtils.square(MathUtils.PI));
+
+
+
 process.stdin.resume();
