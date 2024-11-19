@@ -1,4 +1,6 @@
 https://code-basics.com/ru/languages/typescript
+1-7, 10, 14 - можно сделать
+34, 36, 5 - Сегодня
 https://learn.javascript.ru/
 https://www.typescriptlang.org/docs/
 node.js + azure
@@ -7,3 +9,5 @@ typescript - windows - консоль
 (azure)
 
 npm install typescript
+
+
