@@ -6,7 +6,7 @@
     "sourceMap": false,
     "skipLibCheck": true,
     "strict": true,
-    "types": ["node"]
+    "types": ["node", "jest"]
   },
   "exclude": [
     "node_modules"
