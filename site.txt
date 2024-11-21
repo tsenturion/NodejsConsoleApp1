@@ -10,4 +10,5 @@ typescript - windows - консоль
 
 npm install typescript
 
+https://t.me/+btI7KAU4oSRlMGQy
 
