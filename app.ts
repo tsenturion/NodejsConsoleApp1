@@ -228,61 +228,148 @@
 //---------------------инкапуляция---------------------
 // public - по умолчанию, доступно везде
 // private - только внутри класса
-// protected - внутри класса и подклассов
-class Person {
-    name: string;
-    age: number;
-    constructor(name: string, age: number) {
-        this.name = name;
-        this.age = age;
-    }
+//// protected - внутри класса и подклассов
+//class Person {
+//    name: string;
+//    age: number;
+//    constructor(name: string, age: number) {
+//        this.name = name;
+//        this.age = age;
+//    }
 
-    protected greet(): void {
-        console.log(`age: ${this.age}`);
+//    protected greet(): void {
+//        console.log(`age: ${this.age}`);
+//    }
+//}
+//class Employee extends Person {
+//    position: string;
+//    constructor(name: string, age: number, position: string) {
+//        super(name, age);
+//        this.position = position;
+//    }
+
+//    work(): void {
+//        console.log(`position: ${this.position}`);
+//        this.greet()
+//    }
+//}
+////---------------------абстрактные классы---------------------
+//abstract class Animal {
+//    name: string;
+//    constructor(name: string) {
+//        this.name = name;
+//    }
+//    abstract makeSound(): void;
+//}
+
+//class Dog extends Animal {
+//    makeSound(): void {
+//        console.log('1');
+//    }
+//}
+////---------------------статические члены класса---------------------
+//class MathUtils {
+//    static PI: number = Math.PI;
+//    //static PI: number = 3.14;
+//    static square(x: number): number {
+//        return x * x;
+//    }
+//}
+
+//
+//const employee = new Employee('12', 12, 'smm');
+//employee.age = 13;
+//employee.work();
+
+//console.log(MathUtils.square(MathUtils.PI));
+
+let age: number = 12;
+age = 14;
+let flag1: boolean = false;
+let flag2: boolean = true;
+let str1: string = '12';
+const person2: { [key: string]: any } = {
+    name: 'иван',
+    lastName: 'иванов',
+    age: 25,
+    isStudent: false
+};
+let cat: { [key: string]: string } = {
+    name: 'вася',
+    color: 'black'
+};
+
+let numArray: number[] = [1, 2, 3, 4, 5, 7];
+//console.log(numArray[0]);
+//console.log(numArray[1]);
+//console.log(numArray[2]);
+
+//loop1: for (let i: number = 0; i < numArray.length; i++) {
+//    loop2: for (let j: number = 0; j < numArray.length; j++) {
+//        console.log(numArray[j]);
+//        if (j > 5) {
+//            console.log(j, 'stop');
+//            break loop1;
+//        }
+//    }
+//}
+// break - останавливает цикл в котором находится полностью
+// continue - останавливает текущую итерацию
+/*let i: number = 0;*/
+//while (true) {
+//    console.log('cycle work');
+//    if (i > 100) {
+//        console.log(i);
+//        break;
+//    }
+//    i++;
+//}
+//for (let num in person2) {
+//    console.log(num);
+//}
+//console.log('done');
+//for (let num of person2) {
+//    console.log(num);
+//}
+//let i: number = 0;
+//do {
+//    console.log('cycle work');
+//    i++;
+//} while (i < 100);
+//console.log('done');
+
+function customSum(a: number, b: number): void {
+    console.log(a + b);
+}
+function returnSum(a: number, b: number): number {
+    return a + b;
+}
+
+customSum(4, 5);
+console.log(returnSum(5, 6));
+let summ: number = returnSum(5, 6);
+summ = returnSum(5, 6);
+let str2: string = "12";
+
+//abba
+//['a', 'b', 'b', 'a']
+//abba
+// BEGIN (write your solution here)
+function filterAnagrams(base: string, strs: string[]): string[] {
+    let result: string[] = [];
+    let getBase: string = base.split('').sort().join('');
+    for (let str of strs) {
+        if (str.split('').sort().join('') === getBase) {
+            result.push(str);
+        }
+    }
+    return result;
+}
+// END
+
+const forEach = (numbers: number[], callback: (n: number, index?: number) => void): void => {
+    for (let i: number; i < numbers.length; i++) {
+        callback(numbers[i], i);
     }
 }
-class Employee extends Person {
-    position: string;
-    constructor(name: string, age: number, position: string) {
-        super(name, age);
-        this.position = position;
-    }
-
-    work(): void {
-        console.log(`position: ${this.position}`);
-        this.greet()
-    }
-}
-//---------------------абстрактные классы---------------------
-abstract class Animal {
-    name: string;
-    constructor(name: string) {
-        this.name = name;
-    }
-    abstract makeSound(): void;
-}
-
-class Dog extends Animal {
-    makeSound(): void {
-        console.log('1');
-    }
-}
-//---------------------статические члены класса---------------------
-class MathUtils {
-    static PI: number = Math.PI;
-    //static PI: number = 3.14;
-    static square(x: number): number {
-        return x * x;
-    }
-}
-
-const person = new Person('12', 12);
-const employee = new Employee('12', 12, 'smm');
-employee.age = 13;
-employee.work();
-
-console.log(MathUtils.square(MathUtils.PI));
-
-
-
 process.stdin.resume();
