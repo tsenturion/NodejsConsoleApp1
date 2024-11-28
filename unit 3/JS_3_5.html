@@ -17,13 +17,25 @@
     }
   </style>
 </head>
-<body onclick="moveStranger(event)">
+<body>
   <div id="stranger"></div>
   <script>
-    function moveStranger(e){
+    //var stranger = document.getElementById('stranger');
+
+    //document.body.onclick = function(e) {
+    //  moveStranger(e);
+    //};
+    //stranger.onclick = function(event) {
+    //  moveStranger(event)
+    //  };
+    function moveStranger(e) {
 	    stranger.style.left=e.pageX+'px'; 
-		stranger.style.top =e.pageY+'px'
-	}
+		  stranger.style.top =e.pageY+'px';
+	  }
+    //const stranger = document.getElementById('stranger');
+
+    document.addEventListener('click', moveStranger);
+
   </script>
 </body>
 </html>

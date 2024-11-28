@@ -345,11 +345,11 @@ function returnSum(a: number, b: number): number {
     return a + b;
 }
 
-customSum(4, 5);
-console.log(returnSum(5, 6));
-let summ: number = returnSum(5, 6);
-summ = returnSum(5, 6);
-let str2: string = "12";
+//customSum(4, 5);
+//console.log(returnSum(5, 6));
+//let summ: number = returnSum(5, 6);
+//summ = returnSum(5, 6);
+//let str2: string = "12";
 
 //abba
 //['a', 'b', 'b', 'a']
@@ -367,9 +367,34 @@ function filterAnagrams(base: string, strs: string[]): string[] {
 }
 // END
 
-const forEach = (numbers: number[], callback: (n: number, index?: number) => void): void => {
-    for (let i: number; i < numbers.length; i++) {
-        callback(numbers[i], i);
-    }
+
+enum Direction {
+    Up = 0,
+    Down = "DOWN",
+    Left = "LEFT",
+    Right = 'RIGHT'
 }
+
+let direction: Direction = Direction.Left;
+enum ModalStatus {
+    Opened,
+    Closed
+}
+function buildModal(str: string, status: ModalStatus): { text: string, status: ModalStatus } {
+    return { text: str, status: status };
+}
+
+type Name = string;
+type Age = number;
+type Numbers = number[];
+
+type Person = {
+    name: string;
+    age: number;
+};
+
+let sdfdf: Name = 'eew';
+let edeed: Object = buildModal(sdfdf, ModalStatus.Closed);
+
+
 process.stdin.resume();
