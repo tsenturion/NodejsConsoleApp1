@@ -2,22 +2,31 @@
 <html>
 <head>
 <style>
-#text {
+#text1, #text2, #text3  {
 	height: 200px;
 	width:  400px;
 }
 </style>
 </head>
 <body>
-<textarea id="text"></textarea><br/>
+<textarea class="text"></textarea><br/>
+<textarea class="text"></textarea><br/>
+<textarea class="text"></textarea><br/>
 <a href="http://itstep.org">IT Step</a>
 <script>
 window.onbeforeunload =
 	function(e) {
-		if(text.value.length > 0) {
-		var msg = 'Text not saved';
-		e.returnValue = msg;
-		return msg;
+		var textAreas = document.querySelectorAll('.text');
+		var hasText = false;
+		textAreas.forEach(function(textArea) {
+			if(textArea.value.length > 0) {
+                hasText = true;
+            }
+        });
+		if(hasText) {
+			var msg = 'Text not saved';
+			e.returnValue = msg;
+			return msg;
 		}
 		return null;
 	}
