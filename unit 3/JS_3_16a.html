@@ -4,34 +4,54 @@
 <meta charset="utf-8" />
 <title>Defaults</title>
 <style>
-#d1 {
+.container {
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+#d1, #d2, #d3 {
 	border: 2px solid gray;
 	height: 200px;
-	width:  200px;
+	width: 200px;
+	margin: 10px;
+	display: inline-block;
+}
+
+#d4 {
+	border: 2px solid gray;
+	height: 200px;
+	width: 200px;
+	margin: 0 auto; 
+	display: block; 
 }
 </style>
 </head>
 <body>
-<div id="d1"></div>
+<div class="container">
+	<div id="d1"></div>
+	<div id="d2"></div>
+	<div id="d3"></div>
+</div>
+<div id="d4"></div>
+
 <script>
-window.d1.onmousedown = function(e) {
-  var bgColor;
-  switch( e.which ) {
-	case 1:
-	  bgColor = "lime" ;
-	  break ;
-	case 2:
-	  bgColor = "aqua" ;
-	  break ;
-	case 3:
-	  bgColor = "tomato" ;
-	  break ;
-  }
-  window.d1.style.backgroundColor = bgColor ;
+function setBottomBlockColor(color) {
+	document.getElementById('d4').style.backgroundColor = color;
 }
 
-window.d1.oncontextmenu = function() { return false }
+const colors = ['lime', 'aqua', 'tomato'];
 
+for (let i = 1; i <= 3; i++) {
+	const block = document.getElementById(`d${i}`);
+	block.onmouseover = function() {
+		setBottomBlockColor(colors[i - 1]);
+	};
+	block.onmouseout = function() {
+		setBottomBlockColor('gray');
+	};
+}
+
+setBottomBlockColor('gray');
 </script>
 </body>
 </html>
