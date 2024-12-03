@@ -33,14 +33,12 @@
 	<div id="d3"></div>
 </div>
 <div id="d4"></div>
-
 <script>
-function setBottomBlockColor(color) {
-	document.getElementById('d4').style.backgroundColor = color;
+function setBottomBlockColor(c) {
+	document.getElementById('d4').style.backgroundColor = c;
 }
 
 const colors = ['lime', 'aqua', 'tomato'];
-
 for (let i = 1; i <= 3; i++) {
 	const block = document.getElementById(`d${i}`);
 	block.onmouseover = function() {
@@ -50,7 +48,6 @@ for (let i = 1; i <= 3; i++) {
 		setBottomBlockColor('gray');
 	};
 }
-
 setBottomBlockColor('gray');
 </script>
 </body>
