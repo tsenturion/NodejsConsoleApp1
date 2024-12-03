@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resize Block</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0;
+        }
+
+        #block {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 0;
+            background-color: #4CAF50;
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+    <div id="block"></div>
+    <script>
+        let isFixed = false;
+
+        document.addEventListener('mousemove', function(event) {
+            if (!isFixed) {
+                const block = document.getElementById('block');
+                block.style.width = event.clientX + 'px';
+                block.style.height = event.clientY + 'px';
+            }
+        });
+
+        document.addEventListener('click', function(event) {
+            if (!isFixed) {
+                const block = document.getElementById('block');
+                block.style.width = event.clientX + 'px';
+                block.style.height = event.clientY + 'px';
+                isFixed = true;
+            }
+        });
+    </script>
+</body>
+</html>

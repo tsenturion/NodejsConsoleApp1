@@ -1,0 +1,41 @@
+<!doctype html />
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Events</title>
+  <style>
+    body {
+	  position: relative;
+	  height: 2000px;
+	  margin:0
+	}
+    div {
+      background: navy;
+      height: 50px;
+      width:  100px;
+	  position:absolute;
+    }
+  </style>
+</head>
+<body>
+  <div id="stranger"></div>
+  <script>
+    //var stranger = document.getElementById('stranger');
+
+    //document.body.onclick = function(e) {
+    //  moveStranger(e);
+    //};
+    //stranger.onclick = function(event) {
+    //  moveStranger(event)
+    //  };
+    function moveStranger(e) {
+	    stranger.style.left=e.pageX+'px'; 
+		  stranger.style.top =e.pageY+'px';
+	  }
+    //const stranger = document.getElementById('stranger');
+
+    document.addEventListener('click', moveStranger);
+
+  </script>
+</body>
+</html>

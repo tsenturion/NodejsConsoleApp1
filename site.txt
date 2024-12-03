@@ -1,4 +1,8 @@
 https://code-basics.com/ru/languages/typescript
+1-7, 10, 14, 34, 36 - готово
+
+8, 9, 14, 22, 24, 27, 28, 35, 39, 40 - можно сделать
+
 https://learn.javascript.ru/
 https://www.typescriptlang.org/docs/
 node.js + azure
@@ -6,4 +10,11 @@ node.js + azure
 typescript - windows - консоль
 (azure)
 
-npm install typescript
+
+https://t.me/+btI7KAU4oSRlMGQy
+
+npm install -g typescript
+npm install --save-dev typescript@latest
+npm install tsc-watch --save-dev
+tsc --watch
+
