@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Управление окнами</title>
+    <style>
+        input {
+            margin: 5px;
+        }
+        button {
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Управление окнами браузера</h1>
+    <div>
+        <label for="width">Ширина окна:</label>
+        <input type="number" id="width" value="500">
+        <label for="height">Высота окна:</label>
+        <input type="number" id="height" value="500">
+    </div>
+    <div>
+        <label for="x">Положение X:</label>
+        <input type="number" id="x" value="50">
+        <label for="y">Положение Y:</label>
+        <input type="number" id="y" value="50">
+    </div>
+    <button id="openWindow">Открыть окно</button>
+    <button id="closeWindow" disabled>Закрыть окно</button>
+
+    <script>
+        let newWindow = null;
+
+        document.getElementById('openWindow').addEventListener('click', function() {
+            let width = document.getElementById('width').value;
+            let height = document.getElementById('height').value;
+            let x = document.getElementById('x').value;
+            let y = document.getElementById('y').value;
+
+            newWindow = window.open('', 'NewWindow', `width=${width},height=${height},left=${x},top=${y}`);
+            newWindow.document.write('<h1>Привет, мир!</h1>');
+
+            document.getElementById('closeWindow').disabled = false;
+        });
+
+        document.getElementById('closeWindow').addEventListener('click', function() {
+            if (newWindow && !newWindow.closed) {
+                newWindow.close();
+                document.getElementById('closeWindow').disabled = true;
+            }
+        });
+    </script>
+</body>
+</html>
