@@ -4,34 +4,58 @@
 <meta charset="utf-8" />
 <title>Defaults</title>
 <style>
-#d1 {
+.container {
+	text-align: center; /* Центрирование блоков внутри контейнера */
+	margin-bottom: 20px; /* Отступ между контейнером и нижним блоком */
+}
+
+#d1, #d2, #d3 {
 	border: 2px solid gray;
 	height: 200px;
-	width:  200px;
+	width: 200px;
+	margin: 10px;
+	display: inline-block; /* Блоки располагаются в одной строке */
+}
+
+#d4 {
+	border: 2px solid gray;
+	height: 200px;
+	width: 200px;
+	margin: 0 auto; /* Центрирование блока */
+	display: block; /* Блок занимает всю ширину */
 }
 </style>
 </head>
 <body>
-<div id="d1"></div>
+<div class="container">
+	<div id="d1"></div>
+	<div id="d2"></div>
+	<div id="d3"></div>
+</div>
+<div id="d4"></div>
+
 <script>
-window.d1.onmousedown = function(e) {
-  var bgColor;
-  switch( e.which ) {
-	case 1:
-	  bgColor = "lime" ;
-	  break ;
-	case 2:
-	  bgColor = "aqua" ;
-	  break ;
-	case 3:
-	  bgColor = "tomato" ;
-	  break ;
-  }
-  window.d1.style.backgroundColor = bgColor ;
+// Функция для установки цвета нижнего блока
+function setBottomBlockColor(color) {
+	document.getElementById('d4').style.backgroundColor = color;
 }
 
-window.d1.oncontextmenu = function() { return false }
+// Массив с цветами для верхних блоков
+const colors = ['lime', 'aqua', 'tomato'];
 
+// Добавляем обработчики событий для всех верхних блоков
+for (let i = 1; i <= 3; i++) {
+	const block = document.getElementById(`d${i}`);
+	block.onmouseover = function() {
+		setBottomBlockColor(colors[i - 1]);
+	};
+	block.onmouseout = function() {
+		setBottomBlockColor('gray');
+	};
+}
+
+// Изначально устанавливаем нижний блок серым
+setBottomBlockColor('gray');
 </script>
 </body>
 </html>
