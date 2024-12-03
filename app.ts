@@ -345,11 +345,11 @@ function returnSum(a: number, b: number): number {
     return a + b;
 }
 
-customSum(4, 5);
-console.log(returnSum(5, 6));
-let summ: number = returnSum(5, 6);
-summ = returnSum(5, 6);
-let str2: string = "12";
+//customSum(4, 5);
+//console.log(returnSum(5, 6));
+//let summ: number = returnSum(5, 6);
+//summ = returnSum(5, 6);
+//let str2: string = "12";
 
 //abba
 //['a', 'b', 'b', 'a']
@@ -367,9 +367,69 @@ function filterAnagrams(base: string, strs: string[]): string[] {
 }
 // END
 
-const forEach = (numbers: number[], callback: (n: number, index?: number) => void): void => {
-    for (let i: number; i < numbers.length; i++) {
-        callback(numbers[i], i);
-    }
+
+enum Direction {
+    Up = 0,
+    Down = "DOWN",
+    Left = "LEFT",
+    Right = 'RIGHT'
 }
+
+let direction: Direction = Direction.Left;
+enum ModalStatus {
+    Opened,
+    Closed
+}
+function buildModal(str: string, status: ModalStatus): { text: string, status: ModalStatus } {
+    return { text: str, status: status };
+}
+
+type Name = string;
+type Age = number;
+type Numbers = number[];
+
+type Person = {
+    name: string;
+    age: number;
+};
+
+let sdfdf: Name = 'eew';
+let edeed: Object = buildModal(sdfdf, ModalStatus.Closed);
+
+let matrix: number[][] = [
+    [1, 2, 3],
+    [3, 3, 3],
+    [2, 2, 9]
+];
+
+/*console.log(matrix[3][3]);*/
+matrix.push([2, 2, 9])
+
+function getField(size: number): null[][] {
+    let result: null[][] = [];
+    for (let i: number = 0; i < size; i++) {
+        let row: null[] = [];
+        for (let j: number = 0; j < size; j++)
+            row.push(null);
+        result.push(row)
+    }
+    return result;
+}
+let person: [string, number];
+person = ['matvey', 8];
+//console.log(person[0]);
+//console.log(person[1]);
+let user: [string, number, boolean] = ['qwe', 12, true];
+
+type Point = [number, number, number];
+function isTheSamePoint(point1: Point, point2: Point): boolean {
+    return point1[0] === point2[0] && point1[1] === point2[1] && point1[2] === point2[2];
+}
+let num: number = 3.145;
+console.log(Math.round(num)); //до ближайшего целого
+console.log(Math.floor(num)); //округление вниз до ближайшего целого
+console.log(Math.ceil(num)); //вверх до ближайшего целого
+console.log(Math.trunc(num)); //убрать дробную часть
+console.log(num.toFixed(2)); //определенное количество знаков после запятой
+
 process.stdin.resume();
