@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Информация о браузере и экране</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .info-block {
+            margin-bottom: 20px;
+        }
+        .info-block h2 {
+            margin-bottom: 10px;
+        }
+        .info-block p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Информация о браузере и экране</h1>
+
+    <div class="info-block">
+        <h2>Информация о браузере</h2>
+        <p>Предпочтительный язык: <span id="language"></span></p>
+        <p>Тип сетевого подключения: <span id="connection"></span></p>
+        <p>Состояние аккумулятора: <span id="battery"></span></p>
+    </div>
+
+    <div class="info-block">
+        <h2>Информация об экране</h2>
+        <p>Ширина экрана: <span id="screenWidth"></span></p>
+        <p>Высота экрана: <span id="screenHeight"></span></p>
+        <p>Доступная ширина экрана: <span id="availWidth"></span></p>
+        <p>Доступная высота экрана: <span id="availHeight"></span></p>
+        <p>Отступ слева: <span id="availLeft"></span></p>
+        <p>Отступ сверху: <span id="availTop"></span></p>
+    </div>
+
+    <script>
+        document.getElementById('language').textContent = navigator.language || navigator.userLanguage;
+        document.getElementById('connection').textContent = navigator.connection ? navigator.connection.effectiveType : 'Недоступно';
+
+        if ('getBattery' in navigator) {
+            navigator.getBattery().then(function(battery) {
+                document.getElementById('battery').textContent = `Заряд: ${battery.level * 100}%`;
+            });
+        } else {
+            document.getElementById('battery').textContent = 'Недоступно';
+        }
+
+        document.getElementById('screenWidth').textContent = screen.width;
+        document.getElementById('screenHeight').textContent = screen.height;
+        document.getElementById('availWidth').textContent = screen.availWidth;
+        document.getElementById('availHeight').textContent = screen.availHeight;
+        document.getElementById('availLeft').textContent = screen.availLeft || 0;
+        document.getElementById('availTop').textContent = screen.availTop || 0;
+    </script>
+</body>
+</html>

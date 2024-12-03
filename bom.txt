@@ -41,3 +41,15 @@ userAgent данные заголовка
 getUserMedia() доступ к камере микрофону
 vibrate() управление вибрированием
 
+screen
+availTop первый доступный пиксель от верхнего края экрана
+availLeft от левого
+availHeight доступная высота экрана
+height полная высота экрана
+availWidth доступная ширина экрана
+width полная ширина экрана
+colorDepth глубина цвета активной палитры
+pixelDepth глубина цвета монитора
+orientation/msOrientation ориентация экрана
+lockOrientation() закрепление ориентации экрана
+unlockOreintation освобождение закрепления
