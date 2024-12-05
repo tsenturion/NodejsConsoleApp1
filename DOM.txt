@@ -11,3 +11,25 @@ focus - фокусирование, нажатие
 
 css
 translitioned - css анимация завершена
+
+document
+document.documentElement.childNodes доступ к корневому элементу документа
+hasChildNodes() проверка есть ли дочерние узлы
+.documentElement возвращает корневой элемент
+.head возвращает head документа
+.body возвр body
+.title 
+.URL
+.readyState возвр состояние загрузки документа
+
+.getElementById(id) возвр коллекцию всех элементов с указанным ид
+.getElementByTagName(tagName) возвр коллекцию всех элементов с указанным тегом
+.getElementByClassName(className) возвр коллекцию всех элементов с указанным классом
+.querrySelector(selector) возвр первый элемент соответствующий суказанному css селектору
+.querrySelectorAll(selector) возвр коллекцию элемент соответствующий суказанному css селектору
+.createElement(tagName) создает новый эл с указанным тегом
+.createTextNode(text) создает новый текстовый узел с указанным текстом
+.appendChild(node) добавляет указанный узел node в конец списка дочерних элементов
+.removeChild(node) удаляет из dom
+
+
