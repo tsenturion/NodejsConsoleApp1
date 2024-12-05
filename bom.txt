@@ -63,10 +63,15 @@ pathname строка пути
 port номер порта
 protocol имя протокола
 search часть адреса с ?
-
 assign(addr) перейти по адресу
 reload() обновить
 replace(addr) сменить адрес
 
 history
-leng
+lenght количество страниц в истории текущей вкладки
+state объект состояния для данной страницы
+back() переход к предыдущей страницу в истории просмотра
+forward() переход к следующей стр
+go(n) переместиться на n шагов в истории
+pushState(state, title, addr) добавить запись в историю
+replaceState(state, title, addr) заменить
