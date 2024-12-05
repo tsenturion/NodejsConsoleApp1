@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Перетаскиваемая таблица</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .dragging {
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+
+<table id="sortableTable" border="1">
+    <thead>
+        <tr>
+            <th>Имя</th>
+            <th>Возраст</th>
+            <th>Город</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr draggable="true">
+            <td>Иван</td>
+            <td>25</td>
+            <td>Москва</td>
+        </tr>
+        <tr draggable="true">
+            <td>Мария</td>
+            <td>30</td>
+            <td>Санкт-Петербург</td>
+        </tr>
+        <tr draggable="true">
+            <td>Алексей</td>
+            <td>22</td>
+            <td>Новосибирск</td>
+        </tr>
+        <tr draggable="true">
+            <td>Екатерина</td>
+            <td>28</td>
+            <td>Екатеринбург</td>
+        </tr>
+    </tbody>
+</table>
+
+<script>
+    const table = document.getElementById('sortableTable');
+    const rows = table.querySelectorAll('tbody tr');
+    let draggingRow = null;
+
+    rows.forEach(row => {
+        row.addEventListener('dragstart', dragStart);
+        row.addEventListener('dragover', dragOver);
+        row.addEventListener('dragenter', dragEnter);
+        row.addEventListener('dragleave', dragLeave);
+        row.addEventListener('drop', drop);
+        row.addEventListener('dragend', dragEnd);
+    });
+
+    function dragStart(e) {
+        draggingRow = this;
+        e.dataTransfer.effectAllowed = 'move';
+        e.dataTransfer.setData('text/html', this.innerHTML);
+        this.classList.add('dragging');
+    }
+
+    function dragOver(e) {
+        e.preventDefault();
+        e.dataTransfer.dropEffect = 'move';
+    }
+
+    function dragEnter(e) {
+        e.preventDefault();
+        if (this !== draggingRow) {
+            this.classList.add('dragging');
+        }
+    }
+
+    function dragLeave() {
+        this.classList.remove('dragging');
+    }
+
+    function drop() {
+        if (this !== draggingRow) {
+            this.parentNode.insertBefore(draggingRow, this);
+        }
+        this.classList.remove('dragging');
+    }
+
+    function dragEnd() {
+        this.classList.remove('dragging');
+    }
+</script>
+
+</body>
+</html>
