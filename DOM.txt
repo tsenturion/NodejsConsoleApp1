@@ -31,5 +31,5 @@ hasChildNodes() проверка есть ли дочерние узлы
 .createTextNode(text) создает новый текстовый узел с указанным текстом
 .appendChild(node) добавляет указанный узел node в конец списка дочерних элементов
 .removeChild(node) удаляет из dom
-
+.insertBefore(e1, e2) вставляет узел 1 перед 2
 
