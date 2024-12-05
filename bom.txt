@@ -53,3 +53,20 @@ pixelDepth глубина цвета монитора
 orientation/msOrientation ориентация экрана
 lockOrientation() закрепление ориентации экрана
 unlockOreintation освобождение закрепления
+
+location
+hash часть адреса, начиная с #
+host имя сайта и порт
+hostname имя сайта
+href весь адрес
+pathname строка пути
+port номер порта
+protocol имя протокола
+search часть адреса с ?
+
+assign(addr) перейти по адресу
+reload() обновить
+replace(addr) сменить адрес
+
+history
+leng
