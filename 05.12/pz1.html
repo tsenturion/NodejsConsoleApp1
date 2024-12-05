@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Тестирование DOM</title>
+</head>
+<body>
+    <ul id="myList">
+        <li>Пункт 1</li>
+        <li>Пункт 2</li>
+        <li id="11">Пункт 3</li>
+        <li>Пункт 4</li>
+    </ul>
+
+    <script>
+        var list = document.getElementById("myList");
+        var lastChild = list.lastElementChild;
+        console.log("Последний дочерний элемент:", lastChild);
+
+        var previousSibling = lastChild.previousElementSibling;
+        console.log("Предыдущий сосед последнего дочернего элемента:", previousSibling);
+
+        var element11 = document.getElementById("11");
+        var parentElement = element11.parentElement;
+        if (parentElement.tagName === "UL" && parentElement.tagName !== "BODY") {
+            console.log("Родительский элемент является <ul> и не является <body>");
+        } else {
+            console.log("Родительский элемент не соответствует условиям");
+        }
+    </script>
+</body>
+</html>
