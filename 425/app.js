@@ -1,13 +1,10 @@
-const fs = require('fs');
+const http = require('http');
 
-console.log("начало");
-
-fs.readFile('text.txt', 'utf-8', (err, data) => {
-    if (err) {
-        console.error("Ошибка при чтении файла:", err);
-        return;
-    }
-    console.log("Содержимое файла:", data);
+const server = http.createServer((req, res) => {
+    res.write('ответ от сервера');
+    res.end();
 });
 
-console.log("конец программы");
+server.listen(3000, () => {
+    console.log('сервер запущен на порту 3000');
+});
