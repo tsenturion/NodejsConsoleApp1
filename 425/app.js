@@ -1,10 +1,8 @@
-function greet(name, callback) {
-    console.log("Hello, " + name + "!");
-    callback();
-}
+const EventEmitter = require('events');
+const eventEmitter = new EventEmitter();
 
-function finish() {
-    console.log("Nice to meet you!");
-}
+eventEmitter.on('greet', () => {
+    console.log('Hello, welcome to the event-driven programming!');
+});
 
-greet("Alice", finish);
+eventEmitter.emit('greet');
