@@ -1,9 +1,13 @@
-const express = require('express');
+const fs = require('fs');
 
-const app = express();
+console.log("начало");
 
-const port = process.env.PORT || 3000;
-
-app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
+fs.readFile('text.txt', 'utf-8', (err, data) => {
+    if (err) {
+        console.error("Ошибка при чтении файла:", err);
+        return;
+    }
+    console.log("Содержимое файла:", data);
 });
+
+console.log("конец программы");
