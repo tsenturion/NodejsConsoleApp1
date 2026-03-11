@@ -1,10 +1,10 @@
-function a() {
-  console.log('a');
+function greet(name, callback) {
+    console.log("Hello, " + name + "!");
+    callback();
 }
 
-function b() {
-  console.log('b');
+function finish() {
+    console.log("Nice to meet you!");
 }
 
-a();
-b();
+greet("Alice", finish);
