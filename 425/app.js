@@ -1,2 +1,10 @@
-setTimeout(() => console.log('timeout'));
-Promise.resolve().then(() => console.log('promise'));
+function a() {
+  console.log('a');
+}
+
+function b() {
+  console.log('b');
+}
+
+a();
+b();
