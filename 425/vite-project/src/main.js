@@ -4,8 +4,13 @@ import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
 import { setupCounter } from './counter.js'
 import log from './logger.js'
+//@import "main";
 
 log('Hello Vite!')
+const img = document.createElement('img')
+img.src = heroImg
+document.body.appendChild(img)
+
 
 document.querySelector('#app').innerHTML = `
 <section id="center">
