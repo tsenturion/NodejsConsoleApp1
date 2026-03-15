@@ -1,18 +1,31 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="ru">
 <head>
     <meta charset="utf-8" />
-    <title>О лосях</title>
+    <title>Подключение через CDN</title>
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+    <style>
+        #message {
+            display: none;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+        }
+    </style>
 </head>
 <body>
-    <h1 id="title">Заголовок</h1>
-    <p>Текст страницы</p>
-    <ul>
-        <li>Элемент списка 1</li>
-        <li>Элемент списка 2</li>
-        <li>Элемент списка 3</li>
-    </ul>
-    <script src="main.js"></script>
+    <button id="showBtn">Показать текст</button>
+    <div id="message">
+        Привет, я текст, который нужно показать!
+    </div>
+    <script>
+        $(document).ready(function() {
+            $('#showBtn').on('click', function() {
+                $('#message').fadeIn();
+            });
+        });
+    </script>
 </body>
 </html> 
