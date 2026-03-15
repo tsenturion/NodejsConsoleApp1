@@ -1,19 +1,174 @@
 <!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="ru">
 <head>
-    <meta charset="utf-8" />
-    <title>О лосях</title>
+<meta charset="UTF-8">
+<title>Работа с DOM</title>
+
+<style>
+/* Базовые стили страницы */
+body{
+    font-family: Arial, sans-serif;
+    padding: 30px;
+}
+
+/* Класс который будем добавлять через JS */
+.active{
+    color: white;
+    background: #2c7be5;
+    padding: 5px 10px;
+}
+
+/* стиль элементов списка */
+li{
+    cursor: pointer;
+    margin: 5px 0;
+}
+</style>
+
 </head>
+
 <body>
-    <h1 id="title">Заголовок</h1>
-    <p>Текст страницы</p>
-    <ul>
-        <li>Элемент списка 1</li>
-        <li>Элемент списка 2</li>
-        <li>Элемент списка 3</li>
-    </ul>
-    <button id="myButton">Нажми меня</button>
-    <script src="main.js"></script>
+
+<h1 id="title">Заголовок страницы</h1>
+
+<p id="text">
+Это текст страницы. Он будет изменён через JavaScript.
+</p>
+
+<button id="changeText">Изменить текст</button>
+
+<hr>
+
+<input id="inputField" placeholder="Введите текст">
+
+<p>
+Вы ввели: <span id="output"></span>
+</p>
+
+<hr>
+
+<button id="addItem">Добавить элемент списка</button>
+
+<ul id="list">
+<li>Элемент 1</li>
+<li>Элемент 2</li>
+</ul>
+
+<script>
+
+/*
+========================================================
+1. ПОЛУЧЕНИЕ ЭЛЕМЕНТОВ ИЗ DOM
+========================================================
+*/
+
+// Получаем элементы страницы по id
+const title = document.getElementById("title")
+const text = document.getElementById("text")
+const changeBtn = document.getElementById("changeText")
+
+// Получаем элементы через querySelector
+const input = document.querySelector("#inputField")
+const output = document.querySelector("#output")
+
+// Получаем список
+const list = document.querySelector("#list")
+const addItemBtn = document.querySelector("#addItem")
+
+
+
+/*
+========================================================
+2. ИЗМЕНЕНИЕ ТЕКСТА И СТИЛЕЙ
+========================================================
+*/
+
+// При клике на кнопку изменяем текст и стили
+changeBtn.addEventListener("click", function(){
+
+    // изменяем текст элемента
+    title.textContent = "Новый заголовок страницы"
+
+    // меняем текст параграфа
+    text.textContent = "JavaScript изменил содержимое страницы через DOM."
+
+    // изменяем стиль элемента
+    title.style.color = "red"
+    title.style.fontSize = "40px"
+
+    // добавляем CSS-класс
+    title.classList.toggle("active")
+})
+
+
+
+/*
+========================================================
+3. СОБЫТИЕ INPUT
+========================================================
+*/
+
+// обработчик события input
+input.addEventListener("input", function(event){
+
+    // получаем текущее значение input
+    const value = event.target.value
+
+    // отображаем его на странице
+    output.textContent = value
+})
+
+
+
+/*
+========================================================
+4. СОЗДАНИЕ НОВЫХ ЭЛЕМЕНТОВ
+========================================================
+*/
+
+let counter = 3
+
+addItemBtn.addEventListener("click", function(){
+
+    // создаём новый элемент li
+    const newItem = document.createElement("li")
+
+    // добавляем текст
+    newItem.textContent = "Элемент " + counter
+
+    // увеличиваем номер
+    counter++
+
+    // добавляем элемент в список
+    list.append(newItem)
+})
+
+
+
+/*
+========================================================
+5. ДЕЛЕГИРОВАНИЕ СОБЫТИЙ
+========================================================
+*/
+
+// обработчик кликов на всём списке
+list.addEventListener("click", function(event){
+
+    // проверяем что нажали именно на элемент li
+    if(event.target.tagName === "LI"){
+
+        // переключаем класс
+        event.target.classList.toggle("active")
+
+        // если нажали дважды — удаляем элемент
+        event.target.addEventListener("dblclick", function(){
+            event.target.remove()
+        })
+    }
+
+})
+
+</script>
+
 </body>
-</html> 
+</html>

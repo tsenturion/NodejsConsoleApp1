@@ -40,6 +40,16 @@ parent.after(newElement);
 element.remove();
 
 const button = document.querySelector("button");
-button.addEventListener("click", () => {
-    alert("Кнопка была нажата!");
+button.addEventListener("click", function(event) {
+    console.log(event)
+});
+
+const input = document.querySelector("input");
+input.addEventListener("input", function(event) {
+    console.log(event.target.value);
+});
+
+const list = document.querySelector("ul");
+list.addEventListener("click", function(event) {
+    console.log(event.target);
 });
