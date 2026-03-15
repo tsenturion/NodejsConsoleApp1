@@ -3,22 +3,98 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Локальное подключение jQuery</title>
+  <title>Синтаксис jQuery</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      line-height: 1.5;
+    }
+
+    .box {
+      width: 260px;
+      padding: 16px;
+      margin-bottom: 20px;
+      border: 2px solid #333;
+      border-radius: 8px;
+      transition: 0.3s;
+    }
+
+    .active {
+      background-color: #ffe9a8;
+      border-color: #d18b00;
+    }
+
+    .list-item {
+      color: #1a73e8;
+      font-weight: bold;
+    }
+
+    .controls {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    button {
+      padding: 10px 14px;
+      cursor: pointer;
+      border: 1px solid #999;
+      background: #f4f4f4;
+      border-radius: 6px;
+    }
+
+    #output {
+      margin-top: 20px;
+      padding: 12px;
+      border: 1px dashed #888;
+      border-radius: 6px;
+      min-height: 24px;
+    }
+  </style>
 </head>
 <body>
-  <h1 id="title">Локальная jQuery</h1>
-  <p id="message">Пока библиотека не проверена.</p>
-  <button id="testButton">Проверить</button>
+  <h1 id="title">Изучаем синтаксис jQuery</h1>
+
+  <p class="description">
+    Эта страница показывает, как работает функция $(), селекторы, цепочки методов
+    и обработчики событий в jQuery.
+  </p>
+
+  <div id="box" class="box">
+    Обычный блок
+  </div>
+
+  <div class="controls">
+    <button id="changeTitleButton">Изменить заголовок</button>
+    <button id="activateBoxButton">Активировать блок</button>
+    <button id="markItemsButton">Выделить элементы списка</button>
+    <button id="resetButton">Сбросить всё</button>
+  </div>
+
+  <ul id="menu">
+    <li class="item">Пункт 1</li>
+    <li class="item">Пункт 2</li>
+    <li class="item">Пункт 3</li>
+  </ul>
+
+  <div id="output">Здесь будут появляться сообщения о действиях.</div>
 
   <!--
-    Подключаем локальную копию библиотеки из папки js.
-    Браузер ищет файл относительно текущего HTML-документа.
+    Сначала подключаем библиотеку jQuery.
+    После этого браузеру становится доступна функция $.
   -->
-  <script src="js/jquery-4.0.0.min.js"></script>
+  <script
+    src="https://code.jquery.com/jquery-4.0.0.min.js"
+    crossorigin="anonymous">
+  </script>
 
   <!--
-    После загрузки библиотеки подключаем наш код.
+    После подключения библиотеки подключаем наш код.
+    Здесь уже можно безопасно использовать синтаксис jQuery.
   -->
-  <script src="js/app.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
