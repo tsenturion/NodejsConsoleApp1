@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { use, useState } from "react";
 
 function Counter() {
     const [count, setCount] = useState(0);
@@ -117,3 +117,13 @@ function App() {
         </>
     );
 }
+
+const [value, setValue] = useState(() => {
+    console.log('Initial value');
+    return 10
+})
+
+const [user, setUser] = useState(() => {
+    const saved = localStorage.getItem('user');
+    return saved ? JSON.parse(saved) : null;
+})
