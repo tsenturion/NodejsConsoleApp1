@@ -1,189 +1,123 @@
-//App.jsx
-
-import Button from "./Button";
-import { useState } from "react";
+function App() {
+    const isAuth = true;
+    if (isAuth) {
+        return <h1>Добро пожаловать</h1>;
+    }
+    return <h1>Пожалуйста, авторизуйтесь</h1>;
+}
 
 function App() {
-    const [count, setCount] = useState(0);
-
-    function handleClick() {
-        setCount((prev) => prev + 1);
-    }
-    return <Button onClick={handleClick} />;
-}
-
-export default App
-
-//Button.jsx
-function Button({ onClick }) {
-    return (
-        <button onClick={onClick}>Нажми меня</button>
-    );
-}
-
-export default Button
-
-//App.jsx
-import { useCounter } from "./useCounter"; 
-import Button from "./Button";
-
-function App() {
-    const { count, increment } = useCounter();
-    return <Button onClick={increment} />;
-}
-
-//useCounter.js
-import { useState } from "react";
-export function useCounter() {
-    const [count, setCount] = useState(0);
-
-    function increment() {
-        setCount((prev) => prev + 1);
-    }
-    return { count, increment };
-}
-
-function App(){
-    function handleClick() {
-        console.log("кнопка нажата");
-    }
+    const isAuth = true;
 
     return (
-        //неправильно
-        // <button onClick={handleClick()}>Нажми меня</button>
-
-        //правильно
-        <button onClick={handleClick}>Нажми меня</button>
-    );
+        <>
+            {isAuth && <p>Добро пожаловать</p>}
+        </>
+    )
 }
 
-<button onClick={() => console.log("кнопка нажата")}>
-    Нажми меня
-</button>    
-
-
-function App(){
-    function handleClick() {
-        console.log("кнопка нажата");
-    }
+function App() {
+    const isAuth = true;
 
     return (
-        <button onClick={() => handleClick('someArg')}>
-            Нажми меня
-        </button>
-    );
-}
-
-
-function App() {
-    function handleClick(event) {
-        console.log(event);
-    }
-    return <button onClick={handleClick}>Нажми меня</button>;
-}
-
-
-function App() {
-    function handleChange(event) {
-        console.log(event.target.value);
-    }
-    return <input onChange={handleChange} />;
+        <>
+            {isAuth ? <p>Добро пожаловать</p> : <p>Пожалуйста, авторизуйтесь</p>}
+        </>
+    )
 }
 
 function App() {
-    function handleSubmit(event) {
-        event.preventDefault();
-        console.log(event);
-    }
-    return ( 
-        <form onSubmit={handleSubmit}>
-            <button type="submit">Отправить</button>
-        </form>
-    );
+    const isLoading = true;
+
+    return (
+        <>
+            {isLoading ? <p>Загрузка</p> : <p>Данные загружены</p>}
+        </>
+    )
 }
 
-import { useState } from "react";
-function App() {
-    const [count, setCount] = useState(0);
-
-    function handleClick() {
-        setCount(count + 1);
+function Message({ isVisible }) {
+    if (!isVisible) {
+        return null;
     }
+    return <p>Привет</p>;
+}
+
+function App() {
+    const items = [];
+
+    return (
+        <>
+        {items.length === 0
+            ? <p>В корзине нет товаров</p>
+            : <ul>
+                {items.map((item, index) => (
+                    <li key={index}>{item}</li>
+                ))}
+            </ul>
+        }
+        </>
+    )
+}
+
+function App() {
+    const status = 'error';
+
     return (
         <div>
-            <p>Количество кликов: {count}</p>
-            <button onClick={handleClick}>увеличить</button>
+            {status === 'loading' && <p>Loading...</p>}
+            {status === 'error' && <p>Error</p>}
+            {status === 'success' && <p>Success</p>}
         </div>
     )
 }
 
-function App() {
-    function handleMouseEnter() {
-        console.log("курсор наведен");
-    }
-
-    function handleMouseLeave() {
-        console.log("курсор ушел");
-    }
-
-    return (
-        <div
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-        >
-            <p>Курсор наведен</p>
-        </div>
-    )
-}
-
-function Button({ onClick }) {
-    return (
-        <button onClick={onClick}>Нажми меня</button>
-    );
-}
 
 function App() {
-    function handleClick() {
-        console.log("кнопка нажата");
-    }
-    return <Button onClick={handleClick} />;
-}
+    const status = 'loading';
 
-import { useState } from "react";
-
-function App() {
-    const [text, setText] = useState("");
-
-    function handleChange(event) {
-        setText(event.target.value);
+    let content;
+    
+    if (status === 'loading') {
+        content = <p>Loading...</p>;
+    } else if (status === 'error') {
+        content = <p>Error</p>;
+    } else if (status === 'success') {
+        content = <p>Success</p>;
     }
     
-    function handleSubmit(event) {
-        event.preventDefault();
-        console.log(text);
-    }
     return (
-        <form onSubmit={handleSubmit}>
-            <input value={text} onChange={handleChange} />
-            <button type="submit">Отправить</button>
-        </form>
-    );
+        <div>
+            {content}
+        </div>
+    )
 }
 
 
-function App() {
-    function handleParrent() {
-        console.log("родитель");
-    }
+import { useState } from 'react';
 
-    function handleChild(event) {
-        event.stopPropagation();
-        console.log("дочерний");
-    }
+function App() {
+    const [isVisible, setIsVisible] = useState(false);
 
     return (
-        <div onClick={handleParrent}>
-            <button onClick={handleChild}>Нажми меня</button>
-        </div>
-    );
+        <>
+            <button onClick={() => setIsVisible(!isVisible)}>
+                Показать / скрыть
+            </button>
+            {isVisible && <p>Привет</p>}
+        </>
+    )
+}
+
+function App() {
+    const [user, setUser] = useState(null);
+
+    return (
+        <>
+            {user
+                ? <p>Привет, {user.name}</p>
+                : <button>Войти</button>
+            }
+        </>
+    )
 }
