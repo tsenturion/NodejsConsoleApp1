@@ -1,129 +1,189 @@
-import { use, useState } from "react";
+//App.jsx
 
-function Counter() {
+import Button from "./Button";
+import { useState } from "react";
+
+function App() {
     const [count, setCount] = useState(0);
 
+    function handleClick() {
+        setCount((prev) => prev + 1);
+    }
+    return <Button onClick={handleClick} />;
+}
+
+export default App
+
+//Button.jsx
+function Button({ onClick }) {
     return (
-        <>
-            <p>You clicked {count} times</p>
-            <button onClick={() => setCount(count + 1)}>
-                Click me
-            </button>
-        </>
+        <button onClick={onClick}>Нажми меня</button>
     );
 }
 
-<p>Счетчик: {count}</p>
-<button onClick={() => setCount(count + 1)}>
-    </button>
+export default Button
 
-//неправильно 
-count = count + 1;
+//App.jsx
+import { useCounter } from "./useCounter"; 
+import Button from "./Button";
 
-//правильно
-setCount(count + 1);
+function App() {
+    const { count, increment } = useCounter();
+    return <Button onClick={increment} />;
+}
 
-//неправильно 
-setCount(count + 1);
-setCount(count + 1);
+//useCounter.js
+import { useState } from "react";
+export function useCounter() {
+    const [count, setCount] = useState(0);
 
-setCount((prevCount) => prevCount + 1);
-setCount((prevCount) => prevCount + 1);
+    function increment() {
+        setCount((prev) => prev + 1);
+    }
+    return { count, increment };
+}
+
+function App(){
+    function handleClick() {
+        console.log("кнопка нажата");
+    }
+
+    return (
+        //неправильно
+        // <button onClick={handleClick()}>Нажми меня</button>
+
+        //правильно
+        <button onClick={handleClick}>Нажми меня</button>
+    );
+}
+
+<button onClick={() => console.log("кнопка нажата")}>
+    Нажми меня
+</button>    
 
 
-//state хранит
-const [name, setName] = useState('Alice');
-const [items, setItems] = useState([]);
-const [user, setUser] = useState({ name: 'Alice', age: 25 });
+function App(){
+    function handleClick() {
+        console.log("кнопка нажата");
+    }
 
-//неправильно 
-user.name = 'Bob';
-setUser(user);
+    return (
+        <button onClick={() => handleClick('someArg')}>
+            Нажми меня
+        </button>
+    );
+}
 
-//правильно 
-setUser({ ...user, name: 'Bob' });
+
+function App() {
+    function handleClick(event) {
+        console.log(event);
+    }
+    return <button onClick={handleClick}>Нажми меня</button>;
+}
 
 
-//неправильно
-items.push('New Item');
-setItems(items)
+function App() {
+    function handleChange(event) {
+        console.log(event.target.value);
+    }
+    return <input onChange={handleChange} />;
+}
 
-//правильно
-setItems([...items, 'New Item']);
+function App() {
+    function handleSubmit(event) {
+        event.preventDefault();
+        console.log(event);
+    }
+    return ( 
+        <form onSubmit={handleSubmit}>
+            <button type="submit">Отправить</button>
+        </form>
+    );
+}
 
 import { useState } from "react";
-function Form() {
-    const [text, setText] = useState('');
-
-    return (
-        <>
-            <input
-                value={text}
-                onChange={(e) => setText(e.target.value)}
-            />
-            <p>You typed: {text}</p>
-        </>
-    );
-}
-
-function User() {
-    const [name, setName] = useState('');
-    const [age, setAge] = useState(0);
-
-    reutnr (
-        <>
-            <input onChange={(e) => setName(e.target.value)} />
-            <input onChange={(e) => setAge(Number(e.target.value))} />
-            <p>Name: {name}, Age: {age}</p>
-        </>
-    );
-}
-
-function Counter() {
+function App() {
     const [count, setCount] = useState(0);
 
+    function handleClick() {
+        setCount(count + 1);
+    }
     return (
-        <button onClick={() => setCount(count + 1)}>
-            Count: {count}
-        </button>
+        <div>
+            <p>Количество кликов: {count}</p>
+            <button onClick={handleClick}>увеличить</button>
+        </div>
+    )
+}
+
+function App() {
+    function handleMouseEnter() {
+        console.log("курсор наведен");
+    }
+
+    function handleMouseLeave() {
+        console.log("курсор ушел");
+    }
+
+    return (
+        <div
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+        >
+            <p>Курсор наведен</p>
+        </div>
+    )
+}
+
+function Button({ onClick }) {
+    return (
+        <button onClick={onClick}>Нажми меня</button>
     );
 }
 
 function App() {
-    return (
-        <>
-            <Counter />
-            <Counter />
-        </>
-    );
+    function handleClick() {
+        console.log("кнопка нажата");
+    }
+    return <Button onClick={handleClick} />;
 }
 
-
-function Counter() {
-    return (
-        <button onClick={() => setCount(count + 1)}>
-            Count: {count}
-        </button>
-    );
-}
+import { useState } from "react";
 
 function App() {
-    const [count, setCount] = useState(0);
+    const [text, setText] = useState("");
 
+    function handleChange(event) {
+        setText(event.target.value);
+    }
+    
+    function handleSubmit(event) {
+        event.preventDefault();
+        console.log(text);
+    }
     return (
-        <>
-            <Counter count={count} setCount={setCount} />
-            <Counter count={count} setCount={setCount} />
-        </>
+        <form onSubmit={handleSubmit}>
+            <input value={text} onChange={handleChange} />
+            <button type="submit">Отправить</button>
+        </form>
     );
 }
 
-const [value, setValue] = useState(() => {
-    console.log('Initial value');
-    return 10
-})
 
-const [user, setUser] = useState(() => {
-    const saved = localStorage.getItem('user');
-    return saved ? JSON.parse(saved) : null;
-})
+function App() {
+    function handleParrent() {
+        console.log("родитель");
+    }
+
+    function handleChild(event) {
+        event.stopPropagation();
+        console.log("дочерний");
+    }
+
+    return (
+        <div onClick={handleParrent}>
+            <button onClick={handleChild}>Нажми меня</button>
+        </div>
+    );
+}
