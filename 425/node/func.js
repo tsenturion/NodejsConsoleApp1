@@ -1,80 +1,119 @@
-<Product name="Телефон" />
-<Product price={1000} />
+import { useState } from "react";
 
-function Product({ name, price }) {
+function Counter() {
+    const [count, setCount] = useState(0);
+
     return (
         <>
-            <h2>{name}</h2>
-            <p>Цена: {price} руб.</p>
+            <p>You clicked {count} times</p>
+            <button onClick={() => setCount(count + 1)}>
+                Click me
+            </button>
         </>
+    );
+}
+
+<p>Счетчик: {count}</p>
+<button onClick={() => setCount(count + 1)}>
+    </button>
+
+//неправильно 
+count = count + 1;
+
+//правильно
+setCount(count + 1);
+
+//неправильно 
+setCount(count + 1);
+setCount(count + 1);
+
+setCount((prevCount) => prevCount + 1);
+setCount((prevCount) => prevCount + 1);
+
+
+//state хранит
+const [name, setName] = useState('Alice');
+const [items, setItems] = useState([]);
+const [user, setUser] = useState({ name: 'Alice', age: 25 });
+
+//неправильно 
+user.name = 'Bob';
+setUser(user);
+
+//правильно 
+setUser({ ...user, name: 'Bob' });
+
+
+//неправильно
+items.push('New Item');
+setItems(items)
+
+//правильно
+setItems([...items, 'New Item']);
+
+import { useState } from "react";
+function Form() {
+    const [text, setText] = useState('');
+
+    return (
+        <>
+            <input
+                value={text}
+                onChange={(e) => setText(e.target.value)}
+            />
+            <p>You typed: {text}</p>
+        </>
+    );
+}
+
+function User() {
+    const [name, setName] = useState('');
+    const [age, setAge] = useState(0);
+
+    reutnr (
+        <>
+            <input onChange={(e) => setName(e.target.value)} />
+            <input onChange={(e) => setAge(Number(e.target.value))} />
+            <p>Name: {name}, Age: {age}</p>
+        </>
+    );
+}
+
+function Counter() {
+    const [count, setCount] = useState(0);
+
+    return (
+        <button onClick={() => setCount(count + 1)}>
+            Count: {count}
+        </button>
     );
 }
 
 function App() {
     return (
-        <Product name="Телефон" price={1000} />
-    );
-}
-
-function User({ user }) {
-    return (
         <>
-            <h2>{user.name}</h2>
-            <p>{user.role}</p>
+            <Counter />
+            <Counter />
         </>
     );
 }
 
-functoin App() {
-    const user = {
-        name: 'Иван',
-        role: 'Администратор'
-    };
 
-    return <User user={user} />;
-}
-
-function Button({ onClick }) {
-    return <button onClick={onClick}>Нажми меня</button>;
-}
-
-function App() {
-    function handleClick() {
-        alert('Кнопка была нажата!');
-    }
-
-    return <Button onClick={handleClick} />;
-}
-
-function Card(props) {
+function Counter() {
     return (
-        <>
-            {props.children}
-        </>
+        <button onClick={() => setCount(count + 1)}>
+            Count: {count}
+        </button>
     );
 }
 
 function App() {
+    const [count, setCount] = useState(0);
+
     return (
-        <Card>
-            <h2>Заголовок</h2>
-            <p>Содержимое карточки</p>
-        </Card>
+        <>
+            <Counter count={count} setCount={setCount} />
+            <Counter count={count} setCount={setCount} />
+        </>
     );
 }
-
-{
-    children: (
-        <>
-            <h2>Заголовок</h2>
-            <p>Содержимое карточки</p>
-        </>
-    )
-}
-
-function Button({ text = "Нажми меня" }) {
-    return <button>{text}</button>;
-}
-
-<Button />
-<Button text="Отправить" />
