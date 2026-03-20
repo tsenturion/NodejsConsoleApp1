@@ -1,139 +1,161 @@
+import { useState } from "react";
 function App() {
-    const fruits = ["яблоко", "банан", "груша"];
+    const [form, setForm] = useState({
+        name: "",
+        email: ""
+    });
 
-    return (
-        <ul>
-            {fruits.map((fruit, index) => (
-                <li key={index}>{fruit}</li>
-            ))}
-        </ul>
-    )
-}
+    function handleChange(event) {
+        const { name, value } = event.target;
 
-const items = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"];
-const items = ["J", "I", "H", "G", "F", "E", "D", "C", "B", "A"];
-
-
-
-
-function App() {
-    const users = [
-        { id: 1, name: "John" },
-        { id: 2, name: "Mike" },
-        { id: 3, name: "Sara" }
-    ]
-
-    return (
-        <ul>
-            {users.map((user) => (
-                <li key={user.id}>{user.name}</li>
-            ))}
-        </ul>
-    )
-}
-
-function App() {
-    const products = [
-        { id: 1, name: "Телефон", price: 500 },
-        { id: 2, name: "Ноутбук", price: 1200 },
-        { id: 3, name: "Наушники", price: 150 },
-        { id: 4, name: "Клавиатура", price: 90 }
-    ]
+        setForm({
+            ...form,
+            [name]: value
+        });
+    }
 
     return (
         <div>
-            {products.map((product) => (
-                <div key={product.id}>
-                    <h2>{product.name}</h2>
-                    <p>Цена: {product.price}</p>
-                </div>
-            ))}
-        </div>
-    )
-}
-
-function Product({ product }) {
-    return (
-        <div>
-            <h2>{product.name}</h2>
-            <p>Цена: {product.price}</p>
-        </div>
-    )
-}
-
-function App() {
-    const prioducts = [
-        { id: 1, name: "Телефон", price: 500 },
-        { id: 2, name: "Ноутбук", price: 1200 },
-        { id: 3, name: "Наушники", price: 150 },
-        { id: 4, name: "Клавиатура", price: 90 }
-    ]
-
-    return (
-        <div>
-            {products.map((product) => (
-                <Product key={product.id} product={product} />
-            ))}
+            <input
+                name='name'
+                value={form.name}
+                onChange={handleChange}
+            />
+            <input
+                name='email'
+                value={form.email}
+                onChange={handleChange}
+            />
+            <p>{form.name}</p>
+            <p>{form.email}</p>
         </div>
     )
 }
 
 
 function App() {
-    const items = [];
+    const [text, setText] = useState("");
+
+    function handleSubmit(event) {
+        event.preventDefault();
+        console.log(text);
+    }
+
+    return (
+        <form onSubmit={handleSubmit}>
+            <input
+                value={text}
+                onChange={(event) => setText(event.target.value)}
+            />
+            <button type="submit">Submit</button>
+        </form>
+    )
+}
+
+<input type="text" />
+<textarea 
+    value={text}
+    onChange={(event) => setText(event.target.value)}
+/>
+
+function App() {
+    const [checked, setChecked] = useState(false);
+
+    return (
+        <input
+            type="checkbox"
+            checked={checked}
+            onChange={(e) => setChecked(e.target.checked)}
+        />
+    )
+}
+
+function App() {
+    const [value, setValue] = useState("apple");
+
+    return (
+        <select
+            value={value}
+            onChange={(e) => setValue(e.target.value)}
+        >
+            <option value="apple">Apple</option>
+            <option value="banana">Banana</option>
+            <option value="orange">Orange</option>
+        </select>
+    )
+}
+
+import { useRef } from "react";
+function App() {
+    const inputRef = useRef();
+
+    function handleSubmit() {
+        console.log(inputRef.current.value);
+    }
 
     return (
         <div>
-            {items.length === 0
-                ? <p>Список пуст</p>
-                : items.map((item, index) => (
-                    <p key={index}>{item}</p>
-                ))
-            }
+            <input ref={inputRef} />
+            <button onClick={handleSubmit}>Submit</button>
         </div>
     )
 }
 
 function App() {
-    const numbers = [1, 2, 3, 4, 5];
-    return (
-        <div>
-            {numbers
-                .filter((n) => n % 2 === 0)
-                .map((n) => (
-                    <p key={n}>{n}</p>
-                ))
-            }
-        </div>
-    )
-}
+    const [email, setEmail] = useState("");
+    const [error, setError] = useState("");
 
-function App() {
-    const categories = [
-        {
-            id: 1,
-            name: "Музыка",
-            items: ["Альбом 1", "Альбом 2", "Альбом 3"]
-        },
-        {
-            id: 2,
-            name: "Видео",
-            items: ["Видео 1", "Видео 2", "Видео 3"]
+    function handleSubmit(event) {
+        event.preventDefault();
+
+        if (!email.includes("@")) {
+            setError("Please enter a valid email address");
+            return
         }
-    ]
+
+        setError("");
+        console.log("Форма отправлена");
+    }
+
+    return (
+        <form onSubmit={handleSubmit}>
+            <input
+                value={email}
+                onChange={(event) => setEmail(event.target.value)}
+            />
+
+            {error && <p>{error}</p>}
+
+            <button type="submit">Submit</button>
+        </form>
+    )
+}
+
+function App() {
+    const [items, setItems] = useState([""])
+
+    function handleChange(index, value) {   
+        const newItems = [...items]
+        newItems[index] = value
+        setItems(newItems)
+    }
+
+    function addField() {
+        setItems([...items, ""])
+    }
 
     return (
         <div>
-            {categories.map((category) => (
-                <div key={category.id}>
-                    <h2>{category.name}</h2>
-                    <ul>
-                        {category.items.map((item, index) => (
-                            <li key={index}>{item}</li>
-                        ))}
-                    </ul>
-                </div>
+            {items.map((item, index) => (
+                <input
+                    key={index}
+                    value={item}
+                    onChange={(event) => handleChange(index, event.target.value)}
+                />
             ))}
+            <button onClick={addField}>
+                Add field
+            </button>
         </div>
     )
 }
