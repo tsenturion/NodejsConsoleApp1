@@ -1,123 +1,139 @@
 function App() {
-    const isAuth = true;
-    if (isAuth) {
-        return <h1>Добро пожаловать</h1>;
-    }
-    return <h1>Пожалуйста, авторизуйтесь</h1>;
-}
-
-function App() {
-    const isAuth = true;
+    const fruits = ["яблоко", "банан", "груша"];
 
     return (
-        <>
-            {isAuth && <p>Добро пожаловать</p>}
-        </>
+        <ul>
+            {fruits.map((fruit, index) => (
+                <li key={index}>{fruit}</li>
+            ))}
+        </ul>
+    )
+}
+
+const items = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"];
+const items = ["J", "I", "H", "G", "F", "E", "D", "C", "B", "A"];
+
+
+
+
+function App() {
+    const users = [
+        { id: 1, name: "John" },
+        { id: 2, name: "Mike" },
+        { id: 3, name: "Sara" }
+    ]
+
+    return (
+        <ul>
+            {users.map((user) => (
+                <li key={user.id}>{user.name}</li>
+            ))}
+        </ul>
     )
 }
 
 function App() {
-    const isAuth = true;
+    const products = [
+        { id: 1, name: "Телефон", price: 500 },
+        { id: 2, name: "Ноутбук", price: 1200 },
+        { id: 3, name: "Наушники", price: 150 },
+        { id: 4, name: "Клавиатура", price: 90 }
+    ]
 
     return (
-        <>
-            {isAuth ? <p>Добро пожаловать</p> : <p>Пожалуйста, авторизуйтесь</p>}
-        </>
+        <div>
+            {products.map((product) => (
+                <div key={product.id}>
+                    <h2>{product.name}</h2>
+                    <p>Цена: {product.price}</p>
+                </div>
+            ))}
+        </div>
+    )
+}
+
+function Product({ product }) {
+    return (
+        <div>
+            <h2>{product.name}</h2>
+            <p>Цена: {product.price}</p>
+        </div>
     )
 }
 
 function App() {
-    const isLoading = true;
+    const prioducts = [
+        { id: 1, name: "Телефон", price: 500 },
+        { id: 2, name: "Ноутбук", price: 1200 },
+        { id: 3, name: "Наушники", price: 150 },
+        { id: 4, name: "Клавиатура", price: 90 }
+    ]
 
     return (
-        <>
-            {isLoading ? <p>Загрузка</p> : <p>Данные загружены</p>}
-        </>
+        <div>
+            {products.map((product) => (
+                <Product key={product.id} product={product} />
+            ))}
+        </div>
     )
 }
 
-function Message({ isVisible }) {
-    if (!isVisible) {
-        return null;
-    }
-    return <p>Привет</p>;
-}
 
 function App() {
     const items = [];
 
     return (
-        <>
-        {items.length === 0
-            ? <p>В корзине нет товаров</p>
-            : <ul>
-                {items.map((item, index) => (
-                    <li key={index}>{item}</li>
-                ))}
-            </ul>
-        }
-        </>
-    )
-}
-
-function App() {
-    const status = 'error';
-
-    return (
         <div>
-            {status === 'loading' && <p>Loading...</p>}
-            {status === 'error' && <p>Error</p>}
-            {status === 'success' && <p>Success</p>}
-        </div>
-    )
-}
-
-
-function App() {
-    const status = 'loading';
-
-    let content;
-    
-    if (status === 'loading') {
-        content = <p>Loading...</p>;
-    } else if (status === 'error') {
-        content = <p>Error</p>;
-    } else if (status === 'success') {
-        content = <p>Success</p>;
-    }
-    
-    return (
-        <div>
-            {content}
-        </div>
-    )
-}
-
-
-import { useState } from 'react';
-
-function App() {
-    const [isVisible, setIsVisible] = useState(false);
-
-    return (
-        <>
-            <button onClick={() => setIsVisible(!isVisible)}>
-                Показать / скрыть
-            </button>
-            {isVisible && <p>Привет</p>}
-        </>
-    )
-}
-
-function App() {
-    const [user, setUser] = useState(null);
-
-    return (
-        <>
-            {user
-                ? <p>Привет, {user.name}</p>
-                : <button>Войти</button>
+            {items.length === 0
+                ? <p>Список пуст</p>
+                : items.map((item, index) => (
+                    <p key={index}>{item}</p>
+                ))
             }
-        </>
+        </div>
+    )
+}
+
+function App() {
+    const numbers = [1, 2, 3, 4, 5];
+    return (
+        <div>
+            {numbers
+                .filter((n) => n % 2 === 0)
+                .map((n) => (
+                    <p key={n}>{n}</p>
+                ))
+            }
+        </div>
+    )
+}
+
+function App() {
+    const categories = [
+        {
+            id: 1,
+            name: "Музыка",
+            items: ["Альбом 1", "Альбом 2", "Альбом 3"]
+        },
+        {
+            id: 2,
+            name: "Видео",
+            items: ["Видео 1", "Видео 2", "Видео 3"]
+        }
+    ]
+
+    return (
+        <div>
+            {categories.map((category) => (
+                <div key={category.id}>
+                    <h2>{category.name}</h2>
+                    <ul>
+                        {category.items.map((item, index) => (
+                            <li key={index}>{item}</li>
+                        ))}
+                    </ul>
+                </div>
+            ))}
+        </div>
     )
 }
