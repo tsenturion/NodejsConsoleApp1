@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AJAX в jQuery</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      line-height: 1.5;
+    }
+
+    .section {
+      border: 1px solid #999;
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 20px;
+    }
+
+    h1, h2 {
+      margin-top: 0;
+    }
+
+    button {
+      margin: 5px 5px 5px 0;
+      padding: 10px 14px;
+      cursor: pointer;
+    }
+
+    input, textarea {
+      display: block;
+      width: 320px;
+      padding: 8px;
+      margin-bottom: 10px;
+    }
+
+    #comments p,
+    #jsonList li {
+      padding: 8px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      margin-bottom: 8px;
+      background-color: #fafafa;
+    }
+
+    #fragmentContainer,
+    #result,
+    #output {
+      min-height: 40px;
+      padding: 12px;
+      border: 1px dashed #666;
+      border-radius: 6px;
+      background: #fafafa;
+      white-space: pre-line;
+      margin-top: 10px;
+    }
+
+    .loading {
+      opacity: 0.6;
+    }
+
+    .error {
+      color: #b00020;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>AJAX в jQuery</h1>
+
+  <div class="section">
+    <h2>1. Загрузка комментариев через $.ajax()</h2>
+    <button id="loadCommentsBtn">Загрузить комментарии</button>
+    <div id="comments">Комментарии пока не загружены.</div>
+  </div>
+
+  <div class="section">
+    <h2>2. Загрузка JSON через $.getJSON()</h2>
+    <button id="loadJsonBtn">Загрузить список</button>
+    <ul id="jsonList"></ul>
+  </div>
+
+  <div class="section">
+    <h2>3. Загрузка HTML-фрагмента через .load()</h2>
+    <button id="loadFragmentBtn">Подгрузить HTML-фрагмент</button>
+    <div id="fragmentContainer">Фрагмент пока не загружен.</div>
+  </div>
+
+  <div class="section">
+    <h2>4. Отправка формы через AJAX</h2>
+
+    <form id="contactForm" action="https://jsonplaceholder.typicode.com/posts">
+      <input type="text" id="name" name="name" placeholder="Введите имя" />
+      <input type="email" id="email" name="email" placeholder="Введите email" />
+      <textarea id="message" name="message" placeholder="Введите сообщение"></textarea>
+
+      <button type="submit">Отправить форму</button>
+    </form>
+
+    <div id="result">Результат отправки формы появится здесь.</div>
+  </div>
+
+  <div class="section">
+    <h2>5. Упрощённые методы $.get() и $.post()</h2>
+    <button id="simpleGetBtn">Простой GET</button>
+    <button id="simplePostBtn">Простой POST</button>
+  </div>
+
+  <div class="section">
+    <h2>6. Общий вывод</h2>
+    <div id="output">Нажмите кнопку для выполнения AJAX-запроса.</div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
