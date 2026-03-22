@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Работа с содержимым в jQuery</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      line-height: 1.5;
+    }
+
+    .section {
+      border: 1px solid #999;
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 20px;
+    }
+
+    h1, h2 {
+      margin-top: 0;
+    }
+
+    button {
+      margin: 5px 5px 5px 0;
+      padding: 10px 14px;
+      cursor: pointer;
+    }
+
+    input {
+      padding: 8px;
+      width: 260px;
+      margin-right: 10px;
+    }
+
+    #box,
+    #result,
+    #htmlBlock,
+    #removeTarget {
+      padding: 12px;
+      border: 1px dashed #666;
+      margin-top: 10px;
+      border-radius: 6px;
+    }
+
+    #list {
+      margin-top: 10px;
+    }
+
+    .item {
+      margin: 4px 0;
+    }
+
+    .marker {
+      color: darkred;
+      font-weight: bold;
+    }
+
+    #output {
+      min-height: 40px;
+      padding: 12px;
+      border: 1px solid #bbb;
+      border-radius: 6px;
+      background: #fafafa;
+      white-space: pre-line;
+    }
+  </style>
+</head>
+<body>
+  <h1>Работа с содержимым элементов в jQuery</h1>
+
+  <div class="section">
+    <h2 id="title">Исходный заголовок</h2>
+    <button id="setTextBtn">Изменить через text()</button>
+    <button id="getTextBtn">Получить text()</button>
+  </div>
+
+  <div class="section">
+    <div id="htmlBlock">Обычный текст внутри блока</div>
+    <button id="setHtmlBtn">Изменить через html()</button>
+    <button id="getHtmlBtn">Получить html()</button>
+  </div>
+
+  <div class="section">
+    <ul id="list">
+      <li class="item">Элемент 1</li>
+      <li class="item" id="item2">Элемент 2</li>
+      <li class="item">Элемент 3</li>
+    </ul>
+
+    <button id="appendBtn">append()</button>
+    <button id="prependBtn">prepend()</button>
+    <button id="beforeBtn">before()</button>
+    <button id="afterBtn">after()</button>
+    <button id="changeAllItemsBtn">Изменить все .item</button>
+    <button id="numberItemsBtn">Функция в text()</button>
+  </div>
+
+  <div class="section">
+    <div id="box">
+      Этот блок можно очистить или полностью удалить.
+    </div>
+
+    <div id="removeTarget">
+      Этот элемент будет удалён методом remove().
+    </div>
+
+    <button id="emptyBtn">empty()</button>
+    <button id="removeBtn">remove()</button>
+  </div>
+
+  <div class="section">
+    <input type="text" id="userInput" placeholder="Введите текст" />
+    <button id="setValBtn">Установить val()</button>
+    <button id="getValBtn">Получить val()</button>
+    <button id="showInputBtn">Показать ввод в result</button>
+
+    <div id="result">Здесь будет показан результат работы с формой.</div>
+  </div>
+
+  <div class="section">
+    <h2>Сообщение о действии</h2>
+    <div id="output">Нажмите кнопку, чтобы увидеть результат.</div>
+    <button id="resetBtn">Сбросить страницу</button>
+  </div>
+
+  <!--
+    Сначала подключаем библиотеку jQuery.
+    После этого становятся доступны функция $ и методы jQuery.
+  -->
+  <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+
+  <!--
+    После библиотеки подключаем наш код.
+    Здесь уже можно безопасно использовать jQuery.
+  -->
+  <script src="app.js"></script>
+</body>
+</html>
