@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Размеры и позиционирование в jQuery</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.5;
+      padding: 20px;
+      margin: 0;
+    }
+
+    .section {
+      border: 1px solid #999;
+      border-radius: 8px;
+      padding: 16px;
+      margin: 20px;
+      background-color: #fff;
+    }
+
+    h1, h2 {
+      margin-top: 0;
+    }
+
+    button {
+      margin: 5px 5px 5px 0;
+      padding: 10px 14px;
+      cursor: pointer;
+    }
+
+    .measure-box {
+      width: 220px;
+      height: 120px;
+      padding: 20px;
+      border: 6px solid #444;
+      margin: 25px;
+      background-color: #f2f2f2;
+      border-radius: 8px;
+      box-sizing: content-box;
+    }
+
+    .position-stage {
+      position: relative;
+      height: 280px;
+      border: 2px dashed #bbb;
+      border-radius: 8px;
+      margin-top: 15px;
+      background-color: #fafafa;
+    }
+
+    .position-box {
+      position: absolute;
+      top: 40px;
+      left: 60px;
+      width: 160px;
+      height: 90px;
+      padding: 12px;
+      border: 4px solid #555;
+      background-color: #e8f0fe;
+      border-radius: 8px;
+      box-sizing: border-box;
+    }
+
+    .items {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .item {
+      width: 120px;
+      padding: 12px;
+      border: 2px solid #777;
+      border-radius: 6px;
+      background-color: #f9f9f9;
+      text-align: center;
+    }
+
+    #output {
+      min-height: 70px;
+      padding: 12px;
+      border: 1px dashed #666;
+      border-radius: 6px;
+      background: #fafafa;
+      white-space: pre-line;
+    }
+
+    .spacer {
+      height: 700px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #777;
+    }
+
+    #target {
+      padding: 20px;
+      border: 2px solid #1a73e8;
+      border-radius: 8px;
+      background-color: #eef5ff;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="section">
+    <h1>Размеры и позиционирование элементов в jQuery</h1>
+    <p>
+      На этой странице можно проверить, как jQuery получает размеры элементов,
+      определяет их координаты и управляет прокруткой.
+    </p>
+  </div>
+
+  <div class="section">
+    <h2>Размеры элемента</h2>
+
+    <div id="measureBox" class="measure-box">
+      Блок для измерения размеров
+    </div>
+
+    <div>
+      <button id="getWidthBtn">width()</button>
+      <button id="getHeightBtn">height()</button>
+      <button id="getInnerWidthBtn">innerWidth()</button>
+      <button id="getInnerHeightBtn">innerHeight()</button>
+      <button id="getOuterWidthBtn">outerWidth()</button>
+      <button id="getOuterWidthMarginBtn">outerWidth(true)</button>
+      <button id="getOuterHeightBtn">outerHeight()</button>
+      <button id="getOuterHeightMarginBtn">outerHeight(true)</button>
+      <button id="setWidthBtn">Установить width(300)</button>
+      <button id="setHeightBtn">Установить height(180)</button>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Позиционирование элемента</h2>
+
+    <div id="stage" class="position-stage">
+      <div id="positionBox" class="position-box">
+        Позиционированный блок
+      </div>
+    </div>
+
+    <div>
+      <button id="getOffsetBtn">offset()</button>
+      <button id="getPositionBtn">position()</button>
+      <button id="moveBoxBtn">Сдвинуть блок</button>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Размеры нескольких элементов</h2>
+
+    <div class="items">
+      <div class="item">Элемент 1</div>
+      <div class="item">Элемент 2</div>
+      <div class="item">Элемент 3</div>
+    </div>
+
+    <div>
+      <button id="eachWidthsBtn">Измерить все .item через each()</button>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Прокрутка страницы</h2>
+
+    <div>
+      <button id="getScrollTopBtn">Получить scrollTop()</button>
+      <button id="getScrollLeftBtn">Получить scrollLeft()</button>
+      <button id="scrollToTopBtn">Прокрутить вверх</button>
+      <button id="scrollToTargetBtn">Прокрутить к target</button>
+    </div>
+  </div>
+
+  <div class="spacer">Прокрутите страницу ниже для проверки scrollTop()</div>
+
+  <div class="section" id="targetSection">
+    <div id="target">Целевой блок для плавной прокрутки</div>
+  </div>
+
+  <div class="section">
+    <h2>Сообщение о действии</h2>
+    <div id="output">Нажмите кнопку, чтобы посмотреть результат.</div>
+    <button id="resetBtn">Сбросить страницу</button>
+  </div>
+
+  <!--
+    Сначала подключаем библиотеку jQuery.
+    После этого браузер получает доступ ко всем методам jQuery.
+  -->
+  <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+
+  <!--
+    После библиотеки подключаем наш JavaScript-файл.
+    В нём уже можно безопасно использовать jQuery.
+  -->
+  <script src="app.js"></script>
+</body>
+</html>
