@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Интерфейсные эффекты jQuery</title>
+
+  <style>
+    body {
+      font-family: Arial;
+      padding: 20px;
+    }
+
+    .section {
+      margin-bottom: 30px;
+    }
+
+    button {
+      padding: 8px 12px;
+      cursor: pointer;
+    }
+
+    /* MENU */
+    #menu {
+      display: none;
+      border: 1px solid #333;
+      padding: 10px;
+      margin-top: 10px;
+    }
+
+    /* ACCORDION */
+    .accordion-content {
+      display: none;
+      padding: 10px;
+      border: 1px solid #ccc;
+    }
+
+    .accordion-title {
+      cursor: pointer;
+      padding: 10px;
+      background: #eee;
+      margin-top: 5px;
+    }
+
+    /* TABS */
+    .tab-content {
+      display: none;
+      padding: 10px;
+      border: 1px solid #333;
+    }
+
+    .tab-button.active {
+      background: #1a73e8;
+      color: white;
+    }
+
+    /* MODAL */
+    #modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+    }
+
+    .modal-content {
+      background: white;
+      padding: 20px;
+      margin: 100px auto;
+      width: 300px;
+    }
+
+    /* TOOLTIP */
+    .tooltip-text {
+      display: none;
+      background: black;
+      color: white;
+      padding: 5px;
+      position: absolute;
+    }
+
+    .tooltip {
+      position: relative;
+      display: inline-block;
+    }
+
+    /* ACTIVE */
+    .active {
+      background: #d9ecff;
+    }
+
+  </style>
+</head>
+<body>
+
+  <h1>Интерфейсные эффекты</h1>
+
+  <!-- MENU -->
+  <div class="section">
+    <button id="menuBtn">Меню</button>
+    <div id="menu">Пункт 1<br>Пункт 2</div>
+  </div>
+
+  <!-- ACCORDION -->
+  <div class="section">
+    <div class="accordion-title">Раздел 1</div>
+    <div class="accordion-content">Контент 1</div>
+
+    <div class="accordion-title">Раздел 2</div>
+    <div class="accordion-content">Контент 2</div>
+  </div>
+
+  <!-- TABS -->
+  <div class="section">
+    <button class="tab-button active">1</button>
+    <button class="tab-button">2</button>
+
+    <div class="tab-content" style="display:block;">Контент 1</div>
+    <div class="tab-content">Контент 2</div>
+  </div>
+
+  <!-- MODAL -->
+  <div class="section">
+    <button id="openModal">Открыть</button>
+  </div>
+
+  <div id="modal">
+    <div class="modal-content">
+      <button id="closeModal">Закрыть</button>
+      <p>Модальное окно</p>
+    </div>
+  </div>
+
+  <!-- TOOLTIP -->
+  <div class="section">
+    <div class="tooltip">
+      Наведи на меня
+      <div class="tooltip-text">Подсказка</div>
+    </div>
+  </div>
+
+  <!-- ACTIVE MENU -->
+  <div class="section">
+    <div class="menu-item">Элемент 1</div>
+    <div class="menu-item">Элемент 2</div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+  <script src="app.js"></script>
+
+</body>
+</html>
