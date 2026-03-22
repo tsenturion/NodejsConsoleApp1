@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CSS-селекторы в jQuery</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    #menu {
+      margin-bottom: 20px;
+    }
+
+    .active {
+      background-color: #ffd966;
+    }
+
+    .highlight {
+      color: red;
+      font-weight: bold;
+    }
+
+    .box {
+      padding: 10px;
+      border: 1px solid #333;
+      margin-bottom: 10px;
+    }
+
+    button {
+      margin: 5px;
+      padding: 8px 12px;
+      cursor: pointer;
+    }
+
+    #output {
+      margin-top: 20px;
+      padding: 10px;
+      border: 1px dashed #888;
+    }
+  </style>
+</head>
+<body>
+
+  <h1 id="header">Пример работы CSS-селекторов</h1>
+
+  <ul id="menu">
+    <li class="item"><a href="#">Главная</a></li>
+    <li class="item active"><a href="#">Каталог</a></li>
+    <li class="item"><a href="#">Контакты</a></li>
+  </ul>
+
+  <div class="box">Блок 1</div>
+  <div class="box">Блок 2</div>
+  <div class="box">Блок 3</div>
+
+  <p>Абзац 1</p>
+  <p>Абзац 2</p>
+
+  <input type="text" value="Текстовое поле" />
+  <input type="password" value="Пароль" />
+
+  <div>
+    <button id="idSelector">По id</button>
+    <button id="classSelector">По классу</button>
+    <button id="tagSelector">По тегу</button>
+    <button id="nestedSelector">Вложенный селектор</button>
+    <button id="filterSelector">Фильтры</button>
+    <button id="attrSelector">Атрибут</button>
+    <button id="reset">Сброс</button>
+  </div>
+
+  <div id="output">Результат действий появится здесь</div>
+
+  <!-- Подключение jQuery -->
+  <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+
+  <!-- Подключение логики -->
+  <script src="app.js"></script>
+
+</body>
+</html>
