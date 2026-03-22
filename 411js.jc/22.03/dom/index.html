@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Навигация по DOM в jQuery</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      line-height: 1.5;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .panel {
+      border: 1px solid #999;
+      border-radius: 8px;
+      padding: 16px;
+    }
+
+    .menu-wrapper {
+      position: relative;
+      border: 2px solid #444;
+      padding: 16px;
+      border-radius: 8px;
+      margin-bottom: 16px;
+    }
+
+    #menu {
+      border: 1px solid #bbb;
+      padding: 12px;
+      border-radius: 6px;
+      list-style: none;
+      margin: 0;
+    }
+
+    #menu > li {
+      padding: 8px;
+      border-bottom: 1px solid #eee;
+    }
+
+    #menu > li:last-child {
+      border-bottom: none;
+    }
+
+    .sub-list {
+      margin-top: 8px;
+      padding-left: 20px;
+    }
+
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    button {
+      padding: 10px 12px;
+      cursor: pointer;
+      border: 1px solid #999;
+      border-radius: 6px;
+      background: #f5f5f5;
+    }
+
+    .highlight {
+      background-color: #fff2a8;
+    }
+
+    .current {
+      border-left: 4px solid #1a73e8;
+      padding-left: 8px;
+    }
+
+    .relative-parent {
+      outline: 3px solid #ff9800;
+    }
+
+    .link-mark {
+      color: #b00020;
+      font-weight: bold;
+    }
+
+    .active-parent {
+      background-color: #e7f3ff;
+    }
+
+    #contentBox {
+      border: 1px dashed #777;
+      padding: 12px;
+      border-radius: 6px;
+      margin-top: 16px;
+    }
+
+    #output {
+      min-height: 60px;
+      border: 1px dashed #666;
+      border-radius: 6px;
+      padding: 12px;
+      background: #fafafa;
+      white-space: pre-line;
+    }
+
+    .selected {
+      background-color: #d9fdd3;
+    }
+  </style>
+</head>
+<body>
+  <h1>Навигация по DOM в jQuery</h1>
+
+  <div class="layout">
+    <div class="panel">
+      <div class="menu-wrapper" id="wrapper">
+        <ul id="menu">
+          <li>Пункт 1</li>
+          <li id="item" class="current">
+            Пункт 2
+            <ul class="sub-list">
+              <li><a href="#">Подпункт 2.1</a></li>
+              <li><a href="#">Подпункт 2.2</a></li>
+            </ul>
+          </li>
+          <li>Пункт 3</li>
+        </ul>
+      </div>
+
+      <div id="contentBox">
+        Текстовый узел в начале блока.
+        <span class="inner-text">Вложенный span</span>
+        Ещё один текстовый узел после span.
+      </div>
+
+      <div class="controls">
+        <button id="findBtn">find()</button>
+        <button id="childrenBtn">children()</button>
+        <button id="closestBtn">closest()</button>
+        <button id="nextBtn">next()</button>
+        <button id="prevBtn">prev()</button>
+        <button id="siblingsBtn">siblings()</button>
+        <button id="parentBtn">parent()</button>
+        <button id="offsetParentBtn">offsetParent()</button>
+        <button id="contentsBtn">contents()</button>
+        <button id="chainBtn">Цепочка + end()</button>
+        <button id="resetBtn">Сброс</button>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2>Результат</h2>
+      <div id="output">Нажмите на любую кнопку, чтобы посмотреть работу навигации по DOM.</div>
+    </div>
+  </div>
+
+  <!--
+    Сначала подключаем библиотеку jQuery.
+    Только после этого браузер сможет понимать функцию $ и методы jQuery.
+  -->
+  <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+
+  <!--
+    После библиотеки подключаем наш код,
+    который использует навигацию по DOM.
+  -->
+  <script src="app.js"></script>
+</body>
+</html>
