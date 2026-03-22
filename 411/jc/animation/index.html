@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Базовые эффекты в jQuery</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      line-height: 1.5;
+    }
+
+    .section {
+      border: 1px solid #999;
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 20px;
+    }
+
+    button {
+      margin: 5px;
+      padding: 10px 14px;
+      cursor: pointer;
+    }
+
+    #box {
+      width: 220px;
+      height: 100px;
+      background-color: #e8f0fe;
+      border: 2px solid #1a73e8;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 10px;
+    }
+
+    #panel {
+      display: none;
+      padding: 15px;
+      margin-top: 10px;
+      border: 2px solid #444;
+      border-radius: 8px;
+      background-color: #f2f2f2;
+    }
+
+    .item {
+      display: none;
+      padding: 10px;
+      margin: 5px 0;
+      background-color: #fafafa;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    .active {
+      background-color: #d9ecff;
+      border-color: #1a73e8;
+    }
+
+    #output {
+      margin-top: 15px;
+      padding: 12px;
+      border: 1px dashed #666;
+      border-radius: 6px;
+      background: #fafafa;
+      min-height: 60px;
+      white-space: pre-line;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Базовые эффекты в jQuery</h1>
+
+  <div class="section">
+    <h2>Показ / скрытие</h2>
+
+    <button id="hideBtn">hide()</button>
+    <button id="showBtn">show()</button>
+    <button id="toggleBtn">toggle()</button>
+
+    <div id="box">Блок</div>
+  </div>
+
+  <div class="section">
+    <h2>Fade эффекты</h2>
+
+    <button id="fadeOutBtn">fadeOut()</button>
+    <button id="fadeInBtn">fadeIn()</button>
+    <button id="fadeToggleBtn">fadeToggle()</button>
+    <button id="fadeToBtn">fadeTo(0.5)</button>
+
+    <div id="fadeBox" class="box">Fade блок</div>
+  </div>
+
+  <div class="section">
+    <h2>Slide эффекты</h2>
+
+    <button id="slideToggleBtn">slideToggle()</button>
+
+    <div id="panel">
+      Это скрываемая панель (slide)
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Цепочки и очередь</h2>
+
+    <button id="chainBtn">Запустить цепочку</button>
+
+    <div id="chainBox" class="box">Цепочка</div>
+  </div>
+
+  <div class="section">
+    <h2>Последовательная анимация</h2>
+
+    <button id="showItemsBtn">Показать по очереди</button>
+
+    <div class="item">Элемент 1</div>
+    <div class="item">Элемент 2</div>
+    <div class="item">Элемент 3</div>
+  </div>
+
+  <div class="section">
+    <h2>Остановка анимации</h2>
+
+    <button id="startAnimBtn">Старт</button>
+    <button id="stopAnimBtn">Стоп</button>
+
+    <div id="stopBox" class="box">Stop</div>
+  </div>
+
+  <div class="section">
+    <h2>Комбинация с классами</h2>
+
+    <button id="comboBtn">fade + class</button>
+
+    <div id="comboBox" class="box">Комбинация</div>
+  </div>
+
+  <div id="output">Нажмите кнопку для демонстрации.</div>
+
+  <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+  <script src="app.js"></script>
+
+</body>
+</html>
