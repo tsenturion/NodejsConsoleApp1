@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Работа с атрибутами в jQuery</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      line-height: 1.5;
+    }
+
+    .section {
+      border: 1px solid #999;
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 20px;
+    }
+
+    h1, h2 {
+      margin-top: 0;
+    }
+
+    button {
+      margin: 5px 5px 5px 0;
+      padding: 10px 14px;
+      cursor: pointer;
+    }
+
+    input[type="text"] {
+      padding: 8px;
+      width: 250px;
+    }
+
+    .external {
+      color: darkred;
+      font-weight: bold;
+      text-decoration: underline;
+    }
+
+    .preview-image {
+      display: block;
+      margin-top: 12px;
+      max-width: 220px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    #output {
+      min-height: 50px;
+      padding: 12px;
+      border: 1px dashed #666;
+      border-radius: 6px;
+      background: #fafafa;
+      white-space: pre-line;
+    }
+
+    .status {
+      margin-top: 10px;
+      padding: 8px 10px;
+      background: #f4f4f4;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Работа с атрибутами элементов в jQuery</h1>
+
+  <div class="section">
+    <h2>Ссылки и attr()</h2>
+
+    <a id="mainLink" href="https://example.com" target="_blank">Открыть Example</a>
+
+    <div>
+      <button id="getHrefBtn">Получить href</button>
+      <button id="setHrefBtn">Изменить href</button>
+      <button id="setMultipleAttrsBtn">Установить несколько атрибутов</button>
+      <button id="removeTargetBtn">Удалить target</button>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Изображение и attr()</h2>
+
+    <img
+      id="image"
+      class="preview-image"
+      src="https://via.placeholder.com/220x120?text=Старое+изображение"
+      alt="Старое изображение"
+    />
+
+    <div>
+      <button id="changeImageBtn">Изменить src и alt</button>
+      <button id="setAltByFunctionBtn">Задать alt через функцию</button>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Разница между attr() и prop()</h2>
+
+    <label>
+      <input type="checkbox" id="agreeCheckbox" checked />
+      Согласен с условиями
+    </label>
+
+    <div>
+      <button id="getCheckedAttrBtn">Получить attr("checked")</button>
+      <button id="getCheckedPropBtn">Получить prop("checked")</button>
+      <button id="checkBtn">Сделать checked = true</button>
+      <button id="uncheckBtn">Сделать checked = false</button>
+    </div>
+
+    <div class="status" id="checkboxState">
+      Состояние чекбокса ещё не проверялось.
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Работа с data-атрибутами</h2>
+
+    <div id="productCard" data-id="123" data-category="books">
+      Карточка товара
+    </div>
+
+    <div>
+      <button id="getDataBtn">Получить data()</button>
+      <button id="setDataBtn">Изменить data("id")</button>
+      <button id="getDataAttrBtn">Получить data-id через attr()</button>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Общее сообщение</h2>
+    <div id="output">Нажмите кнопку, чтобы посмотреть результат.</div>
+    <button id="resetBtn">Сбросить страницу</button>
+  </div>
+
+  <!--
+    Сначала подключаем библиотеку jQuery.
+    После этого становятся доступны функция $ и методы jQuery.
+  -->
+  <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+
+  <!--
+    После библиотеки подключаем файл с логикой.
+    Здесь уже можно использовать методы работы с атрибутами.
+  -->
+  <script src="app.js"></script>
+</body>
+</html>
