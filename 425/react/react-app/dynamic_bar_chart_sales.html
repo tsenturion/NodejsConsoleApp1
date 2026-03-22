@@ -1,0 +1,139 @@
+
+<style>
+.ctrl-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-bottom: 1.5rem; }
+.ctrl-row label { font-size: 13px; color: var(--color-text-secondary); }
+.metric-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-bottom: 1.5rem; }
+.metric { background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 12px 14px; }
+.metric-label { font-size: 12px; color: var(--color-text-secondary); margin: 0 0 4px; }
+.metric-value { font-size: 20px; font-weight: 500; color: var(--color-text-primary); margin: 0; }
+.legend-row { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 12px; font-size: 12px; color: var(--color-text-secondary); }
+.legend-dot { width: 10px; height: 10px; border-radius: 2px; display: inline-block; }
+</style>
+
+<div class="ctrl-row">
+  <div>
+    <label>Период</label><br>
+    <select id="period" style="margin-top:4px;">
+      <option value="monthly">По месяцам</option>
+      <option value="quarterly">По кварталам</option>
+    </select>
+  </div>
+  <div>
+    <label>Тип данных</label><br>
+    <select id="dtype" style="margin-top:4px;">
+      <option value="sales">Продажи</option>
+      <option value="profit">Прибыль</option>
+      <option value="both">Оба</option>
+    </select>
+  </div>
+  <div style="margin-left:auto;">
+    <label>Рост данных</label><br>
+    <input type="range" id="growth" min="-20" max="40" value="10" step="1" style="margin-top:4px; width:120px;">
+    <span id="growth-out" style="font-size:13px; font-weight:500; color:var(--color-text-primary);">+10%</span>
+  </div>
+</div>
+
+<div class="metric-grid">
+  <div class="metric"><p class="metric-label">Итого продажи</p><p class="metric-value" id="m-total">—</p></div>
+  <div class="metric"><p class="metric-label">Лучший период</p><p class="metric-value" id="m-best">—</p></div>
+  <div class="metric"><p class="metric-label">Рост к прошлому</p><p class="metric-value" id="m-growth">—</p></div>
+</div>
+
+<div class="legend-row" id="legend-row"></div>
+
+<div style="position: relative; width: 100%; height: 300px;">
+  <canvas id="mainChart"></canvas>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+const DATA = {
+  monthly: {
+    labels: ['Янв','Фев','Мар','Апр','Май','Июн','Июл','Авг','Сен','Окт','Ноя','Дек'],
+    sales:  [42,38,55,61,70,85,78,90,68,74,88,102],
+    profit: [18,14,22,27,31,40,35,42,28,33,41,50]
+  },
+  quarterly: {
+    labels: ['Q1','Q2','Q3','Q4'],
+    sales:  [135,216,236,264],
+    profit: [54,98,105,124]
+  }
+};
+
+const COLORS = { sales: '#378ADD', profit: '#1D9E75' };
+let chart = null;
+
+function applyGrowth(arr, pct) {
+  return arr.map((v, i) => Math.round(v * Math.pow(1 + pct/100, i/arr.length)));
+}
+
+function buildDatasets(period, dtype, growth) {
+  const src = DATA[period];
+  const s = applyGrowth(src.sales, growth);
+  const p = applyGrowth(src.profit, growth);
+  const sets = [];
+  if (dtype !== 'profit') sets.push({ label: 'Продажи', data: s, backgroundColor: COLORS.sales + 'cc', borderColor: COLORS.sales, borderWidth: 1.5, borderRadius: 4 });
+  if (dtype !== 'sales') sets.push({ label: 'Прибыль', data: p, backgroundColor: COLORS.profit + 'cc', borderColor: COLORS.profit, borderWidth: 1.5, borderRadius: 4 });
+  return { labels: src.labels, datasets: sets, salesArr: s, profitArr: p };
+}
+
+function updateMetrics(salesArr, labels) {
+  const total = salesArr.reduce((a, b) => a + b, 0);
+  const bestIdx = salesArr.indexOf(Math.max(...salesArr));
+  const last = salesArr[salesArr.length - 1];
+  const prev = salesArr[salesArr.length - 2] || last;
+  const diff = Math.round((last - prev) / prev * 100);
+  document.getElementById('m-total').textContent = total.toLocaleString() + ' тыс.';
+  document.getElementById('m-best').textContent = labels[bestIdx];
+  document.getElementById('m-growth').textContent = (diff >= 0 ? '+' : '') + diff + '%';
+  document.getElementById('m-growth').style.color = diff >= 0 ? '#1D9E75' : '#E24B4A';
+}
+
+function updateLegend(dtype) {
+  const row = document.getElementById('legend-row');
+  row.innerHTML = '';
+  if (dtype !== 'profit') row.innerHTML += `<span style="display:flex;align-items:center;gap:5px;"><span class="legend-dot" style="background:${COLORS.sales}"></span>Продажи</span>`;
+  if (dtype !== 'sales') row.innerHTML += `<span style="display:flex;align-items:center;gap:5px;"><span class="legend-dot" style="background:${COLORS.profit}"></span>Прибыль</span>`;
+}
+
+function render() {
+  const period = document.getElementById('period').value;
+  const dtype = document.getElementById('dtype').value;
+  const growth = parseInt(document.getElementById('growth').value);
+  const gout = document.getElementById('growth-out');
+  gout.textContent = (growth >= 0 ? '+' : '') + growth + '%';
+  gout.style.color = growth >= 0 ? '#1D9E75' : '#E24B4A';
+
+  const { labels, datasets, salesArr } = buildDatasets(period, dtype, growth);
+  updateMetrics(salesArr, labels);
+  updateLegend(dtype);
+
+  if (chart) {
+    chart.data.labels = labels;
+    chart.data.datasets = datasets;
+    chart.update('active');
+  } else {
+    chart = new Chart(document.getElementById('mainChart'), {
+      type: 'bar',
+      data: { labels, datasets },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        animation: { duration: 500 },
+        plugins: { legend: { display: false }, tooltip: {
+          callbacks: { label: ctx => ` ${ctx.dataset.label}: ${ctx.parsed.y} тыс.` }
+        }},
+        scales: {
+          x: { grid: { display: false }, ticks: { color: '#88878080', font: { size: 12 } } },
+          y: { grid: { color: 'rgba(136,135,128,0.15)' }, ticks: { color: '#88878080', font: { size: 12 }, callback: v => v + ' т.' } }
+        }
+      }
+    });
+  }
+}
+
+document.getElementById('period').addEventListener('change', render);
+document.getElementById('dtype').addEventListener('change', render);
+document.getElementById('growth').addEventListener('input', render);
+
+render();
+</script>
