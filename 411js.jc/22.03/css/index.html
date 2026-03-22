@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Работа со стилями в jQuery</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      line-height: 1.5;
+    }
+
+    .section {
+      border: 1px solid #999;
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 20px;
+    }
+
+    h1, h2 {
+      margin-top: 0;
+    }
+
+    .stage {
+      position: relative;
+      padding: 20px;
+      border: 2px dashed #bbb;
+      margin-top: 15px;
+      min-height: 220px;
+      border-radius: 8px;
+    }
+
+    #box {
+      width: 220px;
+      height: 100px;
+      padding: 20px;
+      border: 4px solid #444;
+      background-color: #f2f2f2;
+      color: #222;
+      border-radius: 8px;
+      transition: 0.3s;
+    }
+
+    .active {
+      background-color: #1a73e8;
+      color: white;
+      border-color: #0b57d0;
+      transform: scale(1.03);
+    }
+
+    .error {
+      background-color: #ffe3e3;
+      color: #b00020;
+      border-color: #b00020;
+    }
+
+    .highlight {
+      background-color: #fff2a8;
+      font-weight: bold;
+    }
+
+    .item {
+      padding: 8px;
+      border: 1px solid #ccc;
+      margin: 6px 0;
+      border-radius: 6px;
+    }
+
+    #measureBox {
+      width: 180px;
+      height: 80px;
+      padding: 15px;
+      border: 5px solid #333;
+      background-color: #fafafa;
+      border-radius: 8px;
+      margin-top: 10px;
+    }
+
+    #positionBox {
+      position: absolute;
+      top: 40px;
+      left: 60px;
+      width: 140px;
+      height: 70px;
+      padding: 10px;
+      border: 3px solid #555;
+      background-color: #e8f0fe;
+      border-radius: 8px;
+      box-sizing: border-box;
+    }
+
+    button {
+      margin: 5px 5px 5px 0;
+      padding: 10px 14px;
+      cursor: pointer;
+    }
+
+    #output {
+      min-height: 60px;
+      padding: 12px;
+      border: 1px dashed #666;
+      border-radius: 6px;
+      background: #fafafa;
+      white-space: pre-line;
+    }
+  </style>
+</head>
+<body>
+  <h1>Работа со стилями в jQuery</h1>
+
+  <div class="section">
+    <h2>Изменение CSS-свойств</h2>
+
+    <div id="box">Блок для изменения стилей</div>
+
+    <div>
+      <button id="setCssBtn">Изменить css()</button>
+      <button id="getCssBtn">Получить color</button>
+      <button id="setMultipleCssBtn">Несколько свойств</button>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Работа с классами</h2>
+
+    <div>
+      <button id="addClassBtn">addClass()</button>
+      <button id="removeClassBtn">removeClass()</button>
+      <button id="toggleClassBtn">toggleClass()</button>
+      <button id="hasClassBtn">hasClass()</button>
+      <button id="addErrorBtn">Добавить error</button>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Изменение нескольких элементов</h2>
+
+    <div class="item">Элемент 1</div>
+    <div class="item">Элемент 2</div>
+    <div class="item">Элемент 3</div>
+
+    <div>
+      <button id="highlightItemsBtn">Подсветить .item</button>
+      <button id="fontSizeByFunctionBtn">Размер через функцию</button>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Размеры элемента</h2>
+
+    <div id="measureBox">Блок для измерения</div>
+
+    <div>
+      <button id="getWidthBtn">width()</button>
+      <button id="getHeightBtn">height()</button>
+      <button id="getInnerWidthBtn">innerWidth()</button>
+      <button id="getOuterWidthBtn">outerWidth()</button>
+      <button id="setWidthBtn">Установить width(300)</button>
+      <button id="setHeightBtn">Установить height(120)</button>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Позиционирование</h2>
+
+    <div class="stage" id="stage">
+      <div id="positionBox">Позиционированный блок</div>
+    </div>
+
+    <div>
+      <button id="getOffsetBtn">offset()</button>
+      <button id="getPositionBtn">position()</button>
+      <button id="moveBoxBtn">Сдвинуть блок</button>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Сообщение о действии</h2>
+    <div id="output">Нажмите кнопку, чтобы посмотреть результат.</div>
+    <button id="resetBtn">Сбросить страницу</button>
+  </div>
+
+  <!--
+    Сначала подключаем библиотеку jQuery.
+    Только после этого становятся доступны методы jQuery.
+  -->
+  <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+
+  <!--
+    После библиотеки подключаем наш код.
+    Здесь уже можно безопасно использовать jQuery.
+  -->
+  <script src="app.js"></script>
+</body>
+</html>
