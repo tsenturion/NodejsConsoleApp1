@@ -1,107 +1,65 @@
-import { useCallback, useState } from "react";
-
-function Counter() {
-    const [count, setCount] = useState(0);
-    return (
-        <div>
-            <p>Count: {count}</p>
-            <button onClick={() => setCount(count + 1)}>Increment</button>
-        </div>
-    );
-}
-
-import { useState, useEffect } from "react"
-function App()  {
-    const [count, setCount] = useState(0);
-    useEffect(() => {
-        console.log("Компонент обновился");
+fetch("https://jsonplaceholder.typicode.com/todos/1")
+    .then((response) => response.json())
+    .then((data) => {
+        console.log(data);
     });
 
-    return (
-        <button onClick={() => setCount(count + 1)}>{count}</button>
-    );
-}
-
-useEffect(() => {
-    console.log("Изменился count");
-}, [count]);
-
-useEffect(() => {
-    console.log("Компонент создан");
-}, []);
-
-useEffect(() => {
-    const id = setInterval(() => {
-        console.log("Прошло 1 секунду");
-    }, 1000);
-
-    return () => clearInterval(id);
-}, []) 
-
-
-import { useRef } from "react";
+import { useEffect, useState } from "react";
 function App() {
-    const inputRef = useRef();
-    function focusInput() {
-        inputRef.current.focus();
-    }
-    return (
-        <div>
-            <input ref={inputRef} />
-            <button onClick={focusInput}>Focus input</button>
-        </div>
-    );
-}
-
-import { useMemo } from "react";
-
-function App({ number }) {
-    const squared = useMemo(() => {
-        return number * number;
-    }, [number]);
-    return (
-        <div>
-            <p>{number}</p>
-            <p>{squared}</p>
-        </div>
-    );
-}
-
-import { useCallback } from "react";
-function App() {
-    const handleClick = useCallback(() => {
-        console.log("Клик");
-    }, []);
-    return (
-        <button onClick={handleClick}>Клик</button>
-    );
-}
-
-import { useState, useEffect } from "react";
-
-function useTimer() {
-    const [time, setTime] = useState(0);
+    const [users, setUsers] = useState([]);
     useEffect(() => {
-        const id = setInterval(() => {
-            setTime((t) => t + 1);
-        }, 1000);
-        return () => clearInterval(id);
+        fetch("https://jsonplaceholder.typicode.com/users")
+            .then((response) => response.json())
+            .then((data) => setUsers(data));     
     }, []);
-    return time
+    return (
+        <div>
+            <h1>Users</h1>
+            <ul>
+                {users.map((user) => (
+                    <li key={user.id}>{user.name}</li>
+                ))}
+            </ul>
+        </div>
+    );
 }
 
 function App() {
-    const time = useTimer();
-    return <p>{time}</p>
+    const [users, setUsers] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        fetch("https://jsonplaceholder.typicode.com/users")
+        .then((response) => response.json())
+            .then((data) => {
+                setUsers(data);
+                setLoading(false);
+            });
+    }, []);
+    
+    if (loading) {
+        return <div>Loading...</div>;
+    }
+
+    return (
+        <div>
+            <h1>Users</h1>
+            <ul>
+                {users.map((user) => (
+                    <li key={user.id}>{user.name}</li>
+                ))}
+            </ul>
+        </div>
+    );
 }
 
-
-//ошибка
-if (condition) {
-    useState()
+if (!response.ok) {
+    throw new Error("Network response was not ok");
 }
 
-//вызываем только на верхнем уровне 
-function App() {
-    useState();
-}
+.catch((err) => setError(err.message));
+
+useEffect(() => {
+    async function fetchData() {
+        const res = await
+})
