@@ -353,3 +353,110 @@ constructor(@Inject(API_URL) private apiUrl: string) {}
 providers: [
   { provide: DataService, useClass: MockDataService }
 ]
+
+
+import { HttpClientModule } from '@angular/common/http';
+
+@NgModule({
+  imports: [HttpClientModule]
+})
+export class AppModule {}
+
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class UserService {
+  private apiUrl = 'https://api.example.com/users';
+
+  constructor(private http: HttpClient) {}
+
+  getUsers() {
+    return this.http.get(this.apiUrl);
+  }
+}
+
+export class AppComponent {
+  users: any[] = [];
+
+  constructor(private userService: UserService) {}
+
+  ngOnInit(): void {
+    this.userService.getUsers().subscribe(data => {
+      this.users = data;
+    });
+  }
+}
+
+interface User {
+  id: number;
+  name: string;
+}
+getUsers() {
+  return this.http.get<User[]>(this.apiUrl);
+}
+addUser(user: User) {
+  return this.http.post(this.apiUrl, user);
+}
+this.userService.addUser({ id: 3, name: 'Иван' })
+  .subscribe(response => {
+    console.log(response);
+  });
+updateUser(user: User) {
+  return this.http.put(`${this.apiUrl}/${user.id}`, user);
+}
+deleteUser(id: number) {
+  return this.http.delete(`${this.apiUrl}/${id}`);
+}
+
+
+import { catchError } from 'rxjs/operators';
+import { throwError } from 'rxjs';
+
+getUsers() {
+  return this.http.get<User[]>(this.apiUrl).pipe(
+    catchError(error => {
+      console.error('Ошибка:', error);
+      return throwError(() => new Error('Ошибка загрузки данных'));
+    })
+  );
+}
+this.userService.getUsers().subscribe({
+  next: data => this.users = data,
+  error: err => console.error(err)
+});
+
+
+import { HttpHeaders } from '@angular/common/http';
+
+const headers = new HttpHeaders({
+  'Authorization': 'Bearer token'
+});
+
+this.http.get(this.apiUrl, { headers });
+
+
+import { Injectable } from '@angular/core';
+import { HttpInterceptor, HttpRequest, HttpHandler } from '@angular/common/http';
+
+@Injectable()
+export class AuthInterceptor implements HttpInterceptor {
+  intercept(req: HttpRequest<any>, next: HttpHandler) {
+    const cloned = req.clone({
+      setHeaders: {
+        Authorization: 'Bearer token'
+      }
+    });
+
+    return next.handle(cloned);
+  }
+}
+
+
+this.http.get<User[]>(this.apiUrl)
+  .pipe(
+    map(users => users.filter(u => u.id > 1))
+  )
+  .subscribe(data => console.log(data));
