@@ -460,3 +460,100 @@ this.http.get<User[]>(this.apiUrl)
     map(users => users.filter(u => u.id > 1))
   )
   .subscribe(data => console.log(data));
+
+
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+
+const routes: Routes = [];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule {}
+
+
+import { HomeComponent } from './home.component';
+import { AboutComponent } from './about.component';
+
+const routes: Routes = [
+  { path: '', component: HomeComponent },
+  { path: 'about', component: AboutComponent }
+];
+
+
+<nav>
+  <a routerLink="/">Главная</a>
+  <a routerLink="/about">О нас</a>
+</nav>
+
+<router-outlet></router-outlet>
+
+
+import { Router } from '@angular/router';
+
+constructor(private router: Router) {}
+
+goToAbout() {
+  this.router.navigate(['/about']);
+}
+
+
+const routes: Routes = [
+  { path: 'user/:id', component: UserComponent }
+];
+/user/10
+import { ActivatedRoute } from '@angular/router';
+
+constructor(private route: ActivatedRoute) {}
+
+ngOnInit() {
+  const id = this.route.snapshot.paramMap.get('id');
+}
+
+
+/products?category=books
+ngOnInit() {
+  this.route.queryParamMap.subscribe(params => {
+    const category = params.get('category');
+  });
+}
+
+
+const routes: Routes = [
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
+    children: [
+      { path: 'stats', component: StatsComponent },
+      { path: 'settings', component: SettingsComponent }
+    ]
+  }
+];
+
+
+const routes: Routes = [
+  {
+    path: 'admin',
+    loadChildren: () =>
+      import('./admin/admin.module').then(m => m.AdminModule)
+  }
+];
+
+
+import { CanActivate } from '@angular/router';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class AuthGuard implements CanActivate {
+  canActivate(): boolean {
+    return false; // доступ запрещён
+  }
+}
+{ path: 'admin', component: AdminComponent, canActivate: [AuthGuard] }
+
+
+{ path: '', redirectTo: '/home', pathMatch: 'full' }
+{ path: '**', component: NotFoundComponent }
