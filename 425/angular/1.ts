@@ -145,3 +145,211 @@ export class TestComponent implements OnInit {
 }
 
 
+<p>{{ 2 + 2 }}</p>
+<p>{{ name.toUpperCase() }}</p>
+
+
+<p *ngIf="isVisible">Текст отображается</p>
+export class AppComponent {
+  isVisible: boolean = true;
+}
+
+
+<ul>
+  <li *ngFor="let item of items">{{ item }}</li>
+</ul>
+export class AppComponent {
+  items: string[] = ['Angular', 'React', 'Vue'];
+}
+
+
+<input #inputRef>
+<button (click)="logValue(inputRef.value)">Показать</button>
+export class AppComponent {
+  logValue(value: string): void {
+    console.log(value);
+  }
+}
+
+
+<p>{{ price | currency }}</p>
+<p>{{ date | date }}</p>
+
+
+export class AppComponent {
+  count: number = 0;
+
+  increment(): void {
+    this.count++;
+  }
+}
+<button (click)="increment()">+</button>
+<p>{{ count }}</p>
+
+
+<div [class.active]="isActive"></div>
+<div [style.color]="textColor"></div>
+export class AppComponent {
+  isActive: boolean = true;
+  textColor: string = 'red';
+}
+
+
+<p *ngIf="isVisible; else elseBlock">Основной текст</p>
+
+<ng-template #elseBlock>
+  <p>Альтернативный текст</p>
+</ng-template>
+
+
+<li *ngFor="let item of items; trackBy: trackByFn">
+  {{ item }}
+</li>
+trackByFn(index: number, item: string): number {
+  return index;
+}
+
+
+<div [ngStyle]="{ color: textColor, fontSize: '20px' }"></div>
+export class AppComponent {
+  textColor: string = 'red';
+}
+
+
+import { Directive, ElementRef } from '@angular/core';
+
+@Directive({
+  selector: '[appHighlight]'
+})
+export class HighlightDirective {
+  constructor(private el: ElementRef) {
+    this.el.nativeElement.style.backgroundColor = 'yellow';
+  }
+}
+<p appHighlight>Подсвеченный текст</p>
+
+
+import { Directive, ElementRef, HostListener } from '@angular/core';
+
+@Directive({
+  selector: '[appHover]'
+})
+export class HoverDirective {
+  constructor(private el: ElementRef) {}
+
+  @HostListener('mouseenter')
+  onMouseEnter() {
+    this.el.nativeElement.style.color = 'blue';
+  }
+
+  @HostListener('mouseleave')
+  onMouseLeave() {
+    this.el.nativeElement.style.color = 'black';
+  }
+}
+<p appHover>Наведи курсор</p>
+
+
+import { Directive, ElementRef, Input } from '@angular/core';
+
+@Directive({
+  selector: '[appColor]'
+})
+export class ColorDirective {
+  @Input() appColor: string = '';
+
+  constructor(private el: ElementRef) {}
+
+  ngOnInit() {
+    this.el.nativeElement.style.color = this.appColor;
+  }
+}
+<p [appColor]="'green'">Зелёный текст</p>
+
+
+import { Injectable } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class DataService {
+  getData(): string {
+    return 'Данные из сервиса';
+  }
+}
+
+
+import { Component } from '@angular/core';
+import { DataService } from './data.service';
+
+@Component({
+  selector: 'app-root',
+  template: `<p>{{ data }}</p>`
+})
+export class AppComponent {
+  data: string;
+
+  constructor(private dataService: DataService) {
+    this.data = this.dataService.getData();
+  }
+}
+
+
+const service = new DataService();
+
+
+providedIn: 'root'
+@NgModule({
+  providers: [DataService]
+})
+export class AppModule {}
+@Component({
+  selector: 'app-root',
+  providers: [DataService],
+  template: `...`
+})
+
+
+import { Injectable } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class UserService {
+  private users: string[] = ['Иван', 'Анна'];
+
+  getUsers(): string[] {
+    return this.users;
+  }
+
+  addUser(name: string): void {
+    this.users.push(name);
+  }
+}
+export class AppComponent {
+  users: string[] = [];
+
+  constructor(private userService: UserService) {
+    this.users = this.userService.getUsers();
+  }
+
+  addUser() {
+    this.userService.addUser('Новый пользователь');
+  }
+}
+
+
+import { InjectionToken } from '@angular/core';
+
+export const API_URL = new InjectionToken<string>('apiUrl');
+providers: [
+  { provide: API_URL, useValue: 'https://api.example.com' }
+]
+import { Inject } from '@angular/core';
+
+constructor(@Inject(API_URL) private apiUrl: string) {}
+
+
+providers: [
+  { provide: DataService, useClass: MockDataService }
+]
