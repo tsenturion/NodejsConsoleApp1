@@ -1,44 +1,24 @@
-{this.state.visible && (
-    <p key={this.state.answer} className="fade-in">{this.state.answer}</p>
-)}
+import { FormsModule } from '@angular/forms';
 
+@NgModule({
+  imports: [FormsModule]
+})
+export class AppModule {}
 
-getPrediction = () => {
-    const randomIndex = Math.floor(Math.random() * this.answers.lenght);
-    this.setState({ visible: false})
+<form #formRef="ngForm">
+  <input name="username" [(ngModel)]="username" required>
+  <button [disabled]="formRef.invalid">Отправить</button>
+</form>
 
-    setTimeout(() => {
-        this.setState({
-            answer: this.answers[randomIndex],
-            visible: true
-        })
-    }, 400)
+export class AppComponent {
+  username: string = '';
 }
 
-getPrediction = () => {
-    if (this.props.mode === "shake") {
-      this.setState({ shaking: true });
- 
-      setTimeout(() => {
-        const randomIndex = Math.floor(Math.random() * this.answers.length);
-        this.setState({
-          answer: this.answers[randomIndex],
-          shaking: false
-        });
-      }, 500);
-    }
-    else {
-      this.setState({ visible: false });
-      setTimeout(() => {
-        const randomIndex = Math.floor(Math.random() * this.answers.length);
- 
-        this.setState({
-          answer: this.answers[randomIndex],
-        });
-        {/*Дополнительная задержка, чтьбы успело отработать плавное пояление текста*/}
-        setTimeout(() => {
-          this.setState({visible:true});
-        }, 100)
-      }, 300);
-    }
-  };
+<form #formRef="ngForm" (ngSubmit)="onSubmit(formRef)">
+  <input name="username" [(ngModel)]="username" required>
+  <button type="submit">Отправить</button>
+</form>
+
+onSubmit(form: any) {
+  console.log(form.value);
+}
