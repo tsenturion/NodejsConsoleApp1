@@ -1,55 +1,89 @@
-<p>{{ name | uppercase }}</p>
-export class AppComponent {
-  name: string = 'angular';
-}
+import { Observable } from 'rxjs';
 
-<p>{{ name | lowercase }}</p>
-<p>{{ name | titlecase }}</p>
-<p>{{ 1234.567 | number:'1.2-2' }}</p>
-<p>{{ price | currency }}</p>
-price: number = 1000;
-<p>{{ price | currency:'USD':'symbol' }}</p>
+const observable = new Observable(observer => {
+  observer.next(1);
+  observer.next(2);
+  observer.next(3);
+  observer.complete();
+});
 
-<p>{{ today | date }}</p>
-today: Date = new Date();
-<p>{{ today | date:'dd.MM.yyyy' }}</p>
+observable.subscribe({
+  next: value => console.log(value),
+  error: err => console.error(err),
+  complete: () => console.log('Завершено')
+});
 
-<pre>{{ user | json }}</pre>
+
+import { map } from 'rxjs/operators';
+
+observable.pipe(
+  map(value => value * 2)
+).subscribe(result => console.log(result));
+
+import { filter } from 'rxjs/operators';
+
+observable.pipe(
+  filter(value => value > 1)
+).subscribe(result => console.log(result));
+
+import { switchMap } from 'rxjs/operators';
+
+source$.pipe(
+  switchMap(value => this.http.get(`/api/${value}`))
+).subscribe(data => console.log(data));
+
+
+import { Subject } from 'rxjs';
+
+const subject = new Subject<number>();
+
+subject.subscribe(value => console.log('A:', value));
+subject.subscribe(value => console.log('B:', value));
+
+subject.next(1);
+subject.next(2);
+
+import { BehaviorSubject } from 'rxjs';
+
+const subject = new BehaviorSubject<number>(0);
+
+subject.subscribe(value => console.log(value));
+subject.next(1);
+
+const subscription = observable.subscribe();
+
+subscription.unsubscribe();
 
 <p>{{ data$ | async }}</p>
 
-import { Pipe, PipeTransform } from '@angular/core';
+import { debounceTime } from 'rxjs/operators';
 
-@Pipe({
-  name: 'reverse'
-})
-export class ReversePipe implements PipeTransform {
-  transform(value: string): string {
-    return value.split('').reverse().join('');
-  }
-}
+input$.pipe(
+  debounceTime(300)
+).subscribe(value => console.log(value));
 
-<p>{{ 'Angular' | reverse }}</p>
+import { distinctUntilChanged } from 'rxjs/operators';
 
-
-transform(value: string, uppercase: boolean): string {
-  let result = value.split('').reverse().join('');
-  return uppercase ? result.toUpperCase() : result;
-}
-<p>{{ 'Angular' | reverse:true }}</p>
-
-@Pipe({
-  name: 'example',
-  pure: true
-})
-
-@Pipe({
-  name: 'example',
-  pure: false
-})
-
-//ошибка
-<p>{{ getData() }}</p>
+observable.pipe(
+  distinctUntilChanged()
+).subscribe();
 
 
-<p>{{ name | lowercase | titlecase }}</p>
+this.form.valueChanges.pipe(
+  debounceTime(300),
+  distinctUntilChanged()
+).subscribe(value => {
+  console.log(value);
+});
+
+
+//ошибка 
+this.http.get('/api').subscribe(data => {
+  this.http.get('/api2').subscribe(result => {
+    console.log(result);
+  });
+});
+
+this.http.get('/api').pipe(
+  switchMap(() => this.http.get('/api2'))
+).subscribe(result => console.log(result));
