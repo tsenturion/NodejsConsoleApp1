@@ -1,65 +1,44 @@
-fetch("https://jsonplaceholder.typicode.com/todos/1")
-    .then((response) => response.json())
-    .then((data) => {
-        console.log(data);
-    });
+{this.state.visible && (
+    <p key={this.state.answer} className="fade-in">{this.state.answer}</p>
+)}
 
-import { useEffect, useState } from "react";
-function App() {
-    const [users, setUsers] = useState([]);
-    useEffect(() => {
-        fetch("https://jsonplaceholder.typicode.com/users")
-            .then((response) => response.json())
-            .then((data) => setUsers(data));     
-    }, []);
-    return (
-        <div>
-            <h1>Users</h1>
-            <ul>
-                {users.map((user) => (
-                    <li key={user.id}>{user.name}</li>
-                ))}
-            </ul>
-        </div>
-    );
+
+getPrediction = () => {
+    const randomIndex = Math.floor(Math.random() * this.answers.lenght);
+    this.setState({ visible: false})
+
+    setTimeout(() => {
+        this.setState({
+            answer: this.answers[randomIndex],
+            visible: true
+        })
+    }, 400)
 }
 
-function App() {
-    const [users, setUsers] = useState([]);
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        fetch("https://jsonplaceholder.typicode.com/users")
-        .then((response) => response.json())
-            .then((data) => {
-                setUsers(data);
-                setLoading(false);
-            });
-    }, []);
-    
-    if (loading) {
-        return <div>Loading...</div>;
+getPrediction = () => {
+    if (this.props.mode === "shake") {
+      this.setState({ shaking: true });
+ 
+      setTimeout(() => {
+        const randomIndex = Math.floor(Math.random() * this.answers.length);
+        this.setState({
+          answer: this.answers[randomIndex],
+          shaking: false
+        });
+      }, 500);
     }
-
-    return (
-        <div>
-            <h1>Users</h1>
-            <ul>
-                {users.map((user) => (
-                    <li key={user.id}>{user.name}</li>
-                ))}
-            </ul>
-        </div>
-    );
-}
-
-if (!response.ok) {
-    throw new Error("Network response was not ok");
-}
-
-.catch((err) => setError(err.message));
-
-useEffect(() => {
-    async function fetchData() {
-        const res = await
-})
+    else {
+      this.setState({ visible: false });
+      setTimeout(() => {
+        const randomIndex = Math.floor(Math.random() * this.answers.length);
+ 
+        this.setState({
+          answer: this.answers[randomIndex],
+        });
+        {/*Дополнительная задержка, чтьбы успело отработать плавное пояление текста*/}
+        setTimeout(() => {
+          this.setState({visible:true});
+        }, 100)
+      }, 300);
+    }
+  };
