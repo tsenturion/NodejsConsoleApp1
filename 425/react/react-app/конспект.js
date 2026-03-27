@@ -1,89 +1,65 @@
-import { Observable } from 'rxjs';
+export class AppComponent {
+  count: number = 0;
 
-const observable = new Observable(observer => {
-  observer.next(1);
-  observer.next(2);
-  observer.next(3);
-  observer.complete();
-});
+  increment() {
+    this.count++;
+  }
+}
 
-observable.subscribe({
-  next: value => console.log(value),
-  error: err => console.error(err),
-  complete: () => console.log('Завершено')
-});
+@Injectable({
+  providedIn: 'root'
+})
+export class CounterService {
+  count: number = 0;
 
-
-import { map } from 'rxjs/operators';
-
-observable.pipe(
-  map(value => value * 2)
-).subscribe(result => console.log(result));
-
-import { filter } from 'rxjs/operators';
-
-observable.pipe(
-  filter(value => value > 1)
-).subscribe(result => console.log(result));
-
-import { switchMap } from 'rxjs/operators';
-
-source$.pipe(
-  switchMap(value => this.http.get(`/api/${value}`))
-).subscribe(data => console.log(data));
+  increment() {
+    this.count++;
+  }
+}
+constructor(private counterService: CounterService) {}
 
 
-import { Subject } from 'rxjs';
+import { createAction } from '@ngrx/store';
 
-const subject = new Subject<number>();
-
-subject.subscribe(value => console.log('A:', value));
-subject.subscribe(value => console.log('B:', value));
-
-subject.next(1);
-subject.next(2);
-
-import { BehaviorSubject } from 'rxjs';
-
-const subject = new BehaviorSubject<number>(0);
-
-subject.subscribe(value => console.log(value));
-subject.next(1);
-
-const subscription = observable.subscribe();
-
-subscription.unsubscribe();
-
-<p>{{ data$ | async }}</p>
-
-import { debounceTime } from 'rxjs/operators';
-
-input$.pipe(
-  debounceTime(300)
-).subscribe(value => console.log(value));
-
-import { distinctUntilChanged } from 'rxjs/operators';
-
-observable.pipe(
-  distinctUntilChanged()
-).subscribe();
+export const increment = createAction('[Counter] Increment');
 
 
-this.form.valueChanges.pipe(
-  debounceTime(300),
-  distinctUntilChanged()
-).subscribe(value => {
+import { createReducer, on } from '@ngrx/store';
+
+export const initialState = { count: 0 };
+
+export const counterReducer = createReducer(
+  initialState,
+  on(increment, state => ({ count: state.count + 1 }))
+);
+
+import { Store } from '@ngrx/store';
+
+constructor(private store: Store<{ count: number }>) {}
+this.store.dispatch(increment());
+
+this.store.select('count').subscribe(value => {
   console.log(value);
 });
 
+import { createEffect, ofType } from '@ngrx/effects';
 
-//ошибка 
-this.http.get('/api').subscribe(data => {
-  this.http.get('/api2').subscribe(result => {
-    console.log(result);
-  });
-});
+loadUsers$ = createEffect(() =>
+  this.actions$.pipe(
+    ofType(loadUsers),
+    switchMap(() => this.http.get('/api/users')
+      .pipe(
+        map(users => loadUsersSuccess({ users }))
+      )
+    )
+  )
+);
 
-this.http.get('/api').pipe(
-  switchMap(() => this.http.get('/api2'))
-).subscribe(result => console.log(result));
+import { createSelector } from '@ngrx/store';
+
+export const selectCount = (state: any) => state.count;
+
+export const doubleCount = createSelector(
+  selectCount,
+  count => count * 2
+);
