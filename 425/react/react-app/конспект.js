@@ -1,88 +1,55 @@
-import { FormsModule } from '@angular/forms';
-
-@NgModule({
-  imports: [FormsModule]
-})
-export class AppModule {}
-
-<form #formRef="ngForm">
-  <input name="username" [(ngModel)]="username" required>
-  <button [disabled]="formRef.invalid">Отправить</button>
-</form>
-
+<p>{{ name | uppercase }}</p>
 export class AppComponent {
-  username: string = '';
+  name: string = 'angular';
 }
 
-<form #formRef="ngForm" (ngSubmit)="onSubmit(formRef)">
-  <input name="username" [(ngModel)]="username" required>
-  <button type="submit">Отправить</button>
-</form>
+<p>{{ name | lowercase }}</p>
+<p>{{ name | titlecase }}</p>
+<p>{{ 1234.567 | number:'1.2-2' }}</p>
+<p>{{ price | currency }}</p>
+price: number = 1000;
+<p>{{ price | currency:'USD':'symbol' }}</p>
 
-onSubmit(form: any) {
-  console.log(form.value);
-}
+<p>{{ today | date }}</p>
+today: Date = new Date();
+<p>{{ today | date:'dd.MM.yyyy' }}</p>
 
+<pre>{{ user | json }}</pre>
 
-import { ReactiveFormsModule } from '@angular/forms';
+<p>{{ data$ | async }}</p>
 
-@NgModule({
-  imports: [ReactiveFormsModule]
+import { Pipe, PipeTransform } from '@angular/core';
+
+@Pipe({
+  name: 'reverse'
 })
-export class AppModule {}
-
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-
-export class AppComponent {
-  form = new FormGroup({
-    username: new FormControl('', Validators.required),
-    email: new FormControl('', [Validators.required, Validators.email])
-  });
+export class ReversePipe implements PipeTransform {
+  transform(value: string): string {
+    return value.split('').reverse().join('');
+  }
 }
 
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
-  <input formControlName="username">
-  <input formControlName="email">
-  <button [disabled]="form.invalid">Отправить</button>
-</form>
+<p>{{ 'Angular' | reverse }}</p>
 
-onSubmit() {
-  console.log(this.form.value);
+
+transform(value: string, uppercase: boolean): string {
+  let result = value.split('').reverse().join('');
+  return uppercase ? result.toUpperCase() : result;
 }
+<p>{{ 'Angular' | reverse:true }}</p>
 
-username: new FormControl('', [
-  Validators.required,
-  Validators.minLength(3)
-])
+@Pipe({
+  name: 'example',
+  pure: true
+})
 
-<input formControlName="username">
-<div *ngIf="form.get('username')?.invalid && form.get('username')?.touched">
-  Ошибка в поле username
-</div>
+@Pipe({
+  name: 'example',
+  pure: false
+})
 
-import { AbstractControl } from '@angular/forms';
-
-export function forbiddenName(control: AbstractControl) {
-  return control.value === 'admin' ? { forbidden: true } : null;
-}
-
-username: new FormControl('', [
-  Validators.required,
-  forbiddenName
-])
+//ошибка
+<p>{{ getData() }}</p>
 
 
-import { FormBuilder } from '@angular/forms';
-
-constructor(private fb: FormBuilder) {}
-
-form = this.fb.group({
-  username: ['', Validators.required],
-  email: ['', Validators.email]
-});
-
-this.form.addControl('age', new FormControl(''));
-
-this.form.valueChanges.subscribe(value => {
-  console.log(value);
-});
+<p>{{ name | lowercase | titlecase }}</p>
