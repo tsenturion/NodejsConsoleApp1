@@ -1,65 +1,124 @@
-export class AppComponent {
-  count: number = 0;
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-  increment() {
-    this.count++;
-  }
+function Home() {
+  return <h1>Главная</h1>;
 }
 
-@Injectable({
-  providedIn: 'root'
-})
-export class CounterService {
-  count: number = 0;
-
-  increment() {
-    this.count++;
-  }
+function About() {
+  return <h1>О нас</h1>;
 }
-constructor(private counterService: CounterService) {}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
 
 
-import { createAction } from '@ngrx/store';
+import { Link } from "react-router-dom";
 
-export const increment = createAction('[Counter] Increment');
+function Navigation() {
+  return (
+    <nav>
+      <Link to="/">Главная</Link>
+      <Link to="/about">О нас</Link>
+    </nav>
+  );
+}
+
+function Users() {
+  return (
+    <div>
+      <h1>Пользователи</h1>
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/users" element={<Users />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
+<Route path="/users" element={<Users />}>
+  <Route path="profile" element={<h2>Профиль</h2>} />
+</Route>
+import { Outlet } from "react-router-dom";
+
+function Users() {
+  return (
+    <div>
+      <h1>Пользователи</h1>
+      <Outlet />
+    </div>
+  );
+}
+
+<Route path="/users/:id" element={<User />} />
+import { useParams } from "react-router-dom";
+
+function User() {
+
+  const { id } = useParams();
+
+  return <h1>Пользователь {id}</h1>;
+}
+
+import { useNavigate } from "react-router-dom";
+
+function App() {
+
+  const navigate = useNavigate();
+
+  function goHome() {
+    navigate("/");
+  }
+
+  return (
+    <button onClick={goHome}>
+      На главную
+    </button>
+  );
+}
+
+<Route path="*" element={<h1>Страница не найдена</h1>} />
 
 
-import { createReducer, on } from '@ngrx/store';
+function PrivateRoute({ isAuth, children }) {
+  return isAuth ? children : <h1>Нет доступа</h1>;
+}
+<Route
+  path="/profile"
+  element={
+    <PrivateRoute isAuth={true}>
+      <h1>Профиль</h1>
+    </PrivateRoute>
+  }
+/>
 
-export const initialState = { count: 0 };
+/search?q=react
+import { useSearchParams } from "react-router-dom";
 
-export const counterReducer = createReducer(
-  initialState,
-  on(increment, state => ({ count: state.count + 1 }))
-);
+function Search() {
 
-import { Store } from '@ngrx/store';
+  const [params] = useSearchParams();
 
-constructor(private store: Store<{ count: number }>) {}
-this.store.dispatch(increment());
+  const query = params.get("q");
 
-this.store.select('count').subscribe(value => {
-  console.log(value);
-});
+  return <p>Поиск: {query}</p>;
+}
 
-import { createEffect, ofType } from '@ngrx/effects';
+const routes = [
+  { path: "/", element: <Home /> },
+  { path: "/about", element: <About /> }
+];
 
-loadUsers$ = createEffect(() =>
-  this.actions$.pipe(
-    ofType(loadUsers),
-    switchMap(() => this.http.get('/api/users')
-      .pipe(
-        map(users => loadUsersSuccess({ users }))
-      )
-    )
-  )
-);
-
-import { createSelector } from '@ngrx/store';
-
-export const selectCount = (state: any) => state.count;
-
-export const doubleCount = createSelector(
-  selectCount,
-  count => count * 2
-);
+<Route path="/users/:id" element={<User />} />
