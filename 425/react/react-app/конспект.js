@@ -1,124 +1,119 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-
-function Home() {
-  return <h1>Главная</h1>;
-}
-
-function About() {
-  return <h1>О нас</h1>;
-}
-
 function App() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-      </Routes>
-    </BrowserRouter>
-  );
+  const [user, setUser] = useState(null);
+
+  return <Layout user={user} />;
 }
 
-
-import { Link } from "react-router-dom";
-
-function Navigation() {
-  return (
-    <nav>
-      <Link to="/">Главная</Link>
-      <Link to="/about">О нас</Link>
-    </nav>
-  );
+function Layout({ user }) {
+  return <Header user={user} />;
 }
 
-function Users() {
-  return (
-    <div>
-      <h1>Пользователи</h1>
-    </div>
-  );
+function Header({ user }) {
+  return <Profile user={user} />;
 }
 
-function App() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/users" element={<Users />} />
-      </Routes>
-    </BrowserRouter>
-  );
-}
-<Route path="/users" element={<Users />}>
-  <Route path="profile" element={<h2>Профиль</h2>} />
-</Route>
-import { Outlet } from "react-router-dom";
-
-function Users() {
-  return (
-    <div>
-      <h1>Пользователи</h1>
-      <Outlet />
-    </div>
-  );
-}
-
-<Route path="/users/:id" element={<User />} />
-import { useParams } from "react-router-dom";
-
-function User() {
-
-  const { id } = useParams();
-
-  return <h1>Пользователь {id}</h1>;
-}
-
-import { useNavigate } from "react-router-dom";
 
 function App() {
 
-  const navigate = useNavigate();
+  const [count, setCount] = useState(0);
 
-  function goHome() {
-    navigate("/");
+  return (
+    <>
+      <Counter count={count} setCount={setCount} />
+      <Counter count={count} setCount={setCount} />
+    </>
+  );
+}
+
+import { createContext, useContext, useState } from "react";
+
+const UserContext = createContext();
+
+function App() {
+
+  const [user, setUser] = useState("Анна");
+
+  return (
+    <UserContext.Provider value={user}>
+      <Profile />
+    </UserContext.Provider>
+  );
+}
+
+function Profile() {
+
+  const user = useContext(UserContext);
+
+  return <h1>{user}</h1>;
+}
+
+
+import { useReducer } from "react";
+
+function reducer(state, action) {
+  switch (action.type) {
+    case "increment":
+      return { count: state.count + 1 };
+    case "decrement":
+      return { count: state.count - 1 };
+    default:
+      return state;
   }
+}
+
+function App() {
+
+  const [state, dispatch] = useReducer(reducer, { count: 0 });
 
   return (
-    <button onClick={goHome}>
-      На главную
+    <div>
+      <p>{state.count}</p>
+      <button onClick={() => dispatch({ type: "increment" })}>
+        +
+      </button>
+    </div>
+  );
+}
+
+const initialState = { count: 0 };
+
+function reducer(state = initialState, action) {
+  switch (action.type) {
+    case "increment":
+      return { count: state.count + 1 };
+    default:
+      return state;
+  }
+}
+
+import create from "zustand";
+
+const useStore = create((set) => ({
+  count: 0,
+  increment: () => set((state) => ({ count: state.count + 1 }))
+}));
+
+function App() {
+
+  const { count, increment } = useStore();
+
+  return (
+    <button onClick={increment}>
+      {count}
     </button>
   );
 }
 
-<Route path="*" element={<h1>Страница не найдена</h1>} />
-
-
-function PrivateRoute({ isAuth, children }) {
-  return isAuth ? children : <h1>Нет доступа</h1>;
-}
-<Route
-  path="/profile"
-  element={
-    <PrivateRoute isAuth={true}>
-      <h1>Профиль</h1>
-    </PrivateRoute>
+const state = {
+  users: {
+    1: { id: 1, name: "Анна" },
+    2: { id: 2, name: "Иван" }
   }
-/>
+};
 
-/search?q=react
-import { useSearchParams } from "react-router-dom";
 
-function Search() {
-
-  const [params] = useSearchParams();
-
-  const query = params.get("q");
-
-  return <p>Поиск: {query}</p>;
-}
-
-const routes = [
-  { path: "/", element: <Home /> },
-  { path: "/about", element: <About /> }
-];
-
-<Route path="/users/:id" element={<User />} />
+useEffect(() => {
+  fetch("/api/users")
+    .then((res) => res.json())
+    .then((data) => setUsers(data));
+}, []);
