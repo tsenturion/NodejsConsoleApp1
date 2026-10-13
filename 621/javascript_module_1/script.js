@@ -1,7 +1,23 @@
-const calculateDiscount = (price, discount) => {
-    return price - price * discount / 100;
-};
+const productName = "Клавиатура";
+const price = 3500;
+const quantity = 2;
 
-const finalPrice = calculateDiscount(1000, 15);
+function calculateTotal(price, quantity) {
+    return price * quantity;
+}
 
-console.log(finalPrice);
+function applyDiscount(total) {
+    if (total >= 5000) {
+        return total * 0.9;
+    }
+
+    return total;
+}
+
+const total = calculateTotal(price, quantity);
+const finalPrice = applyDiscount(total);
+
+console.log("Товар:", productName);
+console.log("Количество:", quantity);
+console.log("Стоимость без скидки:", total);
+console.log("Стоимость с учётом скидки:", finalPrice);
