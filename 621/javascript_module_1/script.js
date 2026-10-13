@@ -1,3 +1,5 @@
-for (let i = 1; i <= 5; i++) {
-    console.log(i);
+const subjects = ["Python", "JavaScript", "SQL"];
+
+for (const subject of subjects) {
+    console.log(subject);
 }
