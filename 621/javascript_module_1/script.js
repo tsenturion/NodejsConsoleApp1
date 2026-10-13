@@ -1,13 +1,10 @@
-const age = 20;
-const price = 149.99;
-const studentName = "Алексей";
-const isActive = true;
-const emptyValue = null;
-let result;
+const firstValue = "10";
+const secondValue = 5;
 
-console.log(typeof age);
-console.log(typeof price);
-console.log(typeof studentName);
-console.log(typeof isActive);
-console.log(typeof emptyValue);
-console.log(typeof result);
+console.log(firstValue + secondValue);
+console.log(firstValue - secondValue);
+
+const convertedValue = Number(firstValue);
+
+console.log(convertedValue + secondValue);
+console.log(typeof convertedValue);
