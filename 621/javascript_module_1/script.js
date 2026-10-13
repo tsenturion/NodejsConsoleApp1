@@ -1,12 +1,8 @@
-const enteredAge = "18";
+const isRegistered = true;
+const age = 21;
 
-console.log(enteredAge == 18);
-console.log(enteredAge === 18);
-
-const age = Number(enteredAge);
-
-if (age >= 18) {
-    console.log("Доступ разрешён");
+if (isRegistered && age >= 18) {
+    console.log("Пользователь может продолжить");
 } else {
-    console.log("Доступ запрещён");
+    console.log("Условия доступа не выполнены");
 }
