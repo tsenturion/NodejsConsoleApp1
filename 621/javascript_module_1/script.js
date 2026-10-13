@@ -1,9 +1,7 @@
-const student = "Алексей";
-let age = 20;
+console.log("Привет, мир!");
 
-console.log("Студент:", student);
-console.log("Возраст:", age);
+const firstNumber = 10;
+const secondNumber = 5;
 
-age = age + 1;
-
-console.log("Возраст через год:", age);
+console.log(firstNumber + secondNumber);
+console.log(firstNumber * secondNumber);
