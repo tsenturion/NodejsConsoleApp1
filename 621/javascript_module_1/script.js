@@ -1,11 +1,15 @@
-const score = 87;
+const command = "start";
 
-if (score >= 90) {
-    console.log("Отличный результат");
-} else if (score >= 75) {
-    console.log("Хороший результат");
-} else if (score >= 60) {
-    console.log("Зачёт");
-} else {
-    console.log("Необходимо повторить материал");
+switch (command) {
+    case "start":
+        console.log("Запуск программы");
+        break;
+    case "stop":
+        console.log("Остановка программы");
+        break;
+    case "restart":
+        console.log("Перезапуск программы");
+        break;
+    default:
+        console.log("Неизвестная команда");
 }
