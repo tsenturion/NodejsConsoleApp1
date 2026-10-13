@@ -1,8 +1,10 @@
-let attempts = 0;
-
-while (attempts < 3) {
-    console.log("Попытка входа:", attempts + 1);
-    attempts++;
+function calculateTotal(price, quantity) {
+    const total = price * quantity;
+    return total;
 }
 
-console.log("Проверка завершена");
+const firstOrder = calculateTotal(100, 3);
+const secondOrder = calculateTotal(250, 2);
+
+console.log(firstOrder);
+console.log(secondOrder);
