@@ -1,8 +1,16 @@
-console.log("JavaScript выполняется");
-console.log("Текущая среда предоставляет свои API");
+const studentName = "Мария";
+let score = 80;
 
-if (typeof document !== "undefined") {
-    console.log("Код выполняется в браузере");
-} else {
-    console.log("Код выполняется без браузерного DOM");
-}
+score = 95;
+
+console.log(studentName);
+console.log(score);
+
+const student = {
+    name: "Иван",
+    age: 19
+};
+
+student.age = 20;
+
+console.log(student.age);
