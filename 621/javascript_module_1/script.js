@@ -1,16 +1,13 @@
-const studentName = "Мария";
-let score = 80;
+const age = 20;
+const price = 149.99;
+const studentName = "Алексей";
+const isActive = true;
+const emptyValue = null;
+let result;
 
-score = 95;
-
-console.log(studentName);
-console.log(score);
-
-const student = {
-    name: "Иван",
-    age: 19
-};
-
-student.age = 20;
-
-console.log(student.age);
+console.log(typeof age);
+console.log(typeof price);
+console.log(typeof studentName);
+console.log(typeof isActive);
+console.log(typeof emptyValue);
+console.log(typeof result);
