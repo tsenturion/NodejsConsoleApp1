@@ -1,8 +1,12 @@
-const inputValue = "25";
-const amount = Number(inputValue);
+const enteredAge = "18";
 
-if (Number.isFinite(amount)) {
-    console.log(amount + 10);
+console.log(enteredAge == 18);
+console.log(enteredAge === 18);
+
+const age = Number(enteredAge);
+
+if (age >= 18) {
+    console.log("Доступ разрешён");
 } else {
-    console.log("Введено некорректное число");
+    console.log("Доступ запрещён");
 }
