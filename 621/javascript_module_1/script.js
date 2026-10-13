@@ -1,5 +1,8 @@
-const subjects = ["Python", "JavaScript", "SQL"];
+let attempts = 0;
 
-for (const subject of subjects) {
-    console.log(subject);
+while (attempts < 3) {
+    console.log("Попытка входа:", attempts + 1);
+    attempts++;
 }
+
+console.log("Проверка завершена");
