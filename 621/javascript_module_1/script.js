@@ -1,10 +1,7 @@
-function calculateTotal(price, quantity) {
-    const total = price * quantity;
-    return total;
-}
+const calculateDiscount = (price, discount) => {
+    return price - price * discount / 100;
+};
 
-const firstOrder = calculateTotal(100, 3);
-const secondOrder = calculateTotal(250, 2);
+const finalPrice = calculateDiscount(1000, 15);
 
-console.log(firstOrder);
-console.log(secondOrder);
+console.log(finalPrice);
