@@ -1,8 +1,11 @@
-const isRegistered = true;
-const age = 21;
+const score = 87;
 
-if (isRegistered && age >= 18) {
-    console.log("Пользователь может продолжить");
+if (score >= 90) {
+    console.log("Отличный результат");
+} else if (score >= 75) {
+    console.log("Хороший результат");
+} else if (score >= 60) {
+    console.log("Зачёт");
 } else {
-    console.log("Условия доступа не выполнены");
+    console.log("Необходимо повторить материал");
 }
