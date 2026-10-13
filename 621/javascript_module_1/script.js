@@ -1,10 +1,8 @@
-const firstValue = "10";
-const secondValue = 5;
+const inputValue = "25";
+const amount = Number(inputValue);
 
-console.log(firstValue + secondValue);
-console.log(firstValue - secondValue);
-
-const convertedValue = Number(firstValue);
-
-console.log(convertedValue + secondValue);
-console.log(typeof convertedValue);
+if (Number.isFinite(amount)) {
+    console.log(amount + 10);
+} else {
+    console.log("Введено некорректное число");
+}
