@@ -1,7 +1,6 @@
-function processNumber(number, operation) {
-    return operation(number);
-}
+const prices = [1000, 1500, 2000];
 
-const result = processNumber(10, number => number + 5);
-
-console.log(result); // 15
+prices.forEach(price => {
+    const newPrice = price * 0.9;
+    console.log(newPrice);
+});
