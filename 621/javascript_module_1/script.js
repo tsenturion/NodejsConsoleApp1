@@ -1,5 +1,5 @@
-const numbers = [2, 4, 6, 8];
+const ages = [15, 17, 20, 16];
 
-const result = numbers.find(number => number > 100);
+const hasAdult = ages.some(age => age >= 18);
 
-console.log(result); // undefined
+console.log(hasAdult); // true
