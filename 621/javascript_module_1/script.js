@@ -1,6 +1,6 @@
-const names = ["Яна", "Анна", "Олег", "Борис"];
+const numbers = [10, 20, 30, 40, 50];
 
-names.sort((a, b) => a.localeCompare(b, "ru"));
+const result = numbers.slice(1, 4);
 
-console.log(names);
-// ["Анна", "Борис", "Олег", "Яна"]
+console.log(result);  // [20, 30, 40]
+console.log(numbers); // [10, 20, 30, 40, 50]
