@@ -1,6 +1,6 @@
-const double = number => number * 2;
+const multiply = (a, b) => a * b;
 
-const isPositive = number => number > 0;
+const getMessage = () => "Привет, JavaScript!";
 
-console.log(double(7));      // 14
-console.log(isPositive(-3)); // false
+console.log(multiply(4, 6)); // 24
+console.log(getMessage());   // Привет, JavaScript!
