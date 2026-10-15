@@ -1,6 +1,6 @@
-const numbers = [10, 20, 30, 40, 50];
+const numbers = [10, 40, 50];
 
-const removed = numbers.splice(1, 3);
+numbers.splice(1, 0, 20, 30);
 
-console.log(removed); // [20, 30, 40]
-console.log(numbers); // [10, 50]
+console.log(numbers);
+// [10, 20, 30, 40, 50]
