@@ -1,7 +1,9 @@
-function calculateSum(a, b) {
-    return a + b;
+const double = number => number * 2;
+const square = number => number * number;
+
+function processNumber(number, operation) {
+    return operation(number);
 }
 
-console.log(calculateSum(5, 10));     // 15
-console.log(calculateSum(5, 10, 20)); // 15
-console.log(calculateSum(5));         // NaN
+console.log(processNumber(5, double)); // 10
+console.log(processNumber(5, square)); // 25
