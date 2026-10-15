@@ -1,5 +1,6 @@
-const products = ["Ноутбук", "Телефон", "Планшет"];
+const numbers = [1, 2, 3];
 
-products.forEach((product, index) => {
-    console.log(`${index + 1}. ${product}`);
-});
+const result = numbers.forEach(number => number * 2);
+
+console.log(result); // undefined
+console.log(numbers); // [1, 2, 3]
