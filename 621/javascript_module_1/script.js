@@ -1,6 +1,6 @@
-const numbers = [10, 40, 50];
+const colors = ["red", "green", "blue"];
 
-numbers.splice(1, 0, 20, 30);
+colors.splice(1, 1, "yellow");
 
-console.log(numbers);
-// [10, 20, 30, 40, 50]
+console.log(colors);
+// ["red", "yellow", "blue"]
