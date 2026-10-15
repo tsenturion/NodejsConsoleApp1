@@ -1,5 +1,6 @@
-const prices = [100, 200, 300];
+const students = ["Anna", "Ivan", "Maria"];
 
-prices[1] = 250;
+students.push("Alex");
 
-console.log(prices); // [100, 250, 300]
+console.log(students);
+// ["Anna", "Ivan", "Maria", "Alex"]
