@@ -1,8 +1,5 @@
-const prices = [100, 200, 300];
+const fruits = ["apple", "banana", "orange"];
 
-for (let i = 0; i < prices.length; i++) {
-    prices[i] = prices[i] * 2;
+for (const fruit of fruits) {
+    console.log(fruit);
 }
-
-console.log(prices);
-// [200, 400, 600]
