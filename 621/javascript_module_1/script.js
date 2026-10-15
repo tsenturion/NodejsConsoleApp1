@@ -1,5 +1,5 @@
-const scores = [75, 88, 92, 64];
+const scores = [75, 88, 42, 91];
 
 const allPassed = scores.every(score => score >= 60);
 
-console.log(allPassed); // true
+console.log(allPassed); // false
