@@ -1,11 +1,8 @@
-let money = 950;
-let price = 250;
-let count = 0;
+let number = 10;
 
-while (money >= price) {
-    money -= price;
-    count++;
+while (number < 5) {
+    console.log(number);
+    number++;
 }
 
-console.log("Куплено товаров:", count);
-console.log("Осталось денег:", money);
+console.log("Цикл завершён");
