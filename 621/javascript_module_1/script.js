@@ -1,6 +1,7 @@
-function greet(name = "Гость") {
-    return `Привет, ${name}!`;
+function calculateSum(a, b) {
+    return a + b;
 }
 
-console.log(greet("Анна")); // Привет, Анна!
-console.log(greet());       // Привет, Гость!
+console.log(calculateSum(5, 10));     // 15
+console.log(calculateSum(5, 10, 20)); // 15
+console.log(calculateSum(5));         // NaN
