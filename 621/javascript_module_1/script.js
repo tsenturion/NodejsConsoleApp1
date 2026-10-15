@@ -1,6 +1,6 @@
-const numbers = [10, 20];
+const fruits = ["apple", "banana", "orange"];
 
-const newLength = numbers.push(30);
+const removedFruit = fruits.pop();
 
-console.log(newLength); // 3
-console.log(numbers);   // [10, 20, 30]
+console.log(removedFruit); // orange
+console.log(fruits);       // ["apple", "banana"]
