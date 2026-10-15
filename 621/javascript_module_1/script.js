@@ -1,3 +1,5 @@
-const numbers = [10, 20, 30, 40, 50];
+const fruits = ["apple", "banana", "orange"];
 
-console.log(numbers);
+console.log(fruits[0]); // apple
+console.log(fruits[1]); // banana
+console.log(fruits[2]); // orange
