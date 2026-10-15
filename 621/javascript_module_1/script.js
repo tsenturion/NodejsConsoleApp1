@@ -1,5 +1,8 @@
-const numbers = [10, 20, 30, 40, 50];
+const numbers = [30, 10, 20];
 
-const lastTwo = numbers.slice(-2);
+const copiedNumbers = numbers.slice();
 
-console.log(lastTwo); // [40, 50]
+copiedNumbers.sort((a, b) => a - b);
+
+console.log(numbers);       // [30, 10, 20]
+console.log(copiedNumbers); // [10, 20, 30]
