@@ -1,8 +1,10 @@
-function calculateSquare(number) {
-    const result = number * number;
-    console.log(result);
+function divide(a, b) {
+    if (b === 0) {
+        return "Деление на ноль невозможно";
+    }
+
+    return a / b;
 }
 
-const answer = calculateSquare(5);
-
-console.log(answer); // undefined
+console.log(divide(20, 4)); // 5
+console.log(divide(20, 0)); // Деление на ноль невозможно
