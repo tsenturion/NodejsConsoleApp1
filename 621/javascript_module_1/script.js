@@ -1,3 +1,6 @@
-const calculateArea = (width, height) => width * height;
+const calculateTotal = (price, quantity) => {
+    const total = price * quantity;
+    return total;
+};
 
-console.log(calculateArea(5, 8)); // 40
+console.log(calculateTotal(150, 4)); // 600
