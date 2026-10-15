@@ -1,5 +1,7 @@
-const purchases = [250, 500, 120, 380];
+const numbers = [10, 20, 30];
 
-const total = purchases.reduce((sum, price) => sum + price, 0);
+const result = numbers.reduce((sum, number) => {
+    return sum + number;
+});
 
-console.log(total); // 1250
+console.log(result); // 60
