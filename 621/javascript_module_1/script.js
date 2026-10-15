@@ -1,8 +1,6 @@
-const words = ["JavaScript", "может", "быть", "удобным"];
+const fruits = ["orange", "apple", "banana"];
 
-const sentence = words.reduce((text, word) => {
-    return text === "" ? word : text + " " + word;
-}, "");
+fruits.sort();
 
-console.log(sentence);
-// JavaScript может быть удобным
+console.log(fruits);
+// ["apple", "banana", "orange"]
