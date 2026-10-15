@@ -1,6 +1,6 @@
-const students = ["Anna", "Ivan", "Maria"];
+const numbers = [1, 2, 3];
 
-students.push("Alex");
+numbers.push(4, 5, 6);
 
-console.log(students);
-// ["Anna", "Ivan", "Maria", "Alex"]
+console.log(numbers);
+// [1, 2, 3, 4, 5, 6]
