@@ -1,8 +1,8 @@
 let number = 10;
 
-while (number < 5) {
-    console.log(number);
+do {
+    console.log("Текущее число:", number);
     number++;
-}
+} while (number < 5);
 
 console.log("Цикл завершён");
