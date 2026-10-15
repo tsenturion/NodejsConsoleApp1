@@ -1,6 +1,6 @@
-const calculateTotal = (price, quantity) => {
-    const total = price * quantity;
-    return total;
-};
+const double = number => number * 2;
 
-console.log(calculateTotal(150, 4)); // 600
+const isPositive = number => number > 0;
+
+console.log(double(7));      // 14
+console.log(isPositive(-3)); // false
