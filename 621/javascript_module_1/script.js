@@ -1,5 +1,5 @@
-const ages = [15, 17, 20, 16];
+const scores = [75, 88, 92, 64];
 
-const hasAdult = ages.some(age => age >= 18);
+const allPassed = scores.every(score => score >= 60);
 
-console.log(hasAdult); // true
+console.log(allPassed); // true
