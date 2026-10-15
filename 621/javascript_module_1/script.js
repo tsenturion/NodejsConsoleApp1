@@ -1,12 +1,18 @@
-const scores = [45, -1, 80, 95, 62, -1, 70];
+function applyDiscount(price) {
+    if (price >= 2000) {
+        return price * 0.8;
+    }
 
-const finalScores = scores
-    .filter(score => score >= 0)
-    .map(score => Math.min(score + 5, 100))
-    .sort((a, b) => b - a);
+    if (price >= 1000) {
+        return price * 0.9;
+    }
 
-console.log(finalScores);
-// [100, 85, 75, 67, 50]
+    return price;
+}
 
-console.log(scores);
-// [45, -1, 80, 95, 62, -1, 70]
+const prices = [500, 1200, 2500, 800];
+
+const discountedPrices = prices.map(applyDiscount);
+
+console.log(discountedPrices);
+// [500, 1080, 2000, 800]
