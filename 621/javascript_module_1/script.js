@@ -1,9 +1,7 @@
 for (let i = 1; i <= 10; i++) {
-    if (i === 7) {
-        break;
+    if (i % 3 === 0) {
+        continue;
     }
 
     console.log(i);
 }
-
-console.log("Поиск завершён");
