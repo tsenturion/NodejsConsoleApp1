@@ -1,4 +1,12 @@
-const numbers = [10, 15, 20, 25, 30];
+const numbers = [2, 5, 2, 8, 5, 10, 8];
 
-console.log(numbers.includes(25)); // true
-console.log(numbers.includes(50)); // false
+const uniqueNumbers = [];
+
+for (const number of numbers) {
+    if (!uniqueNumbers.includes(number)) {
+        uniqueNumbers.push(number);
+    }
+}
+
+console.log(uniqueNumbers);
+// [2, 5, 8, 10]
