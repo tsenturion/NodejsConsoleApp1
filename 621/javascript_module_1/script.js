@@ -1,4 +1,5 @@
-const fruits = ["apple", "banana", "orange"];
+const prices = [100, 200, 300];
 
-console.log(fruits[fruits.length - 1]); // orange
-console.log(fruits.at(-1));             // orange
+prices[1] = 250;
+
+console.log(prices); // [100, 250, 300]
