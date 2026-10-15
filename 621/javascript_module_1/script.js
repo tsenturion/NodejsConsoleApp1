@@ -1,11 +1,13 @@
-const grades = [4, 5, 3, 5, 4, 2];
+const numbers = [10, 15, 20, 25, 30];
 
-let maxGrade = grades[0];
+const target = 25;
+let found = false;
 
-for (const grade of grades) {
-    if (grade > maxGrade) {
-        maxGrade = grade;
+for (const number of numbers) {
+    if (number === target) {
+        found = true;
+        break;
     }
 }
 
-console.log("Максимальная оценка:", maxGrade);
+console.log("Число найдено:", found);
