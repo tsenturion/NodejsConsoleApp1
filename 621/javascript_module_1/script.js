@@ -1,6 +1,6 @@
-const numbers = [1, 2, 3];
+const numbers = [20, 30, 40];
 
-numbers.push(4, 5, 6);
+numbers.unshift(10);
 
 console.log(numbers);
-// [1, 2, 3, 4, 5, 6]
+// [10, 20, 30, 40]
