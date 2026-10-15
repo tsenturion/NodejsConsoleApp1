@@ -1,6 +1,6 @@
-const numbers = [5, 100, 20, 3, 45];
+const prices = [500, 100, 300];
 
-numbers.sort((a, b) => b - a);
+const sortedPrices = prices.sort((a, b) => a - b);
 
-console.log(numbers);
-// [100, 45, 20, 5, 3]
+console.log(sortedPrices); // [100, 300, 500]
+console.log(prices);       // [100, 300, 500]
