@@ -1,6 +1,6 @@
-const multiply = (a, b) => a * b;
+function greet(name = "Гость") {
+    return `Привет, ${name}!`;
+}
 
-const getMessage = () => "Привет, JavaScript!";
-
-console.log(multiply(4, 6)); // 24
-console.log(getMessage());   // Привет, JavaScript!
+console.log(greet("Анна")); // Привет, Анна!
+console.log(greet());       // Привет, Гость!
