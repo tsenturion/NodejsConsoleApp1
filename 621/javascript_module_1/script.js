@@ -1,6 +1,6 @@
-const fruits = ["orange", "apple", "banana"];
+const numbers = [5, 100, 20, 3, 45];
 
-fruits.sort();
+numbers.sort();
 
-console.log(fruits);
-// ["apple", "banana", "orange"]
+console.log(numbers);
+// [100, 20, 3, 45, 5]
