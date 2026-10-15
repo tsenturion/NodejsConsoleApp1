@@ -1,6 +1,6 @@
-const numbers = [1, 2, 3];
+const prices = [1000, 1500, 2000];
 
-const result = numbers.forEach(number => number * 2);
+const discountedPrices = prices.map(price => price * 0.9);
 
-console.log(result); // undefined
-console.log(numbers); // [1, 2, 3]
+console.log(discountedPrices); // [900, 1350, 1800]
+console.log(prices);           // [1000, 1500, 2000]
