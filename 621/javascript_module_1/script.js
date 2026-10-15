@@ -1,6 +1,6 @@
-const fruits = ["apple", "banana", "orange"];
+const students = ["Anna", "Ivan", "Maria"];
 
-const removedFruit = fruits.pop();
+const firstStudent = students.shift();
 
-console.log(removedFruit); // orange
-console.log(fruits);       // ["apple", "banana"]
+console.log(firstStudent); // Anna
+console.log(students);     // ["Ivan", "Maria"]
