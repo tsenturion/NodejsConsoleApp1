@@ -1,5 +1,5 @@
-const numbers = [10, 20, 30, 40];
+const students = ["Anna", "Ivan", "Maria"];
 
-for (let i = 0; i < numbers.length; i++) {
-    console.log(numbers[i]);
+for (let i = 0; i < students.length; i++) {
+    console.log(i + 1, students[i]);
 }
