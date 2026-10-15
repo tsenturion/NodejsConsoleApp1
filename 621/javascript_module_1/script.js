@@ -1,7 +1,8 @@
-const numbers = [2, 3, 4, 5];
+const words = ["JavaScript", "может", "быть", "удобным"];
 
-const product = numbers.reduce((result, number) => {
-    return result * number;
-}, 1);
+const sentence = words.reduce((text, word) => {
+    return text === "" ? word : text + " " + word;
+}, "");
 
-console.log(product); // 120
+console.log(sentence);
+// JavaScript может быть удобным
