@@ -1,10 +1,5 @@
-function divide(a, b) {
-    if (b === 0) {
-        return "Деление на ноль невозможно";
-    }
+const calculateArea = function(width, height) {
+    return width * height;
+};
 
-    return a / b;
-}
-
-console.log(divide(20, 4)); // 5
-console.log(divide(20, 0)); // Деление на ноль невозможно
+console.log(calculateArea(5, 8)); // 40
