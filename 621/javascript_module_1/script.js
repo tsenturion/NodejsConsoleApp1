@@ -1,5 +1,5 @@
-const numbers = [3, 7, 12, 18, 24];
+const numbers = [2, 4, 6, 8];
 
-const result = numbers.find(number => number > 10);
+const result = numbers.find(number => number > 100);
 
-console.log(result); // 12
+console.log(result); // undefined
