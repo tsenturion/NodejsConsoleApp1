@@ -1,5 +1,9 @@
-const fruits = ["apple", "banana", "orange"];
+const numbers = [5, 10, 15, 20];
 
-for (const fruit of fruits) {
-    console.log(fruit);
+let total = 0;
+
+for (const number of numbers) {
+    total += number;
 }
+
+console.log("Сумма:", total); // 50
