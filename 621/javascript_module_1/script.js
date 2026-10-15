@@ -1,6 +1,5 @@
 const numbers = [10, 20, 30, 40, 50];
 
-const result = numbers.slice(1, 4);
+const lastTwo = numbers.slice(-2);
 
-console.log(result);  // [20, 30, 40]
-console.log(numbers); // [10, 20, 30, 40, 50]
+console.log(lastTwo); // [40, 50]
