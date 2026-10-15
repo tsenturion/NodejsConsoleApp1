@@ -1,10 +1,5 @@
-const prices = [120, 250, 380];
+const numbers = [5, 12, 8, 20, 3, 15];
 
-const finalPrices = prices.map(price => {
-    const tax = price * 0.2;
-    const finalPrice = price + tax;
+const result = numbers.filter(number => number > 10);
 
-    return finalPrice;
-});
-
-console.log(finalPrices); // [144, 300, 456]
+console.log(result); // [12, 20, 15]
