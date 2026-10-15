@@ -1,8 +1,8 @@
-function calculatePrice(price, discount) {
-    const discountAmount = price * discount / 100;
-    return price - discountAmount;
+function calculateSquare(number) {
+    const result = number * number;
+    console.log(result);
 }
 
-const result = calculatePrice(2000, 15);
+const answer = calculateSquare(5);
 
-console.log(result); // 1700
+console.log(answer); // undefined
