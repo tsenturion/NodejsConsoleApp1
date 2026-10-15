@@ -1,8 +1,9 @@
-let number = 10;
+for (let i = 1; i <= 10; i++) {
+    if (i === 7) {
+        break;
+    }
 
-do {
-    console.log("Текущее число:", number);
-    number++;
-} while (number < 5);
+    console.log(i);
+}
 
-console.log("Цикл завершён");
+console.log("Поиск завершён");
