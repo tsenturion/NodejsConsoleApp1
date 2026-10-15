@@ -1,8 +1,8 @@
-const numbers = [30, 10, 20];
+const prices = [500, 1200, 800, 2000, 1500];
 
-const copiedNumbers = numbers.slice();
+const total = prices
+    .filter(price => price > 1000)
+    .map(price => price * 0.9)
+    .reduce((sum, price) => sum + price, 0);
 
-copiedNumbers.sort((a, b) => a - b);
-
-console.log(numbers);       // [30, 10, 20]
-console.log(copiedNumbers); // [10, 20, 30]
+console.log(total); // 4230
