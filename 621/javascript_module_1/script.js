@@ -1,5 +1,4 @@
-const scores = [75, 88, 42, 91];
+const numbers = [];
 
-const allPassed = scores.every(score => score >= 60);
-
-console.log(allPassed); // false
+console.log(numbers.some(number => number > 0));  // false
+console.log(numbers.every(number => number > 0)); // true
