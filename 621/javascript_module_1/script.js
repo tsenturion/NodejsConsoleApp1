@@ -1,6 +1,6 @@
-const numbers = [20, 30, 40];
+const numbers = [10, 20];
 
-numbers.unshift(10);
+const newLength = numbers.push(30);
 
-console.log(numbers);
-// [10, 20, 30, 40]
+console.log(newLength); // 3
+console.log(numbers);   // [10, 20, 30]
