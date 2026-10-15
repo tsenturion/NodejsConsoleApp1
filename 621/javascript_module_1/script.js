@@ -1,6 +1,6 @@
 const numbers = [5, 100, 20, 3, 45];
 
-numbers.sort();
+numbers.sort((a, b) => a - b);
 
 console.log(numbers);
-// [100, 20, 3, 45, 5]
+// [3, 5, 20, 45, 100]
