@@ -1,9 +1,11 @@
-const numbers = [5, 10, 15, 20];
+const grades = [4, 5, 3, 5, 4, 2];
 
-let total = 0;
+let maxGrade = grades[0];
 
-for (const number of numbers) {
-    total += number;
+for (const grade of grades) {
+    if (grade > maxGrade) {
+        maxGrade = grade;
+    }
 }
 
-console.log("Сумма:", total); // 50
+console.log("Максимальная оценка:", maxGrade);
