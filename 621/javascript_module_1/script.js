@@ -1,5 +1,8 @@
-const students = ["Anna", "Ivan", "Maria"];
+const prices = [100, 200, 300];
 
-for (let i = 0; i < students.length; i++) {
-    console.log(i + 1, students[i]);
+for (let i = 0; i < prices.length; i++) {
+    prices[i] = prices[i] * 2;
 }
+
+console.log(prices);
+// [200, 400, 600]
