@@ -1,23 +1,13 @@
-const productName = "Клавиатура";
-const price = 3500;
-const quantity = 2;
-
-function calculateTotal(price, quantity) {
-    return price * quantity;
+for (let i = 0; i < 5; i++) {
+    console.log(i);
 }
 
-function applyDiscount(total) {
-    if (total >= 5000) {
-        return total * 0.9;
-    }
-
-    return total;
+for (let i = 0; i <= 10; i += 2) {
+    console.log(i);
 }
 
-const total = calculateTotal(price, quantity);
-const finalPrice = applyDiscount(total);
+for (let i = 5; i >= 1; i--) {
+    console.log(i);
+}
 
-console.log("Товар:", productName);
-console.log("Количество:", quantity);
-console.log("Стоимость без скидки:", total);
-console.log("Стоимость с учётом скидки:", finalPrice);
+console.log("Старт!");
