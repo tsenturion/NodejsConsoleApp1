@@ -1,4 +1,7 @@
-const numbers = [];
+const purchases = [250, 500, 120, 380];
 
-console.log(numbers.some(number => number > 0));  // false
-console.log(numbers.every(number => number > 0)); // true
+const total = purchases.reduce((sum, price) => {
+    return sum + price;
+}, 0);
+
+console.log(total); // 1250
