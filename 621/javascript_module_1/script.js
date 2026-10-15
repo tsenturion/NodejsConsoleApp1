@@ -1,9 +1,7 @@
-const double = number => number * 2;
-const square = number => number * number;
-
 function processNumber(number, operation) {
     return operation(number);
 }
 
-console.log(processNumber(5, double)); // 10
-console.log(processNumber(5, square)); // 25
+const result = processNumber(10, number => number + 5);
+
+console.log(result); // 15
