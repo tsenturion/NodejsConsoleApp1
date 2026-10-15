@@ -1,13 +1,11 @@
-for (let i = 0; i < 5; i++) {
-    console.log(i);
+let money = 950;
+let price = 250;
+let count = 0;
+
+while (money >= price) {
+    money -= price;
+    count++;
 }
 
-for (let i = 0; i <= 10; i += 2) {
-    console.log(i);
-}
-
-for (let i = 5; i >= 1; i--) {
-    console.log(i);
-}
-
-console.log("Старт!");
+console.log("Куплено товаров:", count);
+console.log("Осталось денег:", money);
