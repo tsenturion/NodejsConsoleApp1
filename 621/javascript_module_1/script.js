@@ -1,7 +1,3 @@
-const number = 36;
+const numbers = [10, 20, 30, 40, 50];
 
-for (let i = 1; i <= number; i++) {
-    if (number % i === 0) {
-        console.log(i);
-    }
-}
+console.log(numbers);
