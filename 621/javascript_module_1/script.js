@@ -1,6 +1,5 @@
-const colors = ["red", "green", "blue"];
+const numbers = [10, 20, 30, 40];
 
-colors.splice(1, 1, "yellow");
-
-console.log(colors);
-// ["red", "yellow", "blue"]
+for (let i = 0; i < numbers.length; i++) {
+    console.log(numbers[i]);
+}
