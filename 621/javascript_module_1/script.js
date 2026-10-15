@@ -1,6 +1,6 @@
-const prices = [500, 100, 300];
+const names = ["Яна", "Анна", "Олег", "Борис"];
 
-const sortedPrices = prices.sort((a, b) => a - b);
+names.sort((a, b) => a.localeCompare(b, "ru"));
 
-console.log(sortedPrices); // [100, 300, 500]
-console.log(prices);       // [100, 300, 500]
+console.log(names);
+// ["Анна", "Борис", "Олег", "Яна"]
