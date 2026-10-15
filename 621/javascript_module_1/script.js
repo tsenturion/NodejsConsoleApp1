@@ -1,6 +1,10 @@
-const names = ["anna", "ivan", "maria"];
+const prices = [120, 250, 380];
 
-const upperNames = names.map(name => name.toUpperCase());
+const finalPrices = prices.map(price => {
+    const tax = price * 0.2;
+    const finalPrice = price + tax;
 
-console.log(upperNames);
-// ["ANNA", "IVAN", "MARIA"]
+    return finalPrice;
+});
+
+console.log(finalPrices); // [144, 300, 456]
