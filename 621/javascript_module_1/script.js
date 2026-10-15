@@ -1,7 +1,5 @@
-const numbers = [4, 7, 10, 12, 15, 18, 25];
+const numbers = [3, 7, 12, 18, 24];
 
-const result = numbers.filter(number => {
-    return number >= 10 && number <= 20 && number % 2 === 0;
-});
+const result = numbers.find(number => number > 10);
 
-console.log(result); // [10, 12, 18]
+console.log(result); // 12
