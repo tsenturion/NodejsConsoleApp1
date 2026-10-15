@@ -1,4 +1,4 @@
-const calculateArea = function(width, height) {
+const calculateArea = (width, height) => {
     return width * height;
 };
 
