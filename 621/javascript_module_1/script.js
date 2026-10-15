@@ -1,25 +1,8 @@
-const grades = [5, 4, 3, 5, 5, 2, 4];
-
-let total = 0;
-let excellentCount = 0;
-let hasBadGrade = false;
-
-for (const grade of grades) {
-    total += grade;
-
-    if (grade === 5) {
-        excellentCount++;
-    }
-
-    if (grade === 2) {
-        hasBadGrade = true;
-    }
+function calculatePrice(price, discount) {
+    const discountAmount = price * discount / 100;
+    return price - discountAmount;
 }
 
-const average = total / grades.length;
+const result = calculatePrice(2000, 15);
 
-console.log("Количество оценок:", grades.length);
-console.log("Сумма оценок:", total);
-console.log("Средний балл:", average.toFixed(2));
-console.log("Количество пятёрок:", excellentCount);
-console.log("Есть двойка:", hasBadGrade);
+console.log(result); // 1700
