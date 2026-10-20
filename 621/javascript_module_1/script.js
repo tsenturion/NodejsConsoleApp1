@@ -1,4 +1,2 @@
-const value = "0";
-
-console.log(value == 0);  // true
-console.log(value === 0); // false
+console.log(null == undefined);  // true
+console.log(null === undefined); // false
