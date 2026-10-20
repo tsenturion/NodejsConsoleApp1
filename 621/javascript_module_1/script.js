@@ -1,9 +1,5 @@
-const functions = [];
+console.log(5 === 5);   // true
+console.log(5 === "5"); // false
 
-for (let i = 0; i < 3; i++) {
-    functions.push(() => i);
-}
-
-console.log(functions[0]()); // 0
-console.log(functions[1]()); // 1
-console.log(functions[2]()); // 2
+console.log(true === true); // true
+console.log(true === 1);    // false
