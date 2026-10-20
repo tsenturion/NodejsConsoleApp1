@@ -1,9 +1,17 @@
-const settings = {
-    volume: 0,
-    darkMode: false,
-    username: ""
-};
+const users = [
+    {
+        name: "Анна",
+        contact: {
+            email: "anna@example.com"
+        }
+    },
+    {
+        name: "Иван"
+    }
+];
 
-console.log(settings.volume ?? 50);       // 0
-console.log(settings.darkMode ?? true);   // false
-console.log(settings.username ?? "Гость"); // ""
+for (const user of users) {
+    const email = user.contact?.email ?? "Почта не указана";
+
+    console.log(`${user.name}: ${email}`);
+}
