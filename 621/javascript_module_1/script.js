@@ -1,9 +1,4 @@
-function checkAccess() {
-    if (true) {
-        var a = 10;
-    }
+var number = 10;
+var number = 20;
 
-    console.log(a); // 10
-}
-
-checkAccess();
+console.log(number); // 20
