@@ -1,12 +1,13 @@
-const user = {
-    name: "Анна",
-    age: 22
+const product = {
+    title: "Монитор",
+    price: 15000,
+    quantity: 5
 };
 
-const updatedUser = {
-    ...user,
-    city: "Москва"
+const updatedProduct = {
+    ...product,
+    price: 13500
 };
 
-console.log(updatedUser);
-// { name: "Анна", age: 22, city: "Москва" }
+console.log(updatedProduct);
+// { title: "Монитор", price: 13500, quantity: 5 }
