@@ -1,9 +1,10 @@
 const user = {
     name: "Мария",
-    age: 21
+    age: 21,
+    password: "123456"
 };
 
-user.city = "Казань";
-user["isActive"] = true;
+delete user.password;
 
 console.log(user);
+// { name: "Мария", age: 21 }
