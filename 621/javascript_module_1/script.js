@@ -1,3 +1,3 @@
-const value = null;
+const numbers = [10, 20, 30];
 
-console.log(value === null); // true
+console.log(typeof numbers); // object
