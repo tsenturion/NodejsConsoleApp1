@@ -1,18 +1,10 @@
-const original = {
-    name: "Анна",
-    settings: {
-        theme: "light",
-        notifications: true
-    }
-};
+const original = [
+    { name: "Анна" },
+    { name: "Иван" }
+];
 
-const updated = {
-    ...original,
-    settings: {
-        ...original.settings,
-        theme: "dark"
-    }
-};
+const copy = [...original];
 
-console.log(original.settings.theme); // light
-console.log(updated.settings.theme);  // dark
+copy[0].name = "Мария";
+
+console.log(original[0].name); // Мария
