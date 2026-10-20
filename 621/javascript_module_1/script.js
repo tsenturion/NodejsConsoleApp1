@@ -1,7 +1,11 @@
-let a = 10;
-let b = a;
+const user1 = {
+    name: "Алексей",
+    age: 25
+};
 
-b = 25;
+const user2 = user1;
 
-console.log(a); // 10
-console.log(b); // 25
+user2.age = 30;
+
+console.log(user1.age); // 30
+console.log(user2.age); // 30
