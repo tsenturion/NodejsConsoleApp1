@@ -4,6 +4,9 @@ const product = {
     quantity: 5
 };
 
-const entries = Object.entries(product);
+for (const entry of Object.entries(product)) {
+    const key = entry[0];
+    const value = entry[1];
 
-console.log(entries);
+    console.log(`${key}: ${value}`);
+}
