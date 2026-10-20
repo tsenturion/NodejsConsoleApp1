@@ -1,19 +1,13 @@
-function createCounter(start = 0) {
-    let count = start;
-
-    return function() {
-        count++;
-        return count;
+function createDiscount(discountPercent) {
+    return function(price) {
+        return price * (1 - discountPercent / 100);
     };
 }
 
-const counterA = createCounter(0);
-const counterB = createCounter(10);
+const discount10 = createDiscount(10);
+const discount25 = createDiscount(25);
 
-console.log(counterA()); // 1
-console.log(counterA()); // 2
+console.log(discount10(2000)); // 1800
+console.log(discount25(2000)); // 1500
 
-console.log(counterB()); // 11
-console.log(counterB()); // 12
-
-console.log(counterA()); // 3
+console.log(discount10(500));  // 450
