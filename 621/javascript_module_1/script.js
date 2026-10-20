@@ -1,6 +1,13 @@
-const numbers = [10, 20, 30, 40, 50];
+const user = {
+    id: 15,
+    name: "Алексей",
+    age: 25,
+    city: "Москва"
+};
 
-const [first, ...otherNumbers] = numbers;
+const { id, ...userData } = user;
 
-console.log(first);        // 10
-console.log(otherNumbers); // [20, 30, 40, 50]
+console.log(id); // 15
+
+console.log(userData);
+// { name: "Алексей", age: 25, city: "Москва" }
