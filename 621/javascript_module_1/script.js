@@ -1,6 +1,11 @@
-const a = { value: 10 };
-const b = { value: 10 };
-const c = a;
+const original = {
+    name: "Анна",
+    age: 22
+};
 
-console.log(a === b); // false
-console.log(a === c); // true
+const copy = { ...original };
+
+copy.age = 30;
+
+console.log(original.age); // 22
+console.log(copy.age);     // 30
