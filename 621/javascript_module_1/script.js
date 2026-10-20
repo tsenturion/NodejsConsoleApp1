@@ -1,5 +1,10 @@
-const numbers = [10, 20, 30];
-const user = { name: "Анна" };
+function calculateSum(data) {
+    if (!Array.isArray(data)) {
+        return "Ожидался массив";
+    }
 
-console.log(Array.isArray(numbers)); // true
-console.log(Array.isArray(user));    // false
+    return data.reduce((sum, number) => sum + number, 0);
+}
+
+console.log(calculateSum([10, 20, 30])); // 60
+console.log(calculateSum("10, 20, 30"));  // Ожидался массив
