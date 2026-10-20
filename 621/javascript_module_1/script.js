@@ -1,9 +1,14 @@
-try {
-    console.log(double(5));
-} catch (error) {
-    console.log(error.name); // ReferenceError
+function createCounter() {
+    let count = 0;
+
+    return function() {
+        count++;
+        return count;
+    };
 }
 
-const double = number => number * 2;
+const counter = createCounter();
 
-console.log(double(5)); // 10
+console.log(counter()); // 1
+console.log(counter()); // 2
+console.log(counter()); // 3
