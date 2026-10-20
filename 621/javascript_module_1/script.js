@@ -1,13 +1,11 @@
 const product = {
     title: "Монитор",
-    price: 15000,
-    quantity: 5
+    price: 15000
 };
 
-const updatedProduct = {
-    ...product,
-    price: 13500
+const result = {
+    price: 10000,
+    ...product
 };
 
-console.log(updatedProduct);
-// { title: "Монитор", price: 13500, quantity: 5 }
+console.log(result.price); // 15000
