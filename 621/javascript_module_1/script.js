@@ -1,17 +1,10 @@
-"use strict";
-
 const user = {
-    name: "Анна",
-
-    getName() {
-        return this.name;
-    }
+    name: "Алексей",
+    age: 25,
+    city: "Москва"
 };
 
-const getUserName = user.getName;
+const keys = Object.keys(user);
 
-try {
-    console.log(getUserName());
-} catch (error) {
-    console.log(error.name); // TypeError
-}
+console.log(keys);
+// ["name", "age", "city"]
