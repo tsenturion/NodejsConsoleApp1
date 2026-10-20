@@ -1,11 +1,6 @@
-const product = {
-    title: "Монитор",
-    price: 15000
-};
+const numbers = [10, 20, 30, 40, 50];
 
-const result = {
-    price: 10000,
-    ...product
-};
+const [first, ...otherNumbers] = numbers;
 
-console.log(result.price); // 15000
+console.log(first);        // 10
+console.log(otherNumbers); // [20, 30, 40, 50]
