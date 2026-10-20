@@ -1,11 +1,15 @@
 const original = {
     name: "Анна",
-    age: 22
+    settings: {
+        theme: "light",
+        notifications: true
+    }
 };
 
 const copy = { ...original };
 
-copy.age = 30;
+copy.name = "Мария";
+copy.settings.theme = "dark";
 
-console.log(original.age); // 22
-console.log(copy.age);     // 30
+console.log(original.name);           // Анна
+console.log(original.settings.theme); // dark
