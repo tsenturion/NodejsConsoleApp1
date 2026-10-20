@@ -1,8 +1,10 @@
-const user = {
-    name: "Анна",
-    city: null
+const product = {
+    title: "Наушники",
+    quantity: 0
 };
 
-const city = user.city ?? "Город не указан";
+const quantity1 = product.quantity || 10;
+const quantity2 = product.quantity ?? 10;
 
-console.log(city); // Город не указан
+console.log(quantity1); // 10
+console.log(quantity2); // 0
