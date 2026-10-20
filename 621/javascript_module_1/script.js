@@ -1,7 +1,6 @@
-const product = {
-    name: "Ноутбук",
-    price: 75000,
-    "in stock": true
+const data = {
+    10: "Десять"
 };
 
-console.log(product);
+console.log(data[10]);   // Десять
+console.log(data["10"]); // Десять
