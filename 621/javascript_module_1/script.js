@@ -1,10 +1,10 @@
-const user = {
-    name: "Алексей",
-    age: 25,
-    city: "Москва"
+const product = {
+    title: "Телефон",
+    price: 30000,
+    quantity: 5
 };
 
-const keys = Object.keys(user);
+const values = Object.values(product);
 
-console.log(keys);
-// ["name", "age", "city"]
+console.log(values);
+// ["Телефон", 30000, 5]
