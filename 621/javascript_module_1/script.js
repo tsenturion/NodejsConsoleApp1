@@ -1,10 +1,8 @@
 const user = {
     name: "Мария",
-    age: 21,
-    password: "123456"
+    age: undefined
 };
 
-delete user.password;
-
-console.log(user);
-// { name: "Мария", age: 21 }
+console.log(Object.hasOwn(user, "name")); // true
+console.log(Object.hasOwn(user, "age"));  // true
+console.log(Object.hasOwn(user, "city")); // false
