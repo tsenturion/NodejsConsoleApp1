@@ -8,5 +8,7 @@ user.name = "Анна";
 user.age = 20;
 
 for (const key in user) {
-    console.log(key);
+    if (Object.hasOwn(user, key)) {
+        console.log(key, user[key]);
+    }
 }
