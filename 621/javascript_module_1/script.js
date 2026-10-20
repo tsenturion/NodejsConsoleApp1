@@ -1,10 +1,54 @@
-function calculateSum(data) {
-    if (!Array.isArray(data)) {
-        return "Ожидался массив";
+const users = [
+    {
+        id: 1,
+        name: "Анна",
+        age: 20,
+        settings: {
+            theme: "dark"
+        }
+    },
+    {
+        id: 2,
+        name: "Иван",
+        age: 17
+    },
+    {
+        id: 3,
+        name: "Мария",
+        age: 25,
+        settings: {
+            theme: "light"
+        }
     }
+];
 
-    return data.reduce((sum, number) => sum + number, 0);
+function updateUser(user, newAge) {
+    return {
+        ...user,
+        age: newAge
+    };
 }
 
-console.log(calculateSum([10, 20, 30])); // 60
-console.log(calculateSum("10, 20, 30"));  // Ожидался массив
+const updatedUsers = users.map(user => {
+    if (user.id === 2) {
+        return updateUser(user, 18);
+    }
+
+    return user;
+});
+
+const result = updatedUsers.map(user => {
+    const { name, age } = user;
+    const theme = user.settings?.theme ?? "default";
+
+    return {
+        name,
+        age,
+        theme,
+        isAdult: age >= 18
+    };
+});
+
+console.log(result);
+
+console.log(users[1].age); // 17
