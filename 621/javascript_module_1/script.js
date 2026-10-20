@@ -4,8 +4,8 @@ const user = {
     city: "Москва"
 };
 
-const name = user.name;
-const age = user.age;
-const city = user.city;
+const { name, age, city } = user;
 
-console.log(name, age, city);
+console.log(name); // Алексей
+console.log(age);  // 25
+console.log(city); // Москва
