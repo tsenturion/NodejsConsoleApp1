@@ -1,12 +1,16 @@
-function getProductInfo({ title, price, quantity }) {
-    return `${title}: ${price * quantity} руб.`;
-}
-
-const product = {
-    title: "Клавиатура",
-    price: 2500,
-    quantity: 3
+const user = {
+    name: "Анна",
+    address: {
+        city: "Казань",
+        street: "Центральная"
+    }
 };
 
-console.log(getProductInfo(product));
-// Клавиатура: 7500 руб.
+const {
+    name,
+    address: { city, street }
+} = user;
+
+console.log(name);   // Анна
+console.log(city);   // Казань
+console.log(street); // Центральная
