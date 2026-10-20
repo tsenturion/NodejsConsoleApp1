@@ -1,14 +1,11 @@
-const parent = {
-    role: "Пользователь"
+const user = {
+    name: "Алексей",
+    age: 25,
+    city: "Москва"
 };
 
-const user = Object.create(parent);
+const name = user.name;
+const age = user.age;
+const city = user.city;
 
-user.name = "Анна";
-user.age = 20;
-
-for (const key in user) {
-    if (Object.hasOwn(user, key)) {
-        console.log(key, user[key]);
-    }
-}
+console.log(name, age, city);
