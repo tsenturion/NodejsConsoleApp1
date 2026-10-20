@@ -1,5 +1,5 @@
-function createCounter() {
-    let count = 0;
+function createCounter(start = 0) {
+    let count = start;
 
     return function() {
         count++;
@@ -7,8 +7,13 @@ function createCounter() {
     };
 }
 
-const counter = createCounter();
+const counterA = createCounter(0);
+const counterB = createCounter(10);
 
-console.log(counter()); // 1
-console.log(counter()); // 2
-console.log(counter()); // 3
+console.log(counterA()); // 1
+console.log(counterA()); // 2
+
+console.log(counterB()); // 11
+console.log(counterB()); // 12
+
+console.log(counterA()); // 3
