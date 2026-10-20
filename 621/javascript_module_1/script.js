@@ -1,17 +1,10 @@
-const users = [
-    {
-        name: "Анна",
-        contact: {
-            email: "anna@example.com"
-        }
-    },
-    {
-        name: "Иван"
-    }
-];
+const tax = 0.2;
 
-for (const user of users) {
-    const email = user.contact?.email ?? "Почта не указана";
+function calculatePrice(price) {
+    const discount = 0.1;
 
-    console.log(`${user.name}: ${email}`);
+    return price * (1 - discount) * (1 + tax);
 }
+
+console.log(calculatePrice(1000)); // 1080
+console.log(tax);                  // 0.2
