@@ -6,10 +6,13 @@ const original = {
     }
 };
 
-const copy = { ...original };
+const updated = {
+    ...original,
+    settings: {
+        ...original.settings,
+        theme: "dark"
+    }
+};
 
-copy.name = "Мария";
-copy.settings.theme = "dark";
-
-console.log(original.name);           // Анна
-console.log(original.settings.theme); // dark
+console.log(original.settings.theme); // light
+console.log(updated.settings.theme);  // dark
