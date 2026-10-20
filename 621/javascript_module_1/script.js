@@ -1,6 +1,9 @@
-const middle = [3, 4, 5];
+function calculateVolume(width, height, depth) {
+    return width * height * depth;
+}
 
-const numbers = [1, 2, ...middle, 6, 7];
+const dimensions = [4, 5, 6];
 
-console.log(numbers);
-// [1, 2, 3, 4, 5, 6, 7]
+const volume = calculateVolume(...dimensions);
+
+console.log(volume); // 120
