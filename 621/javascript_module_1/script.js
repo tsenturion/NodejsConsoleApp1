@@ -1,12 +1,13 @@
-const product = {
-    title: "Ноутбук",
-    manufacturer: {
-        name: "TechCompany"
-    }
-};
+const users = [
+    { name: "Анна" },
+    { name: "Иван" }
+];
 
-console.log(product?.manufacturer?.name);
-// TechCompany
+console.log(users[0]?.name);  // Анна
+console.log(users[10]?.name); // undefined
 
-console.log(product?.manufacturer?.contacts?.email);
-// undefined
+const settings = {};
+
+settings.onSave?.();
+
+console.log("Программа продолжает работу");
