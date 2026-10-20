@@ -1,2 +1,5 @@
-console.log(Boolean([])); // true
-console.log(Boolean({})); // true
+const products = [];
+
+if (products) {
+    console.log("Товары найдены");
+}
