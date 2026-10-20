@@ -1,10 +1,12 @@
-const user = {
-    name: "Мария",
-    age: 22
+function getProductInfo({ title, price, quantity }) {
+    return `${title}: ${price * quantity} руб.`;
+}
+
+const product = {
+    title: "Клавиатура",
+    price: 2500,
+    quantity: 3
 };
 
-const { name, age, city = "Не указан" } = user;
-
-console.log(name); // Мария
-console.log(age);  // 22
-console.log(city); // Не указан
+console.log(getProductInfo(product));
+// Клавиатура: 7500 руб.
