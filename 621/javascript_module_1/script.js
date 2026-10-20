@@ -1,6 +1,6 @@
-const data = ["Алексей", 25, "Москва"];
+const settings = ["dark"];
 
-const [name, , city] = data;
+const [theme, language = "ru"] = settings;
 
-console.log(name); // Алексей
-console.log(city); // Москва
+console.log(theme);    // dark
+console.log(language); // ru
