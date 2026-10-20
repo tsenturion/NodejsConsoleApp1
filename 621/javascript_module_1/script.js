@@ -1,9 +1,10 @@
 const user = {
-    name: "Алексей",
-    age: 25
+    name: "Мария",
+    age: 22
 };
 
-const { name: userName, age: userAge } = user;
+const { name, age, city = "Не указан" } = user;
 
-console.log(userName); // Алексей
-console.log(userAge);  // 25
+console.log(name); // Мария
+console.log(age);  // 22
+console.log(city); // Не указан
