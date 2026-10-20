@@ -1,5 +1,3 @@
-const age = 18;
-
-console.log(age === 18);  // true
-console.log(age !== 18);  // false
-console.log(age !== "18"); // true
+console.log(10 + 5);    // 15
+console.log("10" + 5);  // "105"
+console.log(10 + "5");  // "105"
