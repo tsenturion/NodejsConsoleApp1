@@ -1,20 +1,13 @@
 const students = [
-    {
-        name: "Анна",
-        age: 19,
-        grade: 5
-    },
-    {
-        name: "Иван",
-        age: 20,
-        grade: 4
-    },
-    {
-        name: "Мария",
-        age: 18,
-        grade: 5
-    }
+    { name: "Анна", grade: 5 },
+    { name: "Иван", grade: 4 },
+    { name: "Мария", grade: 5 },
+    { name: "Олег", grade: 3 }
 ];
 
-console.log(students[0].name); // Анна
-console.log(students[1].grade); // 4
+const excellentStudents = students
+    .filter(student => student.grade === 5)
+    .map(student => student.name);
+
+console.log(excellentStudents);
+// ["Анна", "Мария"]
