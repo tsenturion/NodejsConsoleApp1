@@ -1,12 +1,9 @@
-const product = {
-    title: "Телефон",
-    price: 30000,
-    quantity: 5
+const user = {
+    name: "Алексей",
+    age: 25,
+    city: "Москва"
 };
 
-for (const entry of Object.entries(product)) {
-    const key = entry[0];
-    const value = entry[1];
-
-    console.log(`${key}: ${value}`);
+for (const key in user) {
+    console.log(key, user[key]);
 }
