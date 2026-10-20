@@ -1,13 +1,12 @@
-const students = [
-    { name: "Анна", grade: 5 },
-    { name: "Иван", grade: 4 },
-    { name: "Мария", grade: 5 },
-    { name: "Олег", grade: 3 }
-];
+const account = {
+    owner: "Алексей",
+    balance: 5000,
 
-const excellentStudents = students
-    .filter(student => student.grade === 5)
-    .map(student => student.name);
+    deposit(amount) {
+        this.balance += amount;
+    }
+};
 
-console.log(excellentStudents);
-// ["Анна", "Мария"]
+account.deposit(1500);
+
+console.log(account.balance); // 6500
