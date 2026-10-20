@@ -1,21 +1,9 @@
-function createValueManager() {
-    let value = 10;
+const functions = [];
 
-    return {
-        getValue() {
-            return value;
-        },
-
-        setValue(newValue) {
-            value = newValue;
-        }
-    };
+for (var i = 0; i < 3; i++) {
+    functions.push(() => i);
 }
 
-const manager = createValueManager();
-
-console.log(manager.getValue()); // 10
-
-manager.setValue(50);
-
-console.log(manager.getValue()); // 50
+console.log(functions[0]()); // 3
+console.log(functions[1]()); // 3
+console.log(functions[2]()); // 3
