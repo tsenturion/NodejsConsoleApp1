@@ -1,15 +1,17 @@
-const rectangle = {
-    width: 10,
-    height: 5,
+"use strict";
 
-    getArea() {
-        return this.width * this.height;
-    },
+const user = {
+    name: "Анна",
 
-    getPerimeter() {
-        return 2 * (this.width + this.height);
+    getName() {
+        return this.name;
     }
 };
 
-console.log(rectangle.getArea());      // 50
-console.log(rectangle.getPerimeter()); // 30
+const anotherUser = {
+    name: "Мария",
+    getName: user.getName
+};
+
+console.log(user.getName());        // Анна
+console.log(anotherUser.getName()); // Мария
