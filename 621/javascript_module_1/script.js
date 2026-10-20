@@ -1,14 +1,11 @@
 const product = {
     title: "Ноутбук",
-    price: 85000,
     manufacturer: {
         name: "TechCompany",
-        country: "Китай",
-        contacts: {
-            email: "support@example.com"
-        }
+        country: "Китай"
     }
 };
 
-console.log(product.manufacturer.name);
-console.log(product.manufacturer.contacts.email);
+product.manufacturer.country = "Япония";
+
+console.log(product.manufacturer.country); // Япония
