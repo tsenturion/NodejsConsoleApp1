@@ -1,7 +1,6 @@
-const firstNumbers = [10, 20];
-const secondNumbers = [30, 40];
+const middle = [3, 4, 5];
 
-const result = [firstNumbers, secondNumbers];
+const numbers = [1, 2, ...middle, 6, 7];
 
-console.log(result);
-// [[10, 20], [30, 40]]
+console.log(numbers);
+// [1, 2, 3, 4, 5, 6, 7]
