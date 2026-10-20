@@ -4,7 +4,6 @@ const product = {
     quantity: 5
 };
 
-const values = Object.values(product);
+const entries = Object.entries(product);
 
-console.log(values);
-// ["Телефон", 30000, 5]
+console.log(entries);
