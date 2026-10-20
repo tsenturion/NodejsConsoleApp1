@@ -1,9 +1,12 @@
-function calculateVolume(width, height, depth) {
-    return width * height * depth;
-}
+const user = {
+    name: "Анна",
+    age: 22
+};
 
-const dimensions = [4, 5, 6];
+const updatedUser = {
+    ...user,
+    city: "Москва"
+};
 
-const volume = calculateVolume(...dimensions);
-
-console.log(volume); // 120
+console.log(updatedUser);
+// { name: "Анна", age: 22, city: "Москва" }
