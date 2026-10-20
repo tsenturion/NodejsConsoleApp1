@@ -1,7 +1,3 @@
-const products = [];
-
-if (products.length > 0) {
-    console.log("Товары найдены");
-} else {
-    console.log("Список товаров пуст");
-}
+console.log(Boolean("false")); // true
+console.log(Boolean("0"));     // true
+console.log(Boolean(" "));     // true
