@@ -1,8 +1,7 @@
-function calculateTotal(...prices) {
-    return prices.reduce((sum, price) => sum + price, 0);
-}
+let a = 10;
+let b = a;
 
-console.log(calculateTotal(100, 200));      // 300
-console.log(calculateTotal(50, 100, 150));  // 300
-console.log(calculateTotal(500));           // 500
-console.log(calculateTotal());              // 0
+b = 25;
+
+console.log(a); // 10
+console.log(b); // 25
