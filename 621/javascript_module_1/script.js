@@ -1,13 +1,5 @@
-function example() {
-    try {
-        console.log(number);
-    } catch (error) {
-        console.log(error.name); // ReferenceError
-    }
+console.log(square(5)); // 25
 
-    let number = 10;
-
-    console.log(number); // 10
+function square(number) {
+    return number * number;
 }
-
-example();
