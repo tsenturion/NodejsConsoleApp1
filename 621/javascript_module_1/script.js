@@ -1,6 +1,4 @@
-const price = "1500";
-const delivery = 300;
-
-const total = Number(price) + delivery;
-
-console.log(total); // 1800
+console.log(Number("25"));   // 25
+console.log(Number("12.5")); // 12.5
+console.log(Number("abc"));  // NaN
+console.log(Number(""));     // 0
