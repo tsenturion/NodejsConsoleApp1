@@ -1,3 +1,4 @@
-console.log(Boolean("false")); // true
-console.log(Boolean("0"));     // true
-console.log(Boolean(" "));     // true
+console.log(typeof 10);        // number
+console.log(typeof "hello");   // string
+console.log(typeof true);      // boolean
+console.log(typeof undefined); // undefined
