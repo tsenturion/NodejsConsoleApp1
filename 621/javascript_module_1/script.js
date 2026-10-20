@@ -1,6 +1,9 @@
-const data = {
-    10: "Десять"
+const user = {
+    name: "Мария",
+    age: 21,
+    city: "Москва"
 };
 
-console.log(data[10]);   // Десять
-console.log(data["10"]); // Десять
+console.log(user.name); // Мария
+console.log(user.age);  // 21
+console.log(user.city); // Москва
