@@ -1,6 +1,6 @@
-const coordinates = [55.75, 37.61];
+const data = ["Алексей", 25, "Москва"];
 
-const [latitude, longitude] = coordinates;
+const [name, , city] = data;
 
-console.log(latitude);  // 55.75
-console.log(longitude); // 37.61
+console.log(name); // Алексей
+console.log(city); // Москва
