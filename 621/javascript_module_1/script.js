@@ -1,5 +1,3 @@
-const user = {
-    name: "Алексей"
-};
+const user = null;
 
-console.log(user.address?.city); // undefined
+console.log(user?.address?.city); // undefined
