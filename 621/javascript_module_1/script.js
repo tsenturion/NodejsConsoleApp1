@@ -1,10 +1,17 @@
-const discount = 0.1;
+function checkAccess() {
+    if (true) {
+        let a = 10;
+        const b = 20;
 
-function calculatePrice(price) {
-    const discount = 0.2;
+        console.log(a); // 10
+        console.log(b); // 20
+    }
 
-    return price * (1 - discount);
+    try {
+        console.log(a);
+    } catch (error) {
+        console.log(error.name); // ReferenceError
+    }
 }
 
-console.log(calculatePrice(1000)); // 800
-console.log(discount);             // 0.1
+checkAccess();
