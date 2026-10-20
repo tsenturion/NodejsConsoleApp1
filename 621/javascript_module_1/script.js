@@ -8,10 +8,10 @@ const user = {
     }
 };
 
-const anotherUser = {
-    name: "Мария",
-    getName: user.getName
-};
+const getUserName = user.getName;
 
-console.log(user.getName());        // Анна
-console.log(anotherUser.getName()); // Мария
+try {
+    console.log(getUserName());
+} catch (error) {
+    console.log(error.name); // TypeError
+}
