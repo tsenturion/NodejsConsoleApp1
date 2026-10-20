@@ -1,7 +1,7 @@
-const user = {
-    name: "Алексей",
-    age: 23,
-    isActive: true
+const product = {
+    name: "Ноутбук",
+    price: 75000,
+    "in stock": true
 };
 
-console.log(user);
+console.log(product);
