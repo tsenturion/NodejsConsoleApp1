@@ -1,9 +1,11 @@
 function example() {
-    var number;
+    try {
+        console.log(number);
+    } catch (error) {
+        console.log(error.name); // ReferenceError
+    }
 
-    console.log(number); // undefined
-
-    number = 10;
+    let number = 10;
 
     console.log(number); // 10
 }
