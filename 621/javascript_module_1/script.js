@@ -1,9 +1,12 @@
-const user = {
-    name: "Алексей",
-    age: 25,
-    city: "Москва"
+const parent = {
+    role: "Пользователь"
 };
 
+const user = Object.create(parent);
+
+user.name = "Анна";
+user.age = 20;
+
 for (const key in user) {
-    console.log(key, user[key]);
+    console.log(key);
 }
