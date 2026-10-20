@@ -1,4 +1,9 @@
-var number = 10;
-var number = 20;
+function example() {
+    console.log(number); // undefined
 
-console.log(number); // 20
+    var number = 10;
+
+    console.log(number); // 10
+}
+
+example();
