@@ -1,13 +1,8 @@
-const users = [
-    { name: "Анна" },
-    { name: "Иван" }
-];
+const user = {
+    name: "Анна",
+    city: null
+};
 
-console.log(users[0]?.name);  // Анна
-console.log(users[10]?.name); // undefined
+const city = user.city ?? "Город не указан";
 
-const settings = {};
-
-settings.onSave?.();
-
-console.log("Программа продолжает работу");
+console.log(city); // Город не указан
