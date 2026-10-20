@@ -1,16 +1,6 @@
-const user = {
-    name: "Анна",
-    address: {
-        city: "Казань",
-        street: "Центральная"
-    }
-};
+const coordinates = [55.75, 37.61];
 
-const {
-    name,
-    address: { city, street }
-} = user;
+const [latitude, longitude] = coordinates;
 
-console.log(name);   // Анна
-console.log(city);   // Казань
-console.log(street); // Центральная
+console.log(latitude);  // 55.75
+console.log(longitude); // 37.61
