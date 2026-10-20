@@ -1,3 +1,12 @@
-const user = null;
+const product = {
+    title: "Ноутбук",
+    manufacturer: {
+        name: "TechCompany"
+    }
+};
 
-console.log(user?.address?.city); // undefined
+console.log(product?.manufacturer?.name);
+// TechCompany
+
+console.log(product?.manufacturer?.contacts?.email);
+// undefined
