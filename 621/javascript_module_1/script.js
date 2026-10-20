@@ -1,4 +1,7 @@
-console.log(Number("25"));   // 25
-console.log(Number("12.5")); // 12.5
-console.log(Number("abc"));  // NaN
-console.log(Number(""));     // 0
+const value = Number("abc");
+
+if (Number.isNaN(value)) {
+    console.log("Не удалось получить число");
+} else {
+    console.log("Получено число:", value);
+}
