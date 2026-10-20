@@ -1,8 +1,12 @@
 const user = {
-    name: "Мария",
-    age: undefined
+    name: "Алексей",
+    age: 25,
+    address: {
+        city: "Москва",
+        street: "Ленина",
+        house: 15
+    }
 };
 
-console.log(Object.hasOwn(user, "name")); // true
-console.log(Object.hasOwn(user, "age"));  // true
-console.log(Object.hasOwn(user, "city")); // false
+console.log(user.address.city);   // Москва
+console.log(user.address.street); // Ленина
