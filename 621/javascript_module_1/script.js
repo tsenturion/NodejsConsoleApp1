@@ -1,7 +1,10 @@
-let a = 10;
-let b = 20;
+const firstNumbers = [10, 20, 30];
+const secondNumbers = [40, 50, 60];
 
-[a, b] = [b, a];
+const allNumbers = [
+    ...firstNumbers,
+    ...secondNumbers
+];
 
-console.log(a); // 20
-console.log(b); // 10
+console.log(allNumbers);
+// [10, 20, 30, 40, 50, 60]
