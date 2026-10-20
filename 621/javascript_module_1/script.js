@@ -1,12 +1,14 @@
-const user = {
-    name: "Алексей",
-    age: 25,
-    address: {
-        city: "Москва",
-        street: "Ленина",
-        house: 15
+const product = {
+    title: "Ноутбук",
+    price: 85000,
+    manufacturer: {
+        name: "TechCompany",
+        country: "Китай",
+        contacts: {
+            email: "support@example.com"
+        }
     }
 };
 
-console.log(user.address.city);   // Москва
-console.log(user.address.street); // Ленина
+console.log(product.manufacturer.name);
+console.log(product.manufacturer.contacts.email);
