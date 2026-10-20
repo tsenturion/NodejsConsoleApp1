@@ -1,12 +1,15 @@
-const account = {
-    owner: "Алексей",
-    balance: 5000,
+const rectangle = {
+    width: 10,
+    height: 5,
 
-    deposit(amount) {
-        this.balance += amount;
+    getArea() {
+        return this.width * this.height;
+    },
+
+    getPerimeter() {
+        return 2 * (this.width + this.height);
     }
 };
 
-account.deposit(1500);
-
-console.log(account.balance); // 6500
+console.log(rectangle.getArea());      // 50
+console.log(rectangle.getPerimeter()); // 30
