@@ -1,13 +1,10 @@
 const user = {
-    id: 15,
-    name: "Алексей",
-    age: 25,
-    city: "Москва"
+    name: "Мария",
+    email: "maria@example.com",
+    password: "secret123"
 };
 
-const { id, ...userData } = user;
+const { password, ...publicData } = user;
 
-console.log(id); // 15
-
-console.log(userData);
-// { name: "Алексей", age: 25, city: "Москва" }
+console.log(publicData);
+// { name: "Мария", email: "maria@example.com" }
