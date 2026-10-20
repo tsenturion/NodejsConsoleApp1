@@ -1,6 +1,7 @@
-const settings = ["dark"];
+let a = 10;
+let b = 20;
 
-const [theme, language = "ru"] = settings;
+[a, b] = [b, a];
 
-console.log(theme);    // dark
-console.log(language); // ru
+console.log(a); // 20
+console.log(b); // 10
