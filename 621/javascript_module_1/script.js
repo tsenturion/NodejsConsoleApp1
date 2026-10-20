@@ -3,7 +3,7 @@ const user = {
     age: 21
 };
 
-user.age = 22;
+user.city = "Казань";
+user["isActive"] = true;
 
 console.log(user);
-// { name: "Мария", age: 22 }
