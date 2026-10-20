@@ -1,5 +1,4 @@
-const quantity = 15;
-
-const message = "Количество товаров: " + String(quantity);
-
-console.log(message); // Количество товаров: 15
+console.log(Boolean(10));      // true
+console.log(Boolean(0));       // false
+console.log(Boolean("hello")); // true
+console.log(Boolean(""));      // false
