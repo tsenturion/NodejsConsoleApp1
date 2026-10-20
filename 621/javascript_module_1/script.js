@@ -3,7 +3,7 @@ const user = {
     age: 21
 };
 
-const property = "name";
+user.age = 22;
 
-console.log(user[property]); // Мария
-console.log(user.property);   // undefined
+console.log(user);
+// { name: "Мария", age: 22 }
