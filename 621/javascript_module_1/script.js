@@ -1,13 +1,21 @@
-function createDiscount(discountPercent) {
-    return function(price) {
-        return price * (1 - discountPercent / 100);
+function createValueManager() {
+    let value = 10;
+
+    return {
+        getValue() {
+            return value;
+        },
+
+        setValue(newValue) {
+            value = newValue;
+        }
     };
 }
 
-const discount10 = createDiscount(10);
-const discount25 = createDiscount(25);
+const manager = createValueManager();
 
-console.log(discount10(2000)); // 1800
-console.log(discount25(2000)); // 1500
+console.log(manager.getValue()); // 10
 
-console.log(discount10(500));  // 450
+manager.setValue(50);
+
+console.log(manager.getValue()); // 50
