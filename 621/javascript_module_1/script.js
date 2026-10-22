@@ -1,3 +1,6 @@
-const city = localStorage.getItem("city");
+localStorage.setItem("username", "Алексей");
 
-console.log(city); // null
+localStorage.removeItem("username");
+
+console.log(localStorage.getItem("username"));
+// null
