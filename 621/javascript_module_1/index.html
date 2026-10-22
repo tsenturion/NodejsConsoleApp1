@@ -2,22 +2,22 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Обработка клавиатуры</title>
+    <title>Нажатие Enter</title>
 </head>
 <body>
-    <label for="search">Поиск:</label>
-    <input id="search" type="text">
+    <label for="message-input">Сообщение:</label>
+    <input id="message-input" type="text">
 
-    <p id="message">Нажмите Escape для очистки поля</p>
+    <p id="result"></p>
 
     <script>
-        const search = document.querySelector("#search");
-        const message = document.querySelector("#message");
+        const input = document.querySelector("#message-input");
+        const result = document.querySelector("#result");
 
-        search.addEventListener("keydown", event => {
-            if (event.key === "Escape") {
-                search.value = "";
-                message.textContent = "Поле очищено";
+        input.addEventListener("keydown", event => {
+            if (event.key === "Enter") {
+                result.textContent = input.value;
+                input.value = "";
             }
         });
     </script>
