@@ -2,42 +2,43 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Работа с классами</title>
+    <title>Динамический каталог</title>
 
     <style>
-        .message {
-            padding: 15px;
-            background-color: #eeeeee;
-        }
-
-        .important {
-            background-color: #ffdddd;
-            color: #aa0000;
-            font-weight: bold;
-        }
-
-        .hidden {
-            display: none;
+        .product {
+            border: 1px solid #cccccc;
+            padding: 12px;
+            margin-bottom: 10px;
         }
     </style>
 </head>
 <body>
-    <p id="message" class="message">
-        Обычное сообщение
-    </p>
+    <h1>Каталог товаров</h1>
+
+    <div id="catalog"></div>
 
     <script>
-        const message = document.querySelector("#message");
+        const products = [
+            { title: "Ноутбук", price: 75000 },
+            { title: "Телефон", price: 35000 },
+            { title: "Клавиатура", price: 4500 }
+        ];
 
-        message.classList.add("important");
+        const catalog = document.querySelector("#catalog");
 
-        console.log(message.classList.contains("important"));
-        // true
+        for (const product of products) {
+            const card = document.createElement("article");
+            const title = document.createElement("h2");
+            const price = document.createElement("p");
 
-        message.classList.remove("message");
+            card.classList.add("product");
 
-        message.classList.toggle("hidden");
-        message.classList.toggle("hidden");
+            title.textContent = product.title;
+            price.textContent = `Цена: ${product.price} руб.`;
+
+            card.append(title, price);
+            catalog.append(card);
+        }
     </script>
 </body>
 </html>
