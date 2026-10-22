@@ -1,3 +1,3 @@
-const username = localStorage.getItem("username");
+const city = localStorage.getItem("city");
 
-console.log(username); // Алексей
+console.log(city); // null
