@@ -1,11 +1,12 @@
-localStorage.setItem("age", 25);
-localStorage.setItem("isActive", true);
+localStorage.setItem("quantity", 12);
+localStorage.setItem("notifications", false);
 
-const age = localStorage.getItem("age");
-const isActive = localStorage.getItem("isActive");
+const quantity = Number(
+    localStorage.getItem("quantity")
+);
 
-console.log(age);      // "25"
-console.log(isActive); // "true"
+const notifications =
+    localStorage.getItem("notifications") === "true";
 
-console.log(typeof age);      // string
-console.log(typeof isActive); // string
+console.log(quantity);      // 12
+console.log(notifications); // false
