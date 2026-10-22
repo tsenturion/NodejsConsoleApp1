@@ -1,12 +1,7 @@
-const user = {
-    name: "Анна",
-    age: 22,
-    isActive: true
-};
+const json = '{"name":"Анна","age":22,"isActive":true}';
 
-const json = JSON.stringify(user);
+const user = JSON.parse(json);
 
-console.log(json);
-// {"name":"Анна","age":22,"isActive":true}
-
-console.log(typeof json); // string
+console.log(user.name);     // Анна
+console.log(user.age);      // 22
+console.log(user.isActive); // true
