@@ -2,17 +2,18 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Безопасный вывод текста</title>
+    <title>Изменение стилей</title>
 </head>
 <body>
-    <div id="message"></div>
+    <p id="message">Важное сообщение</p>
 
     <script>
         const message = document.querySelector("#message");
 
-        const userText = "<img src=x onerror=alert('Ошибка')>";
-
-        message.textContent = userText;
+        message.style.color = "red";
+        message.style.backgroundColor = "#eeeeee";
+        message.style.fontSize = "20px";
+        message.style.padding = "15px";
     </script>
 </body>
 </html>
