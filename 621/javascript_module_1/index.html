@@ -2,31 +2,22 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>События JavaScript</title>
+    <title>Обработка ввода</title>
 </head>
 <body>
-    <h1>Счётчик</h1>
+    <label for="username">Введите имя:</label>
+    <input id="username" type="text">
 
-    <p id="counter">0</p>
-
-    <button id="increase" type="button">Увеличить</button>
-    <button id="reset" type="button">Сбросить</button>
+    <p id="preview"></p>
 
     <script>
-        const counterElement = document.querySelector("#counter");
-        const increaseButton = document.querySelector("#increase");
-        const resetButton = document.querySelector("#reset");
+        const input = document.querySelector("#username");
+        const preview = document.querySelector("#preview");
 
-        let count = 0;
+        input.addEventListener("input", () => {
+            const name = input.value;
 
-        increaseButton.addEventListener("click", () => {
-            count++;
-            counterElement.textContent = count;
-        });
-
-        resetButton.addEventListener("click", () => {
-            count = 0;
-            counterElement.textContent = count;
+            preview.textContent = `Привет, ${name}!`;
         });
     </script>
 </body>
