@@ -2,12 +2,18 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Основы JavaScript</title>
-    <script src="script.js" defer></script>
+    <title>Работа с DOM</title>
 </head>
 <body>
-    <h1>Изучаем JavaScript</h1>
-    <p>Откройте консоль разработчика, чтобы увидеть результат.</p>
+    <h1 id="title">Старый заголовок</h1>
+    <p id="description">Исходный текст</p>
+
+    <script>
+        const title = document.getElementById("title");
+        const description = document.getElementById("description");
+
+        title.textContent = "Изучаем JavaScript DOM";
+        description.textContent = "Этот текст изменён через JavaScript";
+    </script>
 </body>
 </html>
