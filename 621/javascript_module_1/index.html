@@ -2,18 +2,29 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Работа с DOM</title>
+    <title>Поиск элементов</title>
 </head>
 <body>
-    <h1 id="title">Старый заголовок</h1>
-    <p id="description">Исходный текст</p>
+    <h1 id="page-title">Каталог товаров</h1>
+
+    <div class="product">
+        <h2>Ноутбук</h2>
+        <p class="price">75000</p>
+    </div>
+
+    <div class="product">
+        <h2>Телефон</h2>
+        <p class="price">35000</p>
+    </div>
 
     <script>
-        const title = document.getElementById("title");
-        const description = document.getElementById("description");
+        const title = document.querySelector("#page-title");
+        const firstProduct = document.querySelector(".product");
+        const firstPrice = document.querySelector(".product .price");
 
-        title.textContent = "Изучаем JavaScript DOM";
-        description.textContent = "Этот текст изменён через JavaScript";
+        console.log(title.textContent);
+        console.log(firstProduct.textContent.trim());
+        console.log(firstPrice.textContent);
     </script>
 </body>
 </html>
