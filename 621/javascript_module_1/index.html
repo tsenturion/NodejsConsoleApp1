@@ -2,43 +2,25 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Динамический каталог</title>
-
-    <style>
-        .product {
-            border: 1px solid #cccccc;
-            padding: 12px;
-            margin-bottom: 10px;
-        }
-    </style>
+    <title>Добавление и удаление</title>
 </head>
 <body>
-    <h1>Каталог товаров</h1>
-
-    <div id="catalog"></div>
+    <div id="messages">
+        <p>Второе сообщение</p>
+    </div>
 
     <script>
-        const products = [
-            { title: "Ноутбук", price: 75000 },
-            { title: "Телефон", price: 35000 },
-            { title: "Клавиатура", price: 4500 }
-        ];
+        const container = document.querySelector("#messages");
 
-        const catalog = document.querySelector("#catalog");
+        const firstMessage = document.createElement("p");
+        firstMessage.textContent = "Первое сообщение";
 
-        for (const product of products) {
-            const card = document.createElement("article");
-            const title = document.createElement("h2");
-            const price = document.createElement("p");
+        container.prepend(firstMessage);
 
-            card.classList.add("product");
+        const thirdMessage = document.createElement("p");
+        thirdMessage.textContent = "Третье сообщение";
 
-            title.textContent = product.title;
-            price.textContent = `Цена: ${product.price} руб.`;
-
-            card.append(title, price);
-            catalog.append(card);
-        }
+        container.append(thirdMessage);
     </script>
 </body>
 </html>
