@@ -2,18 +2,23 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Удаление элементов</title>
+    <title>Обновление контейнера</title>
 </head>
 <body>
-    <div id="catalog">
-        <p id="old-product">Устаревший товар</p>
-        <p>Новый товар</p>
+    <div id="result">
+        <p>Старое содержимое</p>
+        <p>Дополнительный текст</p>
     </div>
 
     <script>
-        const oldProduct = document.querySelector("#old-product");
+        const result = document.querySelector("#result");
 
-        oldProduct.remove();
+        result.replaceChildren();
+
+        const message = document.createElement("p");
+        message.textContent = "Новые данные";
+
+        result.append(message);
     </script>
 </body>
 </html>
