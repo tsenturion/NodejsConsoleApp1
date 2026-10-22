@@ -2,163 +2,77 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Список задач</title>
+    <title>Сохранение темы</title>
 
     <style>
         body {
+            background-color: white;
+            color: black;
             font-family: Arial, sans-serif;
             padding: 20px;
         }
 
-        li {
-            margin-bottom: 10px;
-        }
-
-        .completed {
-            text-decoration: line-through;
-            color: gray;
-        }
-
-        .error {
-            color: red;
+        body.dark {
+            background-color: #202020;
+            color: white;
         }
     </style>
 </head>
 <body>
-    <h1>Мои задачи</h1>
+    <h1>Настройки оформления</h1>
 
-    <form id="task-form">
-        <label for="task-input">Новая задача:</label>
+    <label for="theme">Выберите тему:</label>
 
-        <input
-            id="task-input"
-            type="text"
-            maxlength="100"
-        >
+    <select id="theme">
+        <option value="light">Светлая</option>
+        <option value="dark">Тёмная</option>
+    </select>
 
-        <button type="submit">Добавить</button>
-    </form>
-
-    <p id="error" class="error"></p>
-    <p id="summary"></p>
-
-    <ul id="task-list"></ul>
+    <p>Выбранная тема сохранится после перезагрузки.</p>
+    <p id="message" role="status"></p>
 
     <script>
-        const form = document.querySelector("#task-form");
-        const taskInput = document.querySelector("#task-input");
+        const themeSelect = document.querySelector("#theme");
+        const message = document.querySelector("#message");
 
-        const taskList = document.querySelector("#task-list");
-        const error = document.querySelector("#error");
-        const summary = document.querySelector("#summary");
+        const storageKey = "course-theme";
 
-        let tasks = [];
-        let nextId = 1;
-
-        function renderTasks() {
-            taskList.replaceChildren();
-
-            for (const task of tasks) {
-                const item = document.createElement("li");
-
-                const label = document.createElement("label");
-
-                const checkbox = document.createElement("input");
-                checkbox.type = "checkbox";
-                checkbox.checked = task.completed;
-                checkbox.dataset.id = task.id;
-
-                const title = document.createElement("span");
-                title.textContent = " " + task.title;
-
-                if (task.completed) {
-                    title.classList.add("completed");
-                }
-
-                label.append(checkbox, title);
-
-                const deleteButton = document.createElement("button");
-                deleteButton.type = "button";
-                deleteButton.textContent = "Удалить";
-                deleteButton.dataset.id = task.id;
-                deleteButton.dataset.action = "delete";
-
-                item.append(
-                    label,
-                    document.createTextNode(" "),
-                    deleteButton
-                );
-
-                taskList.append(item);
-            }
-
-            const completedCount = tasks.filter(
-                task => task.completed
-            ).length;
-
-            summary.textContent =
-                `Всего задач: ${tasks.length}. ` +
-                `Выполнено: ${completedCount}`;
+        function applyTheme(theme) {
+            document.body.classList.toggle(
+                "dark",
+                theme === "dark"
+            );
         }
 
-        form.addEventListener("submit", event => {
-            event.preventDefault();
+        let savedTheme = "light";
 
-            const title = taskInput.value.trim();
+        try {
+            const value = localStorage.getItem(storageKey);
 
-            if (title.length === 0) {
-                error.textContent = "Введите название задачи";
-                return;
+            if (value === "dark") {
+                savedTheme = "dark";
             }
+        } catch (error) {
+            message.textContent =
+                "Не удалось прочитать сохранённую тему";
+        }
 
-            tasks.push({
-                id: nextId++,
-                title: title,
-                completed: false
-            });
+        themeSelect.value = savedTheme;
+        applyTheme(savedTheme);
 
-            error.textContent = "";
+        themeSelect.addEventListener("change", () => {
+            const selectedTheme = themeSelect.value;
 
-            form.reset();
-            taskInput.focus();
+            applyTheme(selectedTheme);
 
-            renderTasks();
-        });
-
-        taskList.addEventListener("change", event => {
-            const checkbox = event.target;
-
-            if (!checkbox.matches('input[type="checkbox"]')) {
-                return;
-            }
-
-            const id = Number(checkbox.dataset.id);
-
-            const task = tasks.find(task => task.id === id);
-
-            if (task) {
-                task.completed = checkbox.checked;
-                renderTasks();
+            try {
+                localStorage.setItem(storageKey, selectedTheme);
+                message.textContent = "Тема сохранена";
+            } catch (error) {
+                message.textContent =
+                    "Не удалось сохранить выбранную тему";
             }
         });
-
-        taskList.addEventListener("click", event => {
-            const button = event.target.closest(
-                'button[data-action="delete"]'
-            );
-
-            if (!button || !taskList.contains(button)) {
-                return;
-            }
-
-            const id = Number(button.dataset.id);
-
-            tasks = tasks.filter(task => task.id !== id);
-
-            renderTasks();
-        });
-
-        renderTasks();
     </script>
 </body>
 </html>
