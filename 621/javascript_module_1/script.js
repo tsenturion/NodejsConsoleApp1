@@ -1,1 +1,1 @@
-increaseButton.addEventListener("click", increaseCounter);
+localStorage.setItem("username", "Алексей");
