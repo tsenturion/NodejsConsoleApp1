@@ -1,9 +1,24 @@
-const invalidJson = "{name: Anna}";
+function loadProducts() {
+    try {
+        const saved = localStorage.getItem("products");
 
-try {
-    const data = JSON.parse(invalidJson);
+        if (saved === null) {
+            return [];
+        }
 
-    console.log(data);
-} catch (error) {
-    console.log("Некорректный формат JSON");
+        const data = JSON.parse(saved);
+
+        if (!Array.isArray(data)) {
+            return [];
+        }
+
+        return data;
+    } catch (error) {
+        console.log("Не удалось загрузить товары");
+        return [];
+    }
 }
+
+const products = loadProducts();
+
+console.log(products);
