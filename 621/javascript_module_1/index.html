@@ -2,22 +2,27 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Обработка ввода</title>
+    <title>Событие change</title>
 </head>
 <body>
-    <label for="username">Введите имя:</label>
-    <input id="username" type="text">
+    <label for="theme">Выберите тему:</label>
 
-    <p id="preview"></p>
+    <select id="theme">
+        <option value="light">Светлая</option>
+        <option value="dark">Тёмная</option>
+        <option value="blue">Синяя</option>
+    </select>
+
+    <p id="result">Выбрана светлая тема</p>
 
     <script>
-        const input = document.querySelector("#username");
-        const preview = document.querySelector("#preview");
+        const themeSelect = document.querySelector("#theme");
+        const result = document.querySelector("#result");
 
-        input.addEventListener("input", () => {
-            const name = input.value;
+        themeSelect.addEventListener("change", () => {
+            const selectedTheme = themeSelect.value;
 
-            preview.textContent = `Привет, ${name}!`;
+            result.textContent = `Выбрана тема: ${selectedTheme}`;
         });
     </script>
 </body>
