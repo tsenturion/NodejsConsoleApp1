@@ -2,23 +2,27 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Поиск нескольких элементов</title>
+    <title>Поиск внутри элемента</title>
 </head>
 <body>
-    <h1>Каталог</h1>
+    <section id="catalog">
+        <p class="item">Ноутбук</p>
+        <p class="item">Телефон</p>
+    </section>
 
-    <p class="price">1000</p>
-    <p class="price">2500</p>
-    <p class="price">1800</p>
+    <section id="cart">
+        <p class="item">Клавиатура</p>
+    </section>
 
     <script>
-        const prices = document.querySelectorAll(".price");
+        const catalog = document.querySelector("#catalog");
 
-        console.log(prices.length); // 3
+        const items = catalog.querySelectorAll(".item");
 
-        prices.forEach(element => {
-            const price = Number(element.textContent);
-            element.textContent = `${price} руб.`;
+        console.log(items.length); // 2
+
+        items.forEach(item => {
+            console.log(item.textContent);
         });
     </script>
 </body>
