@@ -2,75 +2,86 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Валидация формы</title>
+    <title>Ошибки формы</title>
+
+    <style>
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Регистрация</h1>
+    <h1>Создание аккаунта</h1>
 
-    <form id="register-form" novalidate>
+    <form id="account-form" novalidate>
         <div>
-            <label for="username">Имя:</label>
+            <label for="login">Логин:</label>
+            <input id="login" type="text">
 
-            <input
-                id="username"
-                type="text"
-                minlength="3"
-                required
-            >
+            <p id="login-error" class="error"></p>
         </div>
 
         <div>
-            <label for="email">Email:</label>
+            <label for="age">Возраст:</label>
+            <input id="age" type="number">
 
-            <input
-                id="email"
-                type="email"
-                required
-            >
+            <p id="age-error" class="error"></p>
         </div>
 
-        <button type="submit">Зарегистрироваться</button>
+        <button type="submit">Продолжить</button>
     </form>
 
-    <p id="message" role="status"></p>
+    <p id="result" role="status"></p>
 
     <script>
-        const form = document.querySelector("#register-form");
-        const usernameInput = document.querySelector("#username");
-        const emailInput = document.querySelector("#email");
-        const message = document.querySelector("#message");
+        const form = document.querySelector("#account-form");
+
+        const loginInput = document.querySelector("#login");
+        const ageInput = document.querySelector("#age");
+
+        const loginError = document.querySelector("#login-error");
+        const ageError = document.querySelector("#age-error");
+
+        const result = document.querySelector("#result");
 
         form.addEventListener("submit", event => {
             event.preventDefault();
 
-            const username = usernameInput.value.trim();
-            const email = emailInput.value.trim();
+            loginError.textContent = "";
+            ageError.textContent = "";
+            result.textContent = "";
 
-            if (username.length < 3) {
-                message.textContent =
-                    "Имя должно содержать минимум 3 символа";
+            const login = loginInput.value.trim();
+            const ageText = ageInput.value.trim();
+            const age = Number(ageText);
 
-                message.style.color = "red";
+            let isValid = true;
+
+            if (login.length < 4) {
+                loginError.textContent =
+                    "Логин должен содержать минимум 4 символа";
+
+                isValid = false;
+            }
+
+            if (
+                ageText === "" ||
+                !Number.isInteger(age) ||
+                age < 18
+            ) {
+                ageError.textContent =
+                    "Введите целый возраст от 18 лет";
+
+                isValid = false;
+            }
+
+            if (!isValid) {
                 return;
             }
 
-            if (!emailInput.checkValidity()) {
-                message.textContent =
-                    "Введите корректный email";
-
-                message.style.color = "red";
-                return;
-            }
-
-            message.textContent =
-                `Пользователь ${username} зарегистрирован`;
-
-            message.style.color = "green";
-
-            console.log({
-                username,
-                email
-            });
+            result.textContent =
+                `Данные пользователя ${login} приняты`;
 
             form.reset();
         });
