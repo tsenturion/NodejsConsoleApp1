@@ -2,28 +2,25 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Всплытие событий</title>
+    <title>target и currentTarget</title>
 </head>
 <body>
     <div id="container">
         <button id="button" type="button">
-            Нажми на меня
+            Нажать
         </button>
     </div>
 
-    <p id="result"></p>
+    <pre id="result"></pre>
 
     <script>
         const container = document.querySelector("#container");
-        const button = document.querySelector("#button");
         const result = document.querySelector("#result");
 
-        button.addEventListener("click", event => {
-            result.textContent += "Нажата кнопка. ";
-        });
-
         container.addEventListener("click", event => {
-            result.textContent += "Нажат контейнер. ";
+            result.textContent =
+                `target: ${event.target.id}\n` +
+                `currentTarget: ${event.currentTarget.id}`;
         });
     </script>
 </body>
