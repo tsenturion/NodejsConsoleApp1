@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>target и currentTarget</title>
+    <title>Остановка всплытия</title>
 </head>
 <body>
     <div id="container">
@@ -11,16 +11,21 @@
         </button>
     </div>
 
-    <pre id="result"></pre>
+    <p id="result"></p>
 
     <script>
         const container = document.querySelector("#container");
+        const button = document.querySelector("#button");
         const result = document.querySelector("#result");
 
-        container.addEventListener("click", event => {
-            result.textContent =
-                `target: ${event.target.id}\n` +
-                `currentTarget: ${event.currentTarget.id}`;
+        button.addEventListener("click", event => {
+            event.stopPropagation();
+
+            result.textContent = "Обработчик кнопки";
+        });
+
+        container.addEventListener("click", () => {
+            result.textContent = "Обработчик контейнера";
         });
     </script>
 </body>
