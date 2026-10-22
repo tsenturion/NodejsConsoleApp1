@@ -2,76 +2,32 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Делегирование событий</title>
+    <title>Обработка формы</title>
 </head>
 <body>
-    <h1>Технологии</h1>
+    <h1>Регистрация</h1>
 
-    <button id="add" type="button">Добавить технологию</button>
+    <form id="register-form">
+        <label for="username">Имя:</label>
+        <input id="username" type="text">
 
-    <div id="technologies"></div>
+        <button type="submit">Отправить</button>
+    </form>
+
+    <p id="result"></p>
 
     <script>
-        const technologies = [
-            { id: 1, name: "HTML" },
-            { id: 2, name: "CSS" },
-            { id: 3, name: "JavaScript" }
-        ];
+        const form = document.querySelector("#register-form");
+        const usernameInput = document.querySelector("#username");
+        const result = document.querySelector("#result");
 
-        const container = document.querySelector("#technologies");
-        const addButton = document.querySelector("#add");
+        form.addEventListener("submit", event => {
+            event.preventDefault();
 
-        let nextId = 4;
+            const username = usernameInput.value;
 
-        function renderTechnologies() {
-            container.replaceChildren();
-
-            for (const technology of technologies) {
-                const item = document.createElement("div");
-
-                const name = document.createElement("span");
-                name.textContent = technology.name + " ";
-
-                const deleteButton = document.createElement("button");
-
-                deleteButton.textContent = "Удалить";
-                deleteButton.type = "button";
-                deleteButton.dataset.id = technology.id;
-
-                item.append(name, deleteButton);
-                container.append(item);
-            }
-        }
-
-        addButton.addEventListener("click", () => {
-            technologies.push({
-                id: nextId++,
-                name: `Технология ${nextId - 1}`
-            });
-
-            renderTechnologies();
+            result.textContent = `Пользователь: ${username}`;
         });
-
-        container.addEventListener("click", event => {
-            const button = event.target.closest("button[data-id]");
-
-            if (!button || !container.contains(button)) {
-                return;
-            }
-
-            const id = Number(button.dataset.id);
-
-            const index = technologies.findIndex(
-                technology => technology.id === id
-            );
-
-            if (index !== -1) {
-                technologies.splice(index, 1);
-                renderTechnologies();
-            }
-        });
-
-        renderTechnologies();
     </script>
 </body>
 </html>
