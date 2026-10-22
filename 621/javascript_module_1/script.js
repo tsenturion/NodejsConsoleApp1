@@ -1,12 +1,12 @@
-localStorage.setItem("quantity", 12);
-localStorage.setItem("notifications", false);
+const user = {
+    name: "Анна",
+    age: 22,
+    isActive: true
+};
 
-const quantity = Number(
-    localStorage.getItem("quantity")
-);
+const json = JSON.stringify(user);
 
-const notifications =
-    localStorage.getItem("notifications") === "true";
+console.log(json);
+// {"name":"Анна","age":22,"isActive":true}
 
-console.log(quantity);      // 12
-console.log(notifications); // false
+console.log(typeof json); // string
