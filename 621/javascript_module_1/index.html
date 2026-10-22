@@ -2,27 +2,23 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Событие change</title>
+    <title>Обработка клавиатуры</title>
 </head>
 <body>
-    <label for="theme">Выберите тему:</label>
+    <label for="search">Поиск:</label>
+    <input id="search" type="text">
 
-    <select id="theme">
-        <option value="light">Светлая</option>
-        <option value="dark">Тёмная</option>
-        <option value="blue">Синяя</option>
-    </select>
-
-    <p id="result">Выбрана светлая тема</p>
+    <p id="message">Нажмите Escape для очистки поля</p>
 
     <script>
-        const themeSelect = document.querySelector("#theme");
-        const result = document.querySelector("#result");
+        const search = document.querySelector("#search");
+        const message = document.querySelector("#message");
 
-        themeSelect.addEventListener("change", () => {
-            const selectedTheme = themeSelect.value;
-
-            result.textContent = `Выбрана тема: ${selectedTheme}`;
+        search.addEventListener("keydown", event => {
+            if (event.key === "Escape") {
+                search.value = "";
+                message.textContent = "Поле очищено";
+            }
         });
     </script>
 </body>
