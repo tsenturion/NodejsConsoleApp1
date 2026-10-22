@@ -1,7 +1,9 @@
-const json = '{"name":"Анна","age":22,"isActive":true}';
+const invalidJson = "{name: Anna}";
 
-const user = JSON.parse(json);
+try {
+    const data = JSON.parse(invalidJson);
 
-console.log(user.name);     // Анна
-console.log(user.age);      // 22
-console.log(user.isActive); // true
+    console.log(data);
+} catch (error) {
+    console.log("Некорректный формат JSON");
+}
