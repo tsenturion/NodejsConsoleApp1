@@ -2,28 +2,18 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Поиск внутри элемента</title>
+    <title>textContent и innerHTML</title>
 </head>
 <body>
-    <section id="catalog">
-        <p class="item">Ноутбук</p>
-        <p class="item">Телефон</p>
-    </section>
-
-    <section id="cart">
-        <p class="item">Клавиатура</p>
-    </section>
+    <div id="first"></div>
+    <div id="second"></div>
 
     <script>
-        const catalog = document.querySelector("#catalog");
+        const first = document.querySelector("#first");
+        const second = document.querySelector("#second");
 
-        const items = catalog.querySelectorAll(".item");
-
-        console.log(items.length); // 2
-
-        items.forEach(item => {
-            console.log(item.textContent);
-        });
+        first.textContent = "<strong>Привет!</strong>";
+        second.innerHTML = "<strong>Привет!</strong>";
     </script>
 </body>
 </html>
