@@ -2,31 +2,76 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Остановка всплытия</title>
+    <title>Делегирование событий</title>
 </head>
 <body>
-    <div id="container">
-        <button id="button" type="button">
-            Нажать
-        </button>
-    </div>
+    <h1>Технологии</h1>
 
-    <p id="result"></p>
+    <button id="add" type="button">Добавить технологию</button>
+
+    <div id="technologies"></div>
 
     <script>
-        const container = document.querySelector("#container");
-        const button = document.querySelector("#button");
-        const result = document.querySelector("#result");
+        const technologies = [
+            { id: 1, name: "HTML" },
+            { id: 2, name: "CSS" },
+            { id: 3, name: "JavaScript" }
+        ];
 
-        button.addEventListener("click", event => {
-            event.stopPropagation();
+        const container = document.querySelector("#technologies");
+        const addButton = document.querySelector("#add");
 
-            result.textContent = "Обработчик кнопки";
+        let nextId = 4;
+
+        function renderTechnologies() {
+            container.replaceChildren();
+
+            for (const technology of technologies) {
+                const item = document.createElement("div");
+
+                const name = document.createElement("span");
+                name.textContent = technology.name + " ";
+
+                const deleteButton = document.createElement("button");
+
+                deleteButton.textContent = "Удалить";
+                deleteButton.type = "button";
+                deleteButton.dataset.id = technology.id;
+
+                item.append(name, deleteButton);
+                container.append(item);
+            }
+        }
+
+        addButton.addEventListener("click", () => {
+            technologies.push({
+                id: nextId++,
+                name: `Технология ${nextId - 1}`
+            });
+
+            renderTechnologies();
         });
 
-        container.addEventListener("click", () => {
-            result.textContent = "Обработчик контейнера";
+        container.addEventListener("click", event => {
+            const button = event.target.closest("button[data-id]");
+
+            if (!button || !container.contains(button)) {
+                return;
+            }
+
+            const id = Number(button.dataset.id);
+
+            const index = technologies.findIndex(
+                technology => technology.id === id
+            );
+
+            if (index !== -1) {
+                technologies.splice(index, 1);
+                renderTechnologies();
+            }
         });
+
+        renderTechnologies();
     </script>
 </body>
 </html>
