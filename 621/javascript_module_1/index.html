@@ -2,25 +2,18 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Добавление и удаление</title>
+    <title>Удаление элементов</title>
 </head>
 <body>
-    <div id="messages">
-        <p>Второе сообщение</p>
+    <div id="catalog">
+        <p id="old-product">Устаревший товар</p>
+        <p>Новый товар</p>
     </div>
 
     <script>
-        const container = document.querySelector("#messages");
+        const oldProduct = document.querySelector("#old-product");
 
-        const firstMessage = document.createElement("p");
-        firstMessage.textContent = "Первое сообщение";
-
-        container.prepend(firstMessage);
-
-        const thirdMessage = document.createElement("p");
-        thirdMessage.textContent = "Третье сообщение";
-
-        container.append(thirdMessage);
+        oldProduct.remove();
     </script>
 </body>
 </html>
