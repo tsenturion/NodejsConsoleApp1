@@ -1,6 +1,11 @@
-localStorage.setItem("username", "Алексей");
+localStorage.setItem("age", 25);
+localStorage.setItem("isActive", true);
 
-localStorage.removeItem("username");
+const age = localStorage.getItem("age");
+const isActive = localStorage.getItem("isActive");
 
-console.log(localStorage.getItem("username"));
-// null
+console.log(age);      // "25"
+console.log(isActive); // "true"
+
+console.log(typeof age);      // string
+console.log(typeof isActive); // string
