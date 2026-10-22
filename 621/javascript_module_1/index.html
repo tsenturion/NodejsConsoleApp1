@@ -2,31 +2,45 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Обработка формы</title>
+    <title>Расчёт стоимости</title>
 </head>
 <body>
-    <h1>Регистрация</h1>
+    <h1>Калькулятор заказа</h1>
 
-    <form id="register-form">
-        <label for="username">Имя:</label>
-        <input id="username" type="text">
+    <form id="order-form">
+        <label for="product">Товар:</label>
+        <input id="product" type="text" required>
 
-        <button type="submit">Отправить</button>
+        <label for="price">Цена:</label>
+        <input id="price" type="number" min="0" required>
+
+        <label for="quantity">Количество:</label>
+        <input id="quantity" type="number" min="1" step="1" required>
+
+        <button type="submit">Рассчитать</button>
     </form>
 
     <p id="result"></p>
 
     <script>
-        const form = document.querySelector("#register-form");
-        const usernameInput = document.querySelector("#username");
+        const form = document.querySelector("#order-form");
         const result = document.querySelector("#result");
+
+        const productInput = document.querySelector("#product");
+        const priceInput = document.querySelector("#price");
+        const quantityInput = document.querySelector("#quantity");
 
         form.addEventListener("submit", event => {
             event.preventDefault();
 
-            const username = usernameInput.value;
+            const product = productInput.value.trim();
+            const price = Number(priceInput.value);
+            const quantity = Number(quantityInput.value);
 
-            result.textContent = `Пользователь: ${username}`;
+            const total = price * quantity;
+
+            result.textContent =
+                `${product}: ${total} руб.`;
         });
     </script>
 </body>
