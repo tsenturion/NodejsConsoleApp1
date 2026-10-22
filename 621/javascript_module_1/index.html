@@ -2,23 +2,25 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Нажатие Enter</title>
+    <title>Объект события</title>
 </head>
 <body>
-    <label for="message-input">Сообщение:</label>
-    <input id="message-input" type="text">
+    <button id="save" type="button">Сохранить</button>
+    <button id="cancel" type="button">Отмена</button>
 
     <p id="result"></p>
 
     <script>
-        const input = document.querySelector("#message-input");
+        const buttons = document.querySelectorAll("button");
         const result = document.querySelector("#result");
 
-        input.addEventListener("keydown", event => {
-            if (event.key === "Enter") {
-                result.textContent = input.value;
-                input.value = "";
-            }
+        buttons.forEach(button => {
+            button.addEventListener("click", event => {
+                const clickedButton = event.target;
+
+                result.textContent =
+                    `Нажата кнопка: ${clickedButton.id}`;
+            });
         });
     </script>
 </body>
