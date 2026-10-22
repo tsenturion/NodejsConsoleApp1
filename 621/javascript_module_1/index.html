@@ -2,25 +2,28 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Объект события</title>
+    <title>Всплытие событий</title>
 </head>
 <body>
-    <button id="save" type="button">Сохранить</button>
-    <button id="cancel" type="button">Отмена</button>
+    <div id="container">
+        <button id="button" type="button">
+            Нажми на меня
+        </button>
+    </div>
 
     <p id="result"></p>
 
     <script>
-        const buttons = document.querySelectorAll("button");
+        const container = document.querySelector("#container");
+        const button = document.querySelector("#button");
         const result = document.querySelector("#result");
 
-        buttons.forEach(button => {
-            button.addEventListener("click", event => {
-                const clickedButton = event.target;
+        button.addEventListener("click", event => {
+            result.textContent += "Нажата кнопка. ";
+        });
 
-                result.textContent =
-                    `Нажата кнопка: ${clickedButton.id}`;
-            });
+        container.addEventListener("click", event => {
+            result.textContent += "Нажат контейнер. ";
         });
     </script>
 </body>
