@@ -1,3 +1,5 @@
 const element = document.querySelector("#unknown");
 
-console.log(element); // null
+if (element !== null) {
+    element.textContent = "Новый текст";
+}
