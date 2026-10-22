@@ -2,18 +2,42 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Изменение стилей</title>
+    <title>Работа с классами</title>
+
+    <style>
+        .message {
+            padding: 15px;
+            background-color: #eeeeee;
+        }
+
+        .important {
+            background-color: #ffdddd;
+            color: #aa0000;
+            font-weight: bold;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
 </head>
 <body>
-    <p id="message">Важное сообщение</p>
+    <p id="message" class="message">
+        Обычное сообщение
+    </p>
 
     <script>
         const message = document.querySelector("#message");
 
-        message.style.color = "red";
-        message.style.backgroundColor = "#eeeeee";
-        message.style.fontSize = "20px";
-        message.style.padding = "15px";
+        message.classList.add("important");
+
+        console.log(message.classList.contains("important"));
+        // true
+
+        message.classList.remove("message");
+
+        message.classList.toggle("hidden");
+        message.classList.toggle("hidden");
     </script>
 </body>
 </html>
