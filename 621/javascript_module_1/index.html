@@ -2,45 +2,77 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Расчёт стоимости</title>
+    <title>Валидация формы</title>
 </head>
 <body>
-    <h1>Калькулятор заказа</h1>
+    <h1>Регистрация</h1>
 
-    <form id="order-form">
-        <label for="product">Товар:</label>
-        <input id="product" type="text" required>
+    <form id="register-form" novalidate>
+        <div>
+            <label for="username">Имя:</label>
 
-        <label for="price">Цена:</label>
-        <input id="price" type="number" min="0" required>
+            <input
+                id="username"
+                type="text"
+                minlength="3"
+                required
+            >
+        </div>
 
-        <label for="quantity">Количество:</label>
-        <input id="quantity" type="number" min="1" step="1" required>
+        <div>
+            <label for="email">Email:</label>
 
-        <button type="submit">Рассчитать</button>
+            <input
+                id="email"
+                type="email"
+                required
+            >
+        </div>
+
+        <button type="submit">Зарегистрироваться</button>
     </form>
 
-    <p id="result"></p>
+    <p id="message" role="status"></p>
 
     <script>
-        const form = document.querySelector("#order-form");
-        const result = document.querySelector("#result");
-
-        const productInput = document.querySelector("#product");
-        const priceInput = document.querySelector("#price");
-        const quantityInput = document.querySelector("#quantity");
+        const form = document.querySelector("#register-form");
+        const usernameInput = document.querySelector("#username");
+        const emailInput = document.querySelector("#email");
+        const message = document.querySelector("#message");
 
         form.addEventListener("submit", event => {
             event.preventDefault();
 
-            const product = productInput.value.trim();
-            const price = Number(priceInput.value);
-            const quantity = Number(quantityInput.value);
+            const username = usernameInput.value.trim();
+            const email = emailInput.value.trim();
 
-            const total = price * quantity;
+            if (username.length < 3) {
+                message.textContent =
+                    "Имя должно содержать минимум 3 символа";
 
-            result.textContent =
-                `${product}: ${total} руб.`;
+                message.style.color = "red";
+                return;
+            }
+
+            if (!emailInput.checkValidity()) {
+                message.textContent =
+                    "Введите корректный email";
+
+                message.style.color = "red";
+                return;
+            }
+
+            message.textContent =
+                `Пользователь ${username} зарегистрирован`;
+
+            message.style.color = "green";
+
+            console.log({
+                username,
+                email
+            });
+
+            form.reset();
         });
     </script>
 </body>
