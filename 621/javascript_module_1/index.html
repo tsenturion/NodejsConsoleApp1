@@ -2,89 +2,163 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Ошибки формы</title>
+    <title>Список задач</title>
 
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        .completed {
+            text-decoration: line-through;
+            color: gray;
+        }
+
         .error {
             color: red;
-            font-size: 14px;
         }
     </style>
 </head>
 <body>
-    <h1>Создание аккаунта</h1>
+    <h1>Мои задачи</h1>
 
-    <form id="account-form" novalidate>
-        <div>
-            <label for="login">Логин:</label>
-            <input id="login" type="text">
+    <form id="task-form">
+        <label for="task-input">Новая задача:</label>
 
-            <p id="login-error" class="error"></p>
-        </div>
+        <input
+            id="task-input"
+            type="text"
+            maxlength="100"
+        >
 
-        <div>
-            <label for="age">Возраст:</label>
-            <input id="age" type="number">
-
-            <p id="age-error" class="error"></p>
-        </div>
-
-        <button type="submit">Продолжить</button>
+        <button type="submit">Добавить</button>
     </form>
 
-    <p id="result" role="status"></p>
+    <p id="error" class="error"></p>
+    <p id="summary"></p>
+
+    <ul id="task-list"></ul>
 
     <script>
-        const form = document.querySelector("#account-form");
+        const form = document.querySelector("#task-form");
+        const taskInput = document.querySelector("#task-input");
 
-        const loginInput = document.querySelector("#login");
-        const ageInput = document.querySelector("#age");
+        const taskList = document.querySelector("#task-list");
+        const error = document.querySelector("#error");
+        const summary = document.querySelector("#summary");
 
-        const loginError = document.querySelector("#login-error");
-        const ageError = document.querySelector("#age-error");
+        let tasks = [];
+        let nextId = 1;
 
-        const result = document.querySelector("#result");
+        function renderTasks() {
+            taskList.replaceChildren();
+
+            for (const task of tasks) {
+                const item = document.createElement("li");
+
+                const label = document.createElement("label");
+
+                const checkbox = document.createElement("input");
+                checkbox.type = "checkbox";
+                checkbox.checked = task.completed;
+                checkbox.dataset.id = task.id;
+
+                const title = document.createElement("span");
+                title.textContent = " " + task.title;
+
+                if (task.completed) {
+                    title.classList.add("completed");
+                }
+
+                label.append(checkbox, title);
+
+                const deleteButton = document.createElement("button");
+                deleteButton.type = "button";
+                deleteButton.textContent = "Удалить";
+                deleteButton.dataset.id = task.id;
+                deleteButton.dataset.action = "delete";
+
+                item.append(
+                    label,
+                    document.createTextNode(" "),
+                    deleteButton
+                );
+
+                taskList.append(item);
+            }
+
+            const completedCount = tasks.filter(
+                task => task.completed
+            ).length;
+
+            summary.textContent =
+                `Всего задач: ${tasks.length}. ` +
+                `Выполнено: ${completedCount}`;
+        }
 
         form.addEventListener("submit", event => {
             event.preventDefault();
 
-            loginError.textContent = "";
-            ageError.textContent = "";
-            result.textContent = "";
+            const title = taskInput.value.trim();
 
-            const login = loginInput.value.trim();
-            const ageText = ageInput.value.trim();
-            const age = Number(ageText);
-
-            let isValid = true;
-
-            if (login.length < 4) {
-                loginError.textContent =
-                    "Логин должен содержать минимум 4 символа";
-
-                isValid = false;
-            }
-
-            if (
-                ageText === "" ||
-                !Number.isInteger(age) ||
-                age < 18
-            ) {
-                ageError.textContent =
-                    "Введите целый возраст от 18 лет";
-
-                isValid = false;
-            }
-
-            if (!isValid) {
+            if (title.length === 0) {
+                error.textContent = "Введите название задачи";
                 return;
             }
 
-            result.textContent =
-                `Данные пользователя ${login} приняты`;
+            tasks.push({
+                id: nextId++,
+                title: title,
+                completed: false
+            });
+
+            error.textContent = "";
 
             form.reset();
+            taskInput.focus();
+
+            renderTasks();
         });
+
+        taskList.addEventListener("change", event => {
+            const checkbox = event.target;
+
+            if (!checkbox.matches('input[type="checkbox"]')) {
+                return;
+            }
+
+            const id = Number(checkbox.dataset.id);
+
+            const task = tasks.find(task => task.id === id);
+
+            if (task) {
+                task.completed = checkbox.checked;
+                renderTasks();
+            }
+        });
+
+        taskList.addEventListener("click", event => {
+            const button = event.target.closest(
+                'button[data-action="delete"]'
+            );
+
+            if (!button || !taskList.contains(button)) {
+                return;
+            }
+
+            const id = Number(button.dataset.id);
+
+            tasks = tasks.filter(task => task.id !== id);
+
+            renderTasks();
+        });
+
+        renderTasks();
     </script>
 </body>
 </html>
