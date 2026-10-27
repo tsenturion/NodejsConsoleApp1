@@ -1,11 +1,17 @@
-console.log("Начало");
+function loadUser() {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            const user = {
+                id: 1,
+                name: "Алексей",
+                age: 25
+            };
 
-setTimeout(() => {
-    console.log("Таймер");
-}, 0);
+            resolve(user);
+        }, 2000);
+    });
+}
 
-Promise.resolve().then(() => {
-    console.log("Промис");
-});
+const result = loadUser();
 
-console.log("Конец");
+console.log(result);
