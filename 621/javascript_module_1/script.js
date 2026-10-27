@@ -1,19 +1,14 @@
-function checkBalance(balance, price) {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            if (balance >= price) {
-                resolve("Покупка разрешена");
-            } else {
-                reject(new Error("Недостаточно средств"));
-            }
-        }, 1000);
-    });
-}
+Promise.resolve(10)
+    .then(number => {
+        if (number === 10) {
+            throw new Error("Недопустимое значение");
+        }
 
-checkBalance(500, 800)
+        return number * 2;
+    })
     .then(result => {
-        console.log(result);
+        console.log("Результат:", result);
     })
     .catch(error => {
-        console.log("Ошибка:", error.message);
+        console.log(error.message);
     });
