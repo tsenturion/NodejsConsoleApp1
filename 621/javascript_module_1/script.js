@@ -1,12 +1,13 @@
-let count = 0;
+console.log("A");
 
-const intervalId = setInterval(() => {
-    count++;
-
-    console.log("Значение счётчика:", count);
-
-    if (count === 5) {
-        clearInterval(intervalId);
-        console.log("Повторение остановлено");
-    }
+setTimeout(() => {
+    console.log("B");
 }, 1000);
+
+console.log("C");
+
+for (let i = 0; i < 100000000; i++) {
+    // Имитируем длительные вычисления
+}
+
+console.log("D");

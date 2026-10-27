@@ -2,66 +2,12 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Таймер обратного отсчёта</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Основы JavaScript</title>
+    <script src="script.js" defer></script>
 </head>
 <body>
-    <h1>Обратный отсчёт</h1>
-
-    <p id="timer">10</p>
-
-    <button id="start" type="button">Старт</button>
-    <button id="stop" type="button">Остановить</button>
-    <button id="reset" type="button">Сбросить</button>
-
-    <script>
-        const timerElement = document.querySelector("#timer");
-
-        const startButton = document.querySelector("#start");
-        const stopButton = document.querySelector("#stop");
-        const resetButton = document.querySelector("#reset");
-
-        let seconds = 10;
-        let intervalId = null;
-
-        function renderTimer() {
-            timerElement.textContent = seconds;
-        }
-
-        function stopTimer() {
-            if (intervalId !== null) {
-                clearInterval(intervalId);
-                intervalId = null;
-            }
-        }
-
-        startButton.addEventListener("click", () => {
-            if (intervalId !== null || seconds === 0) {
-                return;
-            }
-
-            intervalId = setInterval(() => {
-                seconds--;
-                renderTimer();
-
-                if (seconds === 0) {
-                    stopTimer();
-                    timerElement.textContent = "Время вышло!";
-                }
-            }, 1000);
-        });
-
-        stopButton.addEventListener("click", () => {
-            stopTimer();
-        });
-
-        resetButton.addEventListener("click", () => {
-            stopTimer();
-
-            seconds = 10;
-            renderTimer();
-        });
-
-        renderTimer();
-    </script>
+    <h1>Изучаем JavaScript</h1>
+    <p>Откройте консоль разработчика, чтобы увидеть результат.</p>
 </body>
 </html>
