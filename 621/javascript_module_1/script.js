@@ -1,13 +1,11 @@
-console.log("A");
+console.log("Начало");
 
 setTimeout(() => {
-    console.log("B");
-}, 1000);
+    console.log("Таймер");
+}, 0);
 
-console.log("C");
+Promise.resolve().then(() => {
+    console.log("Промис");
+});
 
-for (let i = 0; i < 100000000; i++) {
-    // Имитируем длительные вычисления
-}
-
-console.log("D");
+console.log("Конец");
