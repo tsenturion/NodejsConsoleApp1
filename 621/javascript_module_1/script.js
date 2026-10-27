@@ -1,24 +1,7 @@
-function loadProducts() {
-    try {
-        const saved = localStorage.getItem("products");
+console.log("Начало программы");
 
-        if (saved === null) {
-            return [];
-        }
+setTimeout(() => {
+    console.log("Асинхронная операция завершена");
+}, 2000);
 
-        const data = JSON.parse(saved);
-
-        if (!Array.isArray(data)) {
-            return [];
-        }
-
-        return data;
-    } catch (error) {
-        console.log("Не удалось загрузить товары");
-        return [];
-    }
-}
-
-const products = loadProducts();
-
-console.log(products);
+console.log("Конец программы");
