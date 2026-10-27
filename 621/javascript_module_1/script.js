@@ -1,22 +1,35 @@
-async function getUser() {
-    const response = await fetch(
+async function loadUserPosts() {
+    const userResponse = await fetch(
         "https://jsonplaceholder.typicode.com/users/1"
     );
 
-    if (!response.ok) {
-        throw new Error(`Ошибка HTTP: ${response.status}`);
+    if (!userResponse.ok) {
+        throw new Error("Не удалось получить пользователя");
     }
 
-    return await response.json();
+    const user = await userResponse.json();
+
+    const postsResponse = await fetch(
+        `https://jsonplaceholder.typicode.com/posts?userId=${user.id}`
+    );
+
+    if (!postsResponse.ok) {
+        throw new Error("Не удалось получить публикации");
+    }
+
+    const posts = await postsResponse.json();
+
+    return {
+        user,
+        posts
+    };
 }
 
-async function main() {
-    const user = await getUser();
-
-    console.log("Имя:", user.name);
-    console.log("Email:", user.email);
-}
-
-main().catch(error => {
-    console.error(error.message);
-});
+loadUserPosts()
+    .then(data => {
+        console.log("Пользователь:", data.user.name);
+        console.log("Публикаций:", data.posts.length);
+    })
+    .catch(error => {
+        console.error(error.message);
+    });
