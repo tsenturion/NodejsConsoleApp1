@@ -2,12 +2,82 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Основы JavaScript</title>
-    <script src="script.js" defer></script>
+    <title>Асинхронная загрузка</title>
 </head>
 <body>
-    <h1>Изучаем JavaScript</h1>
-    <p>Откройте консоль разработчика, чтобы увидеть результат.</p>
+    <h1>Загрузка пользователя</h1>
+
+    <button id="load" type="button">
+        Загрузить пользователя
+    </button>
+
+    <button id="load-error" type="button">
+        Имитировать ошибку
+    </button>
+
+    <p id="status" role="status"></p>
+    <div id="result"></div>
+
+    <script>
+        const loadButton = document.querySelector("#load");
+        const errorButton = document.querySelector("#load-error");
+
+        const status = document.querySelector("#status");
+        const result = document.querySelector("#result");
+
+        function loadUser(shouldFail = false) {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    if (shouldFail) {
+                        reject(new Error("Сервер недоступен"));
+                        return;
+                    }
+
+                    resolve({
+                        id: 1,
+                        name: "Алексей",
+                        email: "alex@example.com"
+                    });
+                }, 2000);
+            });
+        }
+
+        function startLoading(shouldFail) {
+            status.textContent = "Загрузка...";
+            result.replaceChildren();
+
+            loadButton.disabled = true;
+            errorButton.disabled = true;
+
+            loadUser(shouldFail)
+                .then(user => {
+                    status.textContent = "Данные получены";
+
+                    const name = document.createElement("h2");
+                    name.textContent = user.name;
+
+                    const email = document.createElement("p");
+                    email.textContent = user.email;
+
+                    result.append(name, email);
+                })
+                .catch(error => {
+                    status.textContent =
+                        `Ошибка загрузки: ${error.message}`;
+                })
+                .finally(() => {
+                    loadButton.disabled = false;
+                    errorButton.disabled = false;
+                });
+        }
+
+        loadButton.addEventListener("click", () => {
+            startLoading(false);
+        });
+
+        errorButton.addEventListener("click", () => {
+            startLoading(true);
+        });
+    </script>
 </body>
 </html>
