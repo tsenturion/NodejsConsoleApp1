@@ -1,7 +1,7 @@
-console.log("Первое сообщение");
+const timerId = setTimeout(() => {
+    console.log("Это сообщение не появится");
+}, 3000);
 
-setTimeout(() => {
-    console.log("Второе сообщение");
-}, 0);
+clearTimeout(timerId);
 
-console.log("Третье сообщение");
+console.log("Таймер отменён");
