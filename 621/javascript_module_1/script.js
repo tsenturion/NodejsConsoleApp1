@@ -7,12 +7,16 @@ async function getUser() {
         throw new Error(`Ошибка HTTP: ${response.status}`);
     }
 
-    const user = await response.json();
-
-    return user;
+    return await response.json();
 }
 
-getUser().then(user => {
-    console.log(user.name);
-    console.log(user.email);
+async function main() {
+    const user = await getUser();
+
+    console.log("Имя:", user.name);
+    console.log("Email:", user.email);
+}
+
+main().catch(error => {
+    console.error(error.message);
 });
