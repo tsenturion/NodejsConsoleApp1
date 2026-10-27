@@ -1,25 +1,24 @@
 async function getUser(id) {
+    const response = await fetch(
+        `https://jsonplaceholder.typicode.com/users/${id}`
+    );
+
+    if (!response.ok) {
+        throw new Error(`Ошибка HTTP: ${response.status}`);
+    }
+
+    return await response.json();
+}
+
+async function main() {
     try {
-        const response = await fetch(
-            `https://jsonplaceholder.typicode.com/users/${id}`
-        );
+        const user = await getUser(1);
 
-        if (!response.ok) {
-            throw new Error(
-                `Не удалось получить пользователя. HTTP ${response.status}`
-            );
-        }
-
-        const user = await response.json();
-
-        console.log("Имя:", user.name);
-
-        return user;
+        console.log("Пользователь:", user.name);
     } catch (error) {
-        console.error("Ошибка загрузки:", error.message);
-
-        return null;
+        console.log("Не удалось выполнить операцию");
+        console.error(error.message);
     }
 }
 
-getUser(1);
+main();
