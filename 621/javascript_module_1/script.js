@@ -1,7 +1,12 @@
-const timerId = setTimeout(() => {
-    console.log("Это сообщение не появится");
-}, 3000);
+let count = 0;
 
-clearTimeout(timerId);
+const intervalId = setInterval(() => {
+    count++;
 
-console.log("Таймер отменён");
+    console.log("Значение счётчика:", count);
+
+    if (count === 5) {
+        clearInterval(intervalId);
+        console.log("Повторение остановлено");
+    }
+}, 1000);
