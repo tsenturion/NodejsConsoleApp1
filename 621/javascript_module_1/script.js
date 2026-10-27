@@ -1,20 +1,31 @@
-function loadData() {
+function loadUser() {
     return new Promise(resolve => {
         setTimeout(() => {
-            resolve("Данные загружены");
-        }, 1500);
+            resolve({
+                name: "Анна",
+                age: 22
+            });
+        }, 2000);
     });
 }
 
-console.log("Загрузка...");
-
-loadData()
-    .then(result => {
-        console.log(result);
-    })
-    .catch(error => {
-        console.log("Ошибка:", error.message);
-    })
-    .finally(() => {
-        console.log("Операция завершена");
+function loadSettings() {
+    return new Promise(resolve => {
+        setTimeout(() => {
+            resolve({
+                theme: "dark",
+                language: "ru"
+            });
+        }, 1000);
     });
+}
+
+Promise.all([
+    loadUser(),
+    loadSettings()
+]).then(results => {
+    const [user, settings] = results;
+
+    console.log("Пользователь:", user.name);
+    console.log("Тема:", settings.theme);
+});
