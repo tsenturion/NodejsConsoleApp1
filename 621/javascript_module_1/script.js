@@ -1,14 +1,8 @@
-Promise.resolve(10)
-    .then(number => {
-        if (number === 10) {
-            throw new Error("Недопустимое значение");
-        }
-
-        return number * 2;
-    })
-    .then(result => {
-        console.log("Результат:", result);
-    })
+Promise.reject(new Error("Данные недоступны"))
     .catch(error => {
         console.log(error.message);
+        return "Резервные данные";
+    })
+    .then(data => {
+        console.log(data);
     });
