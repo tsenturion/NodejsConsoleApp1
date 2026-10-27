@@ -2,6 +2,6 @@ async function getNumber() {
     return 10;
 }
 
-const result = getNumber();
-
-console.log(result);
+getNumber().then(number => {
+    console.log(number); // 10
+});
