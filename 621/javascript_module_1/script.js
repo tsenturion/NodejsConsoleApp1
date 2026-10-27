@@ -1,17 +1,18 @@
-function delay(milliseconds) {
-    return new Promise(resolve => {
-        setTimeout(resolve, milliseconds);
-    });
+async function getUser() {
+    const response = await fetch(
+        "https://jsonplaceholder.typicode.com/users/1"
+    );
+
+    if (!response.ok) {
+        throw new Error(`Ошибка HTTP: ${response.status}`);
+    }
+
+    const user = await response.json();
+
+    return user;
 }
 
-async function run() {
-    console.log("Начало ожидания");
-
-    await delay(2000);
-
-    console.log("Ожидание завершено");
-}
-
-run();
-
-console.log("Другой код продолжает работать");
+getUser().then(user => {
+    console.log(user.name);
+    console.log(user.email);
+});
