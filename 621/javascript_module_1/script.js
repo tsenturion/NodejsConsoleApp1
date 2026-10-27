@@ -1,17 +1,20 @@
 function loadUser() {
-    return new Promise((resolve, reject) => {
+    return new Promise(resolve => {
         setTimeout(() => {
-            const user = {
+            resolve({
                 id: 1,
                 name: "Алексей",
                 age: 25
-            };
-
-            resolve(user);
+            });
         }, 2000);
     });
 }
 
-const result = loadUser();
+console.log("Начинаем загрузку");
 
-console.log(result);
+loadUser().then(user => {
+    console.log("Данные получены");
+    console.log(user.name);
+});
+
+console.log("Программа продолжает работу");
