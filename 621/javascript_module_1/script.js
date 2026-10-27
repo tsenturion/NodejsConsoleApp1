@@ -1,7 +1,7 @@
-console.log("Начало программы");
+function showMessage() {
+    console.log("Прошла одна секунда");
+}
 
-setTimeout(() => {
-    console.log("Асинхронная операция завершена");
-}, 2000);
+setTimeout(showMessage, 1000);
 
-console.log("Конец программы");
+console.log("Таймер запущен");
