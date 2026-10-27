@@ -1,16 +1,7 @@
-fetch("https://jsonplaceholder.typicode.com/users/1")
-    .then(response => {
-        if (!response.ok) {
-            throw new Error(
-                `Ошибка HTTP: ${response.status}`
-            );
-        }
+async function getNumber() {
+    return 10;
+}
 
-        return response.json();
-    })
-    .then(user => {
-        console.log("Пользователь:", user.name);
-    })
-    .catch(error => {
-        console.error(error.message);
-    });
+const result = getNumber();
+
+console.log(result);
