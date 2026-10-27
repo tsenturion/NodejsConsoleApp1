@@ -1,20 +1,20 @@
-function getNumber() {
+function waitAndDouble(number) {
     return new Promise(resolve => {
         setTimeout(() => {
-            resolve(10);
+            resolve(number * 2);
         }, 1000);
     });
 }
 
-getNumber()
-    .then(number => {
-        console.log("Первое значение:", number);
-        return number * 2;
+waitAndDouble(5)
+    .then(result => {
+        console.log(result); // 10
+        return waitAndDouble(result);
     })
-    .then(number => {
-        console.log("Второе значение:", number);
-        return number + 5;
+    .then(result => {
+        console.log(result); // 20
+        return waitAndDouble(result);
     })
-    .then(number => {
-        console.log("Итог:", number);
+    .then(result => {
+        console.log(result); // 40
     });
