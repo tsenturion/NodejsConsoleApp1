@@ -1,20 +1,19 @@
-function waitAndDouble(number) {
-    return new Promise(resolve => {
+function checkBalance(balance, price) {
+    return new Promise((resolve, reject) => {
         setTimeout(() => {
-            resolve(number * 2);
+            if (balance >= price) {
+                resolve("Покупка разрешена");
+            } else {
+                reject(new Error("Недостаточно средств"));
+            }
         }, 1000);
     });
 }
 
-waitAndDouble(5)
+checkBalance(500, 800)
     .then(result => {
-        console.log(result); // 10
-        return waitAndDouble(result);
+        console.log(result);
     })
-    .then(result => {
-        console.log(result); // 20
-        return waitAndDouble(result);
-    })
-    .then(result => {
-        console.log(result); // 40
+    .catch(error => {
+        console.log("Ошибка:", error.message);
     });
