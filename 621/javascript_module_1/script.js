@@ -1,7 +1,7 @@
-function showMessage() {
-    console.log("Прошла одна секунда");
-}
+console.log("Первое сообщение");
 
-setTimeout(showMessage, 1000);
+setTimeout(() => {
+    console.log("Второе сообщение");
+}, 0);
 
-console.log("Таймер запущен");
+console.log("Третье сообщение");
