@@ -1,15 +1,17 @@
-function getNumber() {
+function delay(milliseconds) {
     return new Promise(resolve => {
-        setTimeout(() => {
-            resolve(25);
-        }, 1000);
+        setTimeout(resolve, milliseconds);
     });
 }
 
-async function calculate() {
-    const number = await getNumber();
+async function run() {
+    console.log("Начало ожидания");
 
-    console.log(number * 2);
+    await delay(2000);
+
+    console.log("Ожидание завершено");
 }
 
-calculate();
+run();
+
+console.log("Другой код продолжает работать");
