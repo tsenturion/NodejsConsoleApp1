@@ -1,7 +1,15 @@
-async function getNumber() {
-    return 10;
+function getNumber() {
+    return new Promise(resolve => {
+        setTimeout(() => {
+            resolve(25);
+        }, 1000);
+    });
 }
 
-getNumber().then(number => {
-    console.log(number); // 10
-});
+async function calculate() {
+    const number = await getNumber();
+
+    console.log(number * 2);
+}
+
+calculate();
