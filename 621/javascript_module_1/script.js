@@ -1,6 +1,19 @@
-async function getUser(id) {
+async function createPost() {
+    const post = {
+        title: "Изучаем JavaScript",
+        body: "Первая публикация через Fetch API",
+        userId: 1
+    };
+
     const response = await fetch(
-        `https://jsonplaceholder.typicode.com/users/${id}`
+        "https://jsonplaceholder.typicode.com/posts",
+        {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json; charset=UTF-8"
+            },
+            body: JSON.stringify(post)
+        }
     );
 
     if (!response.ok) {
@@ -12,12 +25,11 @@ async function getUser(id) {
 
 async function main() {
     try {
-        const user = await getUser(1);
+        const createdPost = await createPost();
 
-        console.log("Пользователь:", user.name);
+        console.log("Ответ сервера:", createdPost);
     } catch (error) {
-        console.log("Не удалось выполнить операцию");
-        console.error(error.message);
+        console.error("Не удалось создать публикацию:", error.message);
     }
 }
 
