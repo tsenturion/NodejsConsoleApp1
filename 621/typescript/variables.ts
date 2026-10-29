@@ -1,7 +1,10 @@
-let userId: number | string;
+function formatId(id: number | string): string {
+    if (typeof id === "number") {
+        return `ID-${id}`;
+    }
 
-userId = 15;
-console.log(userId);
+    return id.toUpperCase();
+}
 
-userId = "user-15";
-console.log(userId);
+console.log(formatId(15));       // ID-15
+console.log(formatId("user-25")); // USER-25
