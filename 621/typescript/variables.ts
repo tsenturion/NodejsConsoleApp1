@@ -1,11 +1,10 @@
-type MathOperation = (
-    a: number,
-    b: number
-) => number;
+function greet(name: string, title?: string): string {
+    if (title !== undefined) {
+        return `Здравствуйте, ${title} ${name}!`;
+    }
 
-const add: MathOperation = (a, b) => a + b;
+    return `Здравствуйте, ${name}!`;
+}
 
-const subtract: MathOperation = (a, b) => a - b;
-
-console.log(add(10, 5));      // 15
-console.log(subtract(10, 5)); // 5
+console.log(greet("Иван"));
+console.log(greet("Иван", "доктор"));
