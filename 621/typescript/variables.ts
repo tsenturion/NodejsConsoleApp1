@@ -1,10 +1,7 @@
-function formatId(id: number | string): string {
-    if (typeof id === "number") {
-        return `ID-${id}`;
-    }
+type OrderStatus = "new" | "paid" | "cancelled";
 
-    return id.toUpperCase();
-}
+let status: OrderStatus = "new";
 
-console.log(formatId(15));       // ID-15
-console.log(formatId("user-25")); // USER-25
+status = "paid";
+
+console.log(status);
