@@ -1,15 +1,19 @@
-interface Product {
-    readonly id: number;
-    title: string;
-    price: number;
+interface User {
+    id: number;
+    name: string;
+    email: string;
 }
 
-const product: Product = {
+interface Admin extends User {
+    permissions: string[];
+}
+
+const admin: Admin = {
     id: 1,
-    title: "Монитор",
-    price: 15000
+    name: "Алексей",
+    email: "alex@example.com",
+    permissions: ["read", "write", "delete"]
 };
 
-product.price = 14000;
-
-console.log(product);
+console.log(admin.name);
+console.log(admin.permissions);
