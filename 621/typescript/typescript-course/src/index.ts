@@ -1,15 +1,9 @@
-interface Product {
-    title: string;
-    price: number;
-    quantity: number;
-}
+import {
+    calculateCartTotal,
+    type CartItem
+} from "./cart.js";
 
-const products: Product[] = [
-    {
-        title: "Ноутбук",
-        price: 75000,
-        quantity: 1
-    },
+const items: CartItem[] = [
     {
         title: "Монитор",
         price: 15000,
@@ -18,16 +12,10 @@ const products: Product[] = [
     {
         title: "Мышь",
         price: 1200,
-        quantity: 3
+        quantity: 1
     }
 ];
 
-function calculateTotal(products: Product[]): number {
-    return products.reduce((sum, product) => {
-        return sum + product.price * product.quantity;
-    }, 0);
-}
-
-const total = calculateTotal(products);
+const total = calculateCartTotal(items);
 
 console.log(`Общая стоимость: ${total} руб.`);
