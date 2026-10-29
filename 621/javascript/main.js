@@ -1,4 +1,14 @@
-import "./first.js";
-import { getCount } from "./counter.js";
+function calculateTotal(price, quantity) {
+    debugger;
 
-console.log(getCount()); // 1
+    const subtotal = price + quantity;
+    return subtotal;
+}
+
+const button = document.querySelector("#calculate");
+const result = document.querySelector("#result");
+
+button.addEventListener("click", () => {
+    const total = calculateTotal(500, 3);
+    result.textContent = total;
+});

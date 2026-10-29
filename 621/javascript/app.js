@@ -1,12 +1,17 @@
-const products = [
-    { title: "Ноутбук", price: 75000 },
-    { title: "Мышь", price: 1500 },
-    { title: "Клавиатура", price: 4500 }
-];
+async function loadUser() {
+    const response = await fetch(
+        "https://jsonplaceholder.typicode.com/users/999999"
+    );
 
-const total = products.reduce(
-    (sum, product) => sum + product.price,
-    0
-);
+    console.log(response.status);
 
-console.log("Общая стоимость:", total);
+    if (!response.ok) {
+        throw new Error("Пользователь не найден");
+    }
+
+    return await response.json();
+}
+
+loadUser().catch(error => {
+    console.error(error.message);
+});
