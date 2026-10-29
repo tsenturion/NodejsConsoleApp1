@@ -1,16 +1,15 @@
-type Product = {
+interface User {
     id: number;
-    title: string;
-    price: number;
-    available: boolean;
+    name: string;
+    email: string;
+    isActive: boolean;
+}
+
+const user: User = {
+    id: 10,
+    name: "Мария",
+    email: "maria@example.com",
+    isActive: true
 };
 
-const product: Product = {
-    id: 1,
-    title: "Ноутбук",
-    price: 75000,
-    available: true
-};
-
-console.log(product.title);
-console.log(product.price);
+console.log(user.name);
