@@ -1,5 +1,11 @@
-const multiply = (a: number, b: number): number => {
-    return a * b;
-};
+type MathOperation = (
+    a: number,
+    b: number
+) => number;
 
-console.log(multiply(4, 6)); // 24
+const add: MathOperation = (a, b) => a + b;
+
+const subtract: MathOperation = (a, b) => a - b;
+
+console.log(add(10, 5));      // 15
+console.log(subtract(10, 5)); // 5
