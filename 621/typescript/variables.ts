@@ -1,5 +1,5 @@
-function showMessage(message: string): void {
-    console.log(message);
-}
+const multiply = (a: number, b: number): number => {
+    return a * b;
+};
 
-showMessage("Изучаем TypeScript");
+console.log(multiply(4, 6)); // 24
