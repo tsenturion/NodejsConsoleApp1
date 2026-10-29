@@ -1,16 +1,8 @@
-function getId<T extends { id: number }>(item: T): number {
-    return item.id;
+function calculateTotal(
+    price: number,
+    quantity: number
+): number {
+    return price * quantity;
 }
 
-const user = {
-    id: 15,
-    name: "Алексей"
-};
-
-const product = {
-    id: 25,
-    title: "Ноутбук"
-};
-
-console.log(getId(user));    // 15
-console.log(getId(product)); // 25
+console.log(calculateTotal(1500, 3));
