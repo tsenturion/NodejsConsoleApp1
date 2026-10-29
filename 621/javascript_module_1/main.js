@@ -1,5 +1,4 @@
-import {
-    calculateArea as getArea
-} from "./math.js";
+import "./first.js";
+import { getCount } from "./counter.js";
 
-console.log(getArea(10, 20)); // 200
+console.log(getCount()); // 1
