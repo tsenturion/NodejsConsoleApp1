@@ -1,10 +1,7 @@
-function calculateTotal(
-    price: number,
-    quantity: number
-): number {
-    return price * quantity;
+function calculateArea(width: number, height: number) {
+    return width * height;
 }
 
-const total = calculateTotal(1500, 3);
+const area = calculateArea(5, 8);
 
-console.log(total); // 4500
+console.log(area); // 40
