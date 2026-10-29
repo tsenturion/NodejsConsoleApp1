@@ -1,15 +1,19 @@
 interface User {
     id: number;
     name: string;
-    email: string;
-    isActive: boolean;
+    phone?: string;
 }
 
-const user: User = {
-    id: 10,
-    name: "Мария",
-    email: "maria@example.com",
-    isActive: true
+const user1: User = {
+    id: 1,
+    name: "Анна"
 };
 
-console.log(user.name);
+const user2: User = {
+    id: 2,
+    name: "Иван",
+    phone: "+79990000000"
+};
+
+console.log(user1.phone ?? "Телефон не указан");
+console.log(user2.phone);
