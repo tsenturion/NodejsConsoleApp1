@@ -1,11 +1,17 @@
-let price = 1500;
-let productName = "Монитор";
-let available = true;
+const prices: number[] = [1000, 1500, 2000];
 
-price = 2000;
-productName = "Клавиатура";
-available = false;
+const names: string[] = [
+    "Анна",
+    "Иван",
+    "Мария"
+];
 
-console.log(price);
-console.log(productName);
-console.log(available);
+const results: boolean[] = [
+    true,
+    false,
+    true
+];
+
+console.log(prices);
+console.log(names);
+console.log(results);
