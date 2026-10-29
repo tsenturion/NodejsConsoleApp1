@@ -1,20 +1,14 @@
-type OrderStatus = "new" | "paid" | "cancelled";
-
-function getStatusText(status: OrderStatus): string {
-    switch (status) {
-        case "new":
-            return "Новый заказ";
-
-        case "paid":
-            return "Оплачен";
-
-        case "cancelled":
-            return "Отменён";
-
-        default:
-            const unexpected: never = status;
-            return unexpected;
-    }
+function getFirst<T>(items: T[]): T | undefined {
+    return items[0];
 }
 
-console.log(getStatusText("paid")); // Оплачен
+const firstNumber = getFirst([10, 20, 30]);
+
+const firstName = getFirst([
+    "Анна",
+    "Иван",
+    "Мария"
+]);
+
+console.log(firstNumber); // 10
+console.log(firstName);   // Анна
