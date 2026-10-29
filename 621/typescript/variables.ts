@@ -1,7 +1,5 @@
-function calculateArea(width: number, height: number) {
-    return width * height;
+function showMessage(message: string): void {
+    console.log(message);
 }
 
-const area = calculateArea(5, 8);
-
-console.log(area); // 40
+showMessage("Изучаем TypeScript");
