@@ -1,19 +1,7 @@
-interface User {
-    id: number;
-    name: string;
-    email: string;
-}
+let userId: number | string;
 
-interface Admin extends User {
-    permissions: string[];
-}
+userId = 15;
+console.log(userId);
 
-const admin: Admin = {
-    id: 1,
-    name: "Алексей",
-    email: "alex@example.com",
-    permissions: ["read", "write", "delete"]
-};
-
-console.log(admin.name);
-console.log(admin.permissions);
+userId = "user-15";
+console.log(userId);
