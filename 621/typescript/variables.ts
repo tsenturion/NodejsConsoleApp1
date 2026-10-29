@@ -1,10 +1,9 @@
-function greet(name: string, title?: string): string {
-    if (title !== undefined) {
-        return `Здравствуйте, ${title} ${name}!`;
-    }
-
-    return `Здравствуйте, ${name}!`;
+function calculateDiscount(
+    price: number,
+    discount = 10
+): number {
+    return price * (1 - discount / 100);
 }
 
-console.log(greet("Иван"));
-console.log(greet("Иван", "доктор"));
+console.log(calculateDiscount(2000));     // 1800
+console.log(calculateDiscount(2000, 25)); // 1500
