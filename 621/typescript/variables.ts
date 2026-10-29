@@ -1,7 +1,5 @@
-let value: any = 10;
+let value: unknown = "Привет";
 
-value = "Текст";
-value = true;
-value = { name: "Анна" };
-
-console.log(value);
+if (typeof value === "string") {
+    console.log(value.toUpperCase());
+}
