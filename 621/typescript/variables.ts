@@ -1,7 +1,10 @@
-const user: [number, string] = [15, "Алексей"];
+function calculateTotal(
+    price: number,
+    quantity: number
+): number {
+    return price * quantity;
+}
 
-const id = user[0];
-const name = user[1];
+const total = calculateTotal(1500, 3);
 
-console.log(id);   // 15
-console.log(name); // Алексей
+console.log(total); // 4500
