@@ -1,0 +1,20 @@
+{
+  "name": "js-course",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "dayjs": "^1.11.23"
+  },
+  "devDependencies": {
+    "typescript": "^7.0.2"
+  }
+}
