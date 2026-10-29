@@ -1,27 +1,30 @@
-type OrderStatus = "new" | "paid" | "cancelled";
+type Result =
+    | {
+        success: true;
+        data: string;
+    }
+    | {
+        success: false;
+        error: string;
+    };
 
-interface Order {
-    id: number;
-    amount: number;
-    status: OrderStatus;
+function processResult(result: Result): string {
+    if (result.success) {
+        return `Получены данные: ${result.data}`;
+    }
+
+    return `Ошибка: ${result.error}`;
 }
 
-const order: Order = {
-    id: 101,
-    amount: 5000,
-    status: "new"
+const firstResult: Result = {
+    success: true,
+    data: "Информация загружена"
 };
 
-function getStatusMessage(order: Order): string {
-    if (order.status === "paid") {
-        return "Заказ оплачен";
-    }
+const secondResult: Result = {
+    success: false,
+    error: "Сервер недоступен"
+};
 
-    if (order.status === "cancelled") {
-        return "Заказ отменён";
-    }
-
-    return "Заказ создан";
-}
-
-console.log(getStatusMessage(order));
+console.log(processResult(firstResult));
+console.log(processResult(secondResult));
