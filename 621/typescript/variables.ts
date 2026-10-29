@@ -1,17 +1,16 @@
-interface Container<T> {
-    value: T;
-    updatedAt: string;
+function getId<T extends { id: number }>(item: T): number {
+    return item.id;
 }
 
-const numberContainer: Container<number> = {
-    value: 100,
-    updatedAt: "2026-10-29"
+const user = {
+    id: 15,
+    name: "Алексей"
 };
 
-const stringContainer: Container<string> = {
-    value: "Готово",
-    updatedAt: "2026-10-29"
+const product = {
+    id: 25,
+    title: "Ноутбук"
 };
 
-console.log(numberContainer.value);
-console.log(stringContainer.value);
+console.log(getId(user));    // 15
+console.log(getId(product)); // 25
