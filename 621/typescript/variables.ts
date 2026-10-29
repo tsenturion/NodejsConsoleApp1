@@ -1,30 +1,20 @@
-type Result =
-    | {
-        success: true;
-        data: string;
-    }
-    | {
-        success: false;
-        error: string;
-    };
+type OrderStatus = "new" | "paid" | "cancelled";
 
-function processResult(result: Result): string {
-    if (result.success) {
-        return `Получены данные: ${result.data}`;
-    }
+function getStatusText(status: OrderStatus): string {
+    switch (status) {
+        case "new":
+            return "Новый заказ";
 
-    return `Ошибка: ${result.error}`;
+        case "paid":
+            return "Оплачен";
+
+        case "cancelled":
+            return "Отменён";
+
+        default:
+            const unexpected: never = status;
+            return unexpected;
+    }
 }
 
-const firstResult: Result = {
-    success: true,
-    data: "Информация загружена"
-};
-
-const secondResult: Result = {
-    success: false,
-    error: "Сервер недоступен"
-};
-
-console.log(processResult(firstResult));
-console.log(processResult(secondResult));
+console.log(getStatusText("paid")); // Оплачен
