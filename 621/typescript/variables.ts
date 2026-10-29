@@ -1,3 +1,7 @@
-const prices: Array<number> = [100, 200, 300];
+const user: [number, string] = [15, "Алексей"];
 
-console.log(prices);
+const id = user[0];
+const name = user[1];
+
+console.log(id);   // 15
+console.log(name); // Алексей
