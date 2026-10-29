@@ -1,9 +1,7 @@
-function calculateDiscount(
-    price: number,
-    discount = 10
-): number {
-    return price * (1 - discount / 100);
-}
+let value: any = 10;
 
-console.log(calculateDiscount(2000));     // 1800
-console.log(calculateDiscount(2000, 25)); // 1500
+value = "Текст";
+value = true;
+value = { name: "Анна" };
+
+console.log(value);
