@@ -1,7 +1,17 @@
-function getFirst<T>(items: T[]): T | undefined {
-    return items[0];
+interface Container<T> {
+    value: T;
+    updatedAt: string;
 }
 
-const result = getFirst<number>([5, 10, 15]);
+const numberContainer: Container<number> = {
+    value: 100,
+    updatedAt: "2026-10-29"
+};
 
-console.log(result); // 5
+const stringContainer: Container<string> = {
+    value: "Готово",
+    updatedAt: "2026-10-29"
+};
+
+console.log(numberContainer.value);
+console.log(stringContainer.value);
