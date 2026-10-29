@@ -2,13 +2,6 @@ function getFirst<T>(items: T[]): T | undefined {
     return items[0];
 }
 
-const firstNumber = getFirst([10, 20, 30]);
+const result = getFirst<number>([5, 10, 15]);
 
-const firstName = getFirst([
-    "Анна",
-    "Иван",
-    "Мария"
-]);
-
-console.log(firstNumber); // 10
-console.log(firstName);   // Анна
+console.log(result); // 5
