@@ -1,19 +1,15 @@
-interface User {
-    id: number;
-    name: string;
-    phone?: string;
+interface Product {
+    readonly id: number;
+    title: string;
+    price: number;
 }
 
-const user1: User = {
+const product: Product = {
     id: 1,
-    name: "Анна"
+    title: "Монитор",
+    price: 15000
 };
 
-const user2: User = {
-    id: 2,
-    name: "Иван",
-    phone: "+79990000000"
-};
+product.price = 14000;
 
-console.log(user1.phone ?? "Телефон не указан");
-console.log(user2.phone);
+console.log(product);
