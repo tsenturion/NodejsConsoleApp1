@@ -1,0 +1,51 @@
+<style>
+    body {
+        width: 1000px;
+        height: 1000px;
+        position: relative;
+    }
+    #mWindow {
+        width: 200px;
+        height: 50px;
+        top: 200px;
+        left: 100px;
+        border: 1px solid black;
+        position: absolute;
+        z-index: 1;
+    }
+    input {margin: 10px;}
+</style>
+
+<body>
+    <div class="container">
+        <button id="open">Открыть</button>
+        <button id="close">Закрыть</button>
+    
+    </div>
+    <div>
+        <div><input type="text" id="width">Ширина</div>
+        <div> <input type="text" id="height">Высота</div>
+       <div> <input type="text" id="top">X</div>
+        <div><input type="text" id="left">Y</div>
+    </div>
+    <div id="mWindow">Hello World!!</div>
+</body>
+
+<script>
+    var bOpen = document.getElementById("open")
+    var bClose = document.getElementById("close")
+    var moduleWindow = document.getElementById("mWindow")
+
+    bOpen.addEventListener("click", function(){
+        moduleWindow.style.display = "block"
+        moduleWindow.style.width = document.getElementById("width").value
+        moduleWindow.style.height = document.getElementById("height").value
+        moduleWindow.style.top = document.getElementById("top").value
+        moduleWindow.style.left = document.getElementById("left").value
+       
+    })
+    bClose.addEventListener("click", function(){
+        moduleWindow.style.display = "none"
+        
+    })
+</script>
