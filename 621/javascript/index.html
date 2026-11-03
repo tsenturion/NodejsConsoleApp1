@@ -2,92 +2,143 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Компонентный подход</title>
-    <style>
-        .course-card {
-            border: 1px solid #ccc;
-            padding: 15px;
-            margin-bottom: 10px;
-        }
-
-        .selected {
-            border-color: green;
-            background: #e8ffe8;
-        }
-    </style>
+    <title>Управление состоянием</title>
 </head>
 <body>
-    <h1>Выбор курса</h1>
+    <h1>Расчёт стоимости обучения</h1>
 
-    <p id="selected-info"></p>
-    <div id="courses"></div>
+    <label for="plan">Тариф:</label>
+    <select id="plan">
+        <option value="basic">Базовый — 3000 руб./мес.</option>
+        <option value="premium">Премиум — 5000 руб./мес.</option>
+    </select>
+
+    <p>
+        <label for="months">Количество месяцев:</label>
+        <input
+            id="months"
+            type="number"
+            min="1"
+            max="24"
+            value="1"
+        >
+    </p>
+
+    <label>
+        <input id="discount" type="checkbox">
+        Применить скидку 10%
+    </label>
+
+    <h2 id="total"></h2>
+    <p id="description"></p>
 
     <script>
-        const courses = [
-            { id: 1, title: "JavaScript", hours: 40 },
-            { id: 2, title: "React", hours: 32 },
-            { id: 3, title: "TypeScript", hours: 24 }
-        ];
+        const initialState = {
+            plan: "basic",
+            months: 1,
+            discount: false
+        };
 
-        let selectedCourseId = null;
+        const prices = {
+            basic: 3000,
+            premium: 5000
+        };
 
-        const container = document.querySelector("#courses");
-        const selectedInfo = document.querySelector("#selected-info");
+        let state = initialState;
 
-        function createCourseCard({ course, selected, onSelect }) {
-            const card = document.createElement("article");
-            card.classList.add("course-card");
+        const planSelect = document.querySelector("#plan");
+        const monthsInput = document.querySelector("#months");
+        const discountInput = document.querySelector("#discount");
 
-            if (selected) {
-                card.classList.add("selected");
+        const totalElement = document.querySelector("#total");
+        const description = document.querySelector("#description");
+
+        function reducer(state, action) {
+            switch (action.type) {
+                case "plan/selected":
+                    if (!Object.hasOwn(prices, action.payload)) {
+                        return state;
+                    }
+
+                    return {
+                        ...state,
+                        plan: action.payload
+                    };
+
+                case "months/changed":
+                    if (
+                        !Number.isInteger(action.payload) ||
+                        action.payload < 1 ||
+                        action.payload > 24
+                    ) {
+                        return state;
+                    }
+
+                    return {
+                        ...state,
+                        months: action.payload
+                    };
+
+                case "discount/changed":
+                    return {
+                        ...state,
+                        discount: action.payload
+                    };
+
+                default:
+                    return state;
             }
-
-            const title = document.createElement("h2");
-            title.textContent = course.title;
-
-            const duration = document.createElement("p");
-            duration.textContent = `${course.hours} часов`;
-
-            const button = document.createElement("button");
-            button.type = "button";
-            button.textContent = selected ? "Выбран" : "Выбрать";
-            button.disabled = selected;
-
-            button.addEventListener("click", () => {
-                onSelect(course.id);
-            });
-
-            card.append(title, duration, button);
-
-            return card;
         }
 
-        function selectCourse(id) {
-            selectedCourseId = id;
-            render();
+        function calculateTotal(state) {
+            const subtotal = prices[state.plan] * state.months;
+
+            return state.discount
+                ? subtotal * 0.9
+                : subtotal;
         }
 
         function render() {
-            container.replaceChildren();
+            planSelect.value = state.plan;
+            monthsInput.value = state.months;
+            discountInput.checked = state.discount;
 
-            const selectedCourse = courses.find(
-                course => course.id === selectedCourseId
-            );
+            const total = calculateTotal(state);
 
-            selectedInfo.textContent = selectedCourse
-                ? `Вы выбрали: ${selectedCourse.title}`
-                : "Курс пока не выбран";
+            totalElement.textContent =
+                `Итого: ${total.toLocaleString("ru-RU")} руб.`;
 
-            for (const course of courses) {
-                const card = createCourseCard({
-                    course,
-                    selected: course.id === selectedCourseId,
-                    onSelect: selectCourse
-                });
-
-                container.append(card);
-            }
+            description.textContent =
+                `Тариф: ${state.plan}, ` +
+                `срок: ${state.months} мес., ` +
+                `скидка: ${state.discount ? "есть" : "нет"}`;
         }
+
+        function dispatch(action) {
+            state = reducer(state, action);
+            render();
+        }
+
+        planSelect.addEventListener("change", event => {
+            dispatch({
+                type: "plan/selected",
+                payload: event.target.value
+            });
+        });
+
+        monthsInput.addEventListener("change", event => {
+            dispatch({
+                type: "months/changed",
+                payload: Number(event.target.value)
+            });
+        });
+
+        discountInput.addEventListener("change", event => {
+            dispatch({
+                type: "discount/changed",
+                payload: event.target.checked
+            });
+        });
 
         render();
     </script>
