@@ -1,22 +1,37 @@
-const prices = {
-    basic: 3000,
-    premium: 5000
+const initialState = {
+    count: 0
 };
 
-function calculateTotal(state) {
-    const monthlyPrice = prices[state.plan];
+function reducer(state, action) {
+    switch (action.type) {
+        case "increment":
+            return {
+                ...state,
+                count: state.count + 1
+            };
 
-    const subtotal = monthlyPrice * state.months;
+        case "decrement":
+            return {
+                ...state,
+                count: state.count - 1
+            };
 
-    return state.discount
-        ? subtotal * 0.9
-        : subtotal;
+        case "reset":
+            return initialState;
+
+        default:
+            return state;
+    }
 }
 
-const state = {
-    plan: "premium",
-    months: 6,
-    discount: true
-};
+let state = initialState;
 
-console.log(calculateTotal(state)); // 27000
+function dispatch(action) {
+    state = reducer(state, action);
+    console.log("Текущее состояние:", state);
+}
+
+dispatch({ type: "increment" });
+dispatch({ type: "increment" });
+dispatch({ type: "decrement" });
+dispatch({ type: "reset" });
