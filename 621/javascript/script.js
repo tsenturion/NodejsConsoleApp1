@@ -1,44 +1,22 @@
-const initialState = {
-    plan: "basic",
-    months: 1,
-    discount: false
+const prices = {
+    basic: 3000,
+    premium: 5000
 };
 
-function reducer(state, action) {
-    switch (action.type) {
-        case "plan/selected":
-            return {
-                ...state,
-                plan: action.payload
-            };
+function calculateTotal(state) {
+    const monthlyPrice = prices[state.plan];
 
-        case "months/changed":
-            return {
-                ...state,
-                months: action.payload
-            };
+    const subtotal = monthlyPrice * state.months;
 
-        case "discount/toggled":
-            return {
-                ...state,
-                discount: !state.discount
-            };
-
-        default:
-            return state;
-    }
+    return state.discount
+        ? subtotal * 0.9
+        : subtotal;
 }
 
-const firstState = reducer(initialState, {
-    type: "plan/selected",
-    payload: "premium"
-});
+const state = {
+    plan: "premium",
+    months: 6,
+    discount: true
+};
 
-const secondState = reducer(firstState, {
-    type: "months/changed",
-    payload: 6
-});
-
-console.log(initialState);
-console.log(firstState);
-console.log(secondState);
+console.log(calculateTotal(state)); // 27000
