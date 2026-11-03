@@ -1,37 +1,13 @@
-const initialState = {
-    count: 0
+const state = {
+    orders: [
+        { id: 1, amount: 1000 },
+        { id: 2, amount: 2000 }
+    ]
 };
 
-function reducer(state, action) {
-    switch (action.type) {
-        case "increment":
-            return {
-                ...state,
-                count: state.count + 1
-            };
+const updatedState = state;
 
-        case "decrement":
-            return {
-                ...state,
-                count: state.count - 1
-            };
+updatedState.orders[0].amount = 5000;
 
-        case "reset":
-            return initialState;
-
-        default:
-            return state;
-    }
-}
-
-let state = initialState;
-
-function dispatch(action) {
-    state = reducer(state, action);
-    console.log("Текущее состояние:", state);
-}
-
-dispatch({ type: "increment" });
-dispatch({ type: "increment" });
-dispatch({ type: "decrement" });
-dispatch({ type: "reset" });
+console.log(state.orders[0].amount); // 5000
+console.log(updatedState === state); // true
