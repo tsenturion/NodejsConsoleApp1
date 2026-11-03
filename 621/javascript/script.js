@@ -1,5 +1,17 @@
-const courses = [
-    { id: 101, title: "JavaScript" },
-    { id: 205, title: "React" },
-    { id: 310, title: "TypeScript" }
-];
+const selectPlanAction = {
+    type: "plan/selected",
+    payload: "premium"
+};
+
+const changeMonthsAction = {
+    type: "months/changed",
+    payload: 6
+};
+
+const toggleDiscountAction = {
+    type: "discount/toggled"
+};
+
+console.log(selectPlanAction);
+console.log(changeMonthsAction);
+console.log(toggleDiscountAction);
