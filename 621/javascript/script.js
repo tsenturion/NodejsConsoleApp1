@@ -1,8 +1,7 @@
-function getStatusText(isOnline) {
-    return isOnline
-        ? "Пользователь в сети"
-        : "Пользователь не в сети";
-}
+const state = {
+    category: "all",
+    onlyAvailable: false,
+    search: ""
+};
 
-console.log(getStatusText(true));
-console.log(getStatusText(false));
+console.log(state);
