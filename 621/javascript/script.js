@@ -1,34 +1,16 @@
-const user = {
-    name: "Анна",
-    visits: 0
-};
+function createCourseCard(course) {
+    const card = document.createElement("article");
 
-function getUserInfo(user) {
-    user.visits++;
+    const title = document.createElement("h2");
+    title.textContent = course.title;
 
-    return `${user.name}: ${user.visits}`;
+    const duration = document.createElement("p");
+    duration.textContent = `Продолжительность: ${course.hours} ч.`;
+
+    const price = document.createElement("p");
+    price.textContent = `Стоимость: ${course.price} руб.`;
+
+    card.append(title, duration, price);
+
+    return card;
 }
-
-console.log(getUserInfo(user)); // Анна: 1
-console.log(getUserInfo(user)); // Анна: 2
-
-const user = {
-    name: "Анна",
-    visits: 0
-};
-
-function getUserInfo(user) {
-    return `${user.name}: ${user.visits}`;
-}
-
-function increaseVisits(user) {
-    return {
-        ...user,
-        visits: user.visits + 1
-    };
-}
-
-const updatedUser = increaseVisits(user);
-
-console.log(getUserInfo(user));        // Анна: 0
-console.log(getUserInfo(updatedUser)); // Анна: 1
