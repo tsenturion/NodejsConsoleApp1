@@ -1,28 +1,20 @@
-function createCourseCard(course) {
-    const card = document.createElement("article");
+function createCourseTitle({ title, level }) {
+    const heading = document.createElement("h2");
 
-    const title = document.createElement("h2");
-    title.textContent = course.title;
+    heading.textContent = `${title} — ${level}`;
 
-    const duration = document.createElement("p");
-    duration.textContent = `Продолжительность: ${course.hours} ч.`;
-
-    const price = document.createElement("p");
-    price.textContent = `Стоимость: ${course.price} руб.`;
-
-    card.append(title, duration, price);
-
-    return card;
+    return heading;
 }
 
-const courses = [
-    { id: 1, title: "JavaScript", hours: 40, price: 12000 },
-    { id: 2, title: "Python", hours: 48, price: 15000 },
-    { id: 3, title: "PostgreSQL", hours: 32, price: 11000 }
-];
+const firstTitle = createCourseTitle({
+    title: "JavaScript",
+    level: "Базовый"
+});
 
-const container = document.querySelector("#courses");
+const secondTitle = createCourseTitle({
+    title: "React",
+    level: "Продвинутый"
+});
 
-for (const course of courses) {
-    container.append(createCourseCard(course));
-}
+console.log(firstTitle.textContent);
+console.log(secondTitle.textContent);
