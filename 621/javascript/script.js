@@ -8,3 +8,21 @@ function createBadge(text, color = "#eeeeee") {
 
     return badge;
 }
+
+function createCourseCard(course) {
+    const card = document.createElement("article");
+
+    const title = document.createElement("h2");
+    title.textContent = course.title;
+
+    const levelBadge = createBadge(
+        course.level,
+        course.level === "Начальный"
+            ? "#d5f5d5"
+            : "#ffe7b3"
+    );
+
+    card.append(title, levelBadge);
+
+    return card;
+}
