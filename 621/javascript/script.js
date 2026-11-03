@@ -5,9 +5,25 @@ const state = {
     ]
 };
 
-const updatedState = state;
+function updateOrderAmount(state, orderId, newAmount) {
+    return {
+        ...state,
+        orders: state.orders.map(order => {
+            if (order.id === orderId) {
+                return {
+                    ...order,
+                    amount: newAmount
+                };
+            }
 
-updatedState.orders[0].amount = 5000;
+            return order;
+        })
+    };
+}
 
-console.log(state.orders[0].amount); // 5000
-console.log(updatedState === state); // true
+const updatedState = updateOrderAmount(state, 1, 5000);
+
+console.log(state.orders[0].amount);        // 1000
+console.log(updatedState.orders[0].amount); // 5000
+
+console.log(updatedState === state); // false
