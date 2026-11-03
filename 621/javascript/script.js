@@ -1,35 +1,24 @@
-const products = [
-    { id: 1, title: "Ноутбук", category: "computers", available: true },
-    { id: 2, title: "Монитор", category: "computers", available: false },
-    { id: 3, title: "Телефон", category: "phones", available: true },
-    { id: 4, title: "Планшет", category: "phones", available: true }
+const cart = [
+    { id: 1, price: 1000, quantity: 2 },
+    { id: 2, price: 500, quantity: 3 }
 ];
 
-const state = {
-    category: "computers",
-    onlyAvailable: true,
-    search: ""
-};
+function getCartSummary(cart) {
+    const itemsCount = cart.reduce(
+        (sum, item) => sum + item.quantity,
+        0
+    );
 
-function getVisibleProducts(products, state) {
-    return products.filter(product => {
-        const matchesCategory =
-            state.category === "all" ||
-            product.category === state.category;
+    const totalPrice = cart.reduce(
+        (sum, item) => sum + item.price * item.quantity,
+        0
+    );
 
-        const matchesAvailability =
-            !state.onlyAvailable || product.available;
-
-        const matchesSearch = product.title
-            .toLowerCase()
-            .includes(state.search.toLowerCase());
-
-        return (
-            matchesCategory &&
-            matchesAvailability &&
-            matchesSearch
-        );
-    });
+    return {
+        itemsCount,
+        totalPrice
+    };
 }
 
-console.log(getVisibleProducts(products, state));
+console.log(getCartSummary(cart));
+// { itemsCount: 5, totalPrice: 3500 }
