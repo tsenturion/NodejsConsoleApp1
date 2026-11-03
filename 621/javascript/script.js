@@ -1,20 +1,23 @@
-function createCourseTitle({ title, level }) {
-    const heading = document.createElement("h2");
+function createCourseCard({ course, selected, onSelect }) {
+    const card = document.createElement("article");
 
-    heading.textContent = `${title} — ${level}`;
+    const title = document.createElement("h2");
+    title.textContent = course.title;
 
-    return heading;
+    const button = document.createElement("button");
+    button.type = "button";
+
+    button.textContent = selected
+        ? "Выбран"
+        : "Выбрать курс";
+
+    button.disabled = selected;
+
+    button.addEventListener("click", () => {
+        onSelect(course.id);
+    });
+
+    card.append(title, button);
+
+    return card;
 }
-
-const firstTitle = createCourseTitle({
-    title: "JavaScript",
-    level: "Базовый"
-});
-
-const secondTitle = createCourseTitle({
-    title: "React",
-    level: "Продвинутый"
-});
-
-console.log(firstTitle.textContent);
-console.log(secondTitle.textContent);
