@@ -2,9 +2,131 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Отладка JavaScript</title>
+    <title>Декларативный каталог</title>
 </head>
 <body>
-    <script src="./app.js"></script>
+    <h1>Каталог техники</h1>
+
+    <label for="category">Категория:</label>
+    <select id="category">
+        <option value="all">Все товары</option>
+        <option value="computers">Компьютеры</option>
+        <option value="phones">Телефоны</option>
+    </select>
+
+    <label>
+        <input id="available" type="checkbox">
+        Только в наличии
+    </label>
+
+    <p id="summary"></p>
+    <div id="catalog"></div>
+
+    <script>
+        const products = [
+            {
+                id: 1,
+                title: "Ноутбук",
+                category: "computers",
+                price: 75000,
+                available: true
+            },
+            {
+                id: 2,
+                title: "Монитор",
+                category: "computers",
+                price: 20000,
+                available: false
+            },
+            {
+                id: 3,
+                title: "Телефон",
+                category: "phones",
+                price: 35000,
+                available: true
+            },
+            {
+                id: 4,
+                title: "Планшет",
+                category: "phones",
+                price: 25000,
+                available: true
+            }
+        ];
+
+        let state = {
+            category: "all",
+            onlyAvailable: false
+        };
+
+        const categorySelect = document.querySelector("#category");
+        const availableInput = document.querySelector("#available");
+
+        const catalog = document.querySelector("#catalog");
+        const summary = document.querySelector("#summary");
+
+        function getVisibleProducts() {
+            return products.filter(product => {
+                const categoryMatches =
+                    state.category === "all" ||
+                    product.category === state.category;
+
+                const availabilityMatches =
+                    !state.onlyAvailable || product.available;
+
+                return categoryMatches && availabilityMatches;
+            });
+        }
+
+        function render() {
+            const visibleProducts = getVisibleProducts();
+
+            catalog.replaceChildren();
+
+            for (const product of visibleProducts) {
+                const card = document.createElement("article");
+
+                const title = document.createElement("h2");
+                title.textContent = product.title;
+
+                const price = document.createElement("p");
+                price.textContent = `${product.price} руб.`;
+
+                const availability = document.createElement("p");
+                availability.textContent = product.available
+                    ? "В наличии"
+                    : "Нет в наличии";
+
+                card.append(title, price, availability);
+                catalog.append(card);
+            }
+
+            summary.textContent =
+                `Найдено товаров: ${visibleProducts.length}`;
+        }
+
+        function updateState(changes) {
+            state = {
+                ...state,
+                ...changes
+            };
+
+            render();
+        }
+
+        categorySelect.addEventListener("change", event => {
+            updateState({
+                category: event.target.value
+            });
+        });
+
+        availableInput.addEventListener("change", event => {
+            updateState({
+                onlyAvailable: event.target.checked
+            });
+        });
+
+        render();
+    </script>
 </body>
 </html>
