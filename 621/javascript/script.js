@@ -1,23 +1,10 @@
-function createCourseCard({ course, selected, onSelect }) {
-    const card = document.createElement("article");
+function createBadge(text, color = "#eeeeee") {
+    const badge = document.createElement("span");
 
-    const title = document.createElement("h2");
-    title.textContent = course.title;
+    badge.textContent = text;
+    badge.style.backgroundColor = color;
+    badge.style.padding = "5px 10px";
+    badge.style.borderRadius = "5px";
 
-    const button = document.createElement("button");
-    button.type = "button";
-
-    button.textContent = selected
-        ? "Выбран"
-        : "Выбрать курс";
-
-    button.disabled = selected;
-
-    button.addEventListener("click", () => {
-        onSelect(course.id);
-    });
-
-    card.append(title, button);
-
-    return card;
+    return badge;
 }
